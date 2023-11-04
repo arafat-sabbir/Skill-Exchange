@@ -53,7 +53,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar  justify-center mb-4 py-6 container mx-auto ">
+    <div className="bg-[#FAF6EB]">
+      <div className="navbar  justify-center  py-6  container mx-auto ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -119,6 +120,7 @@ const Navbar = () => {
         )}
 
       </div>
+    </div>
     </div>
   );
 };
