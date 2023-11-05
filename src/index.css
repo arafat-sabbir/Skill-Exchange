@@ -6,5 +6,8 @@
 @tailwind utilities;
 
 *{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif !important;
+}
+.disabled {
+  cursor: not-allowed !important;
 }

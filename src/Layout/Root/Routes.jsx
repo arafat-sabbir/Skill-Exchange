@@ -47,7 +47,7 @@ const routes = createBrowserRouter([
             },
             {
                 path:'/bidJob/:id',
-                element:<BidJob></BidJob>,
+                element:<PrivateRoute><BidJob></BidJob></PrivateRoute>,
                 loader:({params})=> fetch(`http://localhost:5000/api/bidJobs/${params.id}`)
             }
 
