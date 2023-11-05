@@ -9,6 +9,7 @@ import MyPostedJob from "../../Pages/MyPostedJob/MyPostedJob";
 import MyBids from "../../Pages/MyBIds/MyBids";
 import BidRequest from "../../Pages/BidRequests/BidRequest";
 import PrivateRoute from "../../Components/PrivateRoute/PrivateRoute";
+import BidJob from "../../Pages/BidJobs/BidJob";
 
 const routes = createBrowserRouter([
     {
@@ -43,6 +44,11 @@ const routes = createBrowserRouter([
             {
                 path:'/bidRequest',
                 element:<PrivateRoute><BidRequest></BidRequest></PrivateRoute>
+            },
+            {
+                path:'/bidJob/:id',
+                element:<BidJob></BidJob>,
+                loader:({params})=> fetch(`http://localhost:5000/api/bidJobs/${params.id}`)
             }
 
 

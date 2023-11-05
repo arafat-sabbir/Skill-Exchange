@@ -123,23 +123,20 @@ const SignIn = () => {
                         </label>
                       </div>
                       <div className="form-control mt-6">
-                      <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
-                <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                  Sign In
-                </span>
-                <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-              </button>
+                        <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+                          <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+                            Sign In
+                          </span>
+                          <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                          <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                        </button>
                       </div>
                     </form>
                     <div className="my-1 text-main font-medium">
                       {error && <p>Error : {error}</p>}
                       <p className="my-4">
                         Do not have a account ? :{" "}
-                        <Link
-                          to={"/signUp"}
-                          className=" font-bold text-main"
-                        >
+                        <Link to={"/signUp"} className=" font-bold text-main">
                           Sign Up
                         </Link>
                       </p>

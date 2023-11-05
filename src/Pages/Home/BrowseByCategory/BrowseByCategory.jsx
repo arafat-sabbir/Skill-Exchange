@@ -3,12 +3,15 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useAxios from "../../../Hook/useAxios";
 import { useEffect, useState } from "react";
+import Dm from "../../../Components/Dm/Dm";
+import Gd from "../../../Components/Gd/Gd";
+import Wd from "../../../Components/Wd/Wd";
 
 const BrowseByCategory = () => {
   const [category, setCategory] = useState("Web Developmnet");
   const [jobsData, setJobsData] = useState("");
 
-  const axios = useAxios("/jobs");
+  const axios = useAxios();
   const getJobs = async () => {
     const response = axios.get("/jobs");
     return response;
@@ -39,15 +42,14 @@ const BrowseByCategory = () => {
             <Tab>Graphics Design</Tab>
           </TabList>
         </div>
-
         <TabPanel>
-          <h2>Digital Marketing</h2>
+         <Wd></Wd>
         </TabPanel>
         <TabPanel>
-          <h2>Graphics Design</h2>
+          <Dm></Dm>
         </TabPanel>
         <TabPanel>
-          <h2>Graphics Design</h2>
+          <Gd></Gd>
         </TabPanel>
       </Tabs>
     </div>

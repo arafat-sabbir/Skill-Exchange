@@ -9,7 +9,7 @@ const PostedJobCard = ({ job,handleDelete }) => {
         <div className="w-28 h-28 bg-main mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24  group-hover:-translate-y-20 transition-all duration-500"></div>
         <div className="z-10  group-hover:-translate-y-10 transition-all duration-500"></div>
         <div className="space-y-4 z-50">
-          <span className="text-xl font-semibold">{jobtitle}</span>
+          <span className="text-2xl font-semibold">{jobtitle}</span>
           <p className="text-xl font-semibold">{category}</p>
           <p className="text-xl font-semibold">Deadline : {deadline}</p>
           <p className="text-md font-semibold">
