@@ -49,7 +49,7 @@ const Banner = () => {
                       <div>2%</div>
                     </div>
                   </div>
-                  <div className="text-sm font-medium  ">Last week 44.9k</div>
+                  <div className="text-sm font-medium  ">Last week 8k</div>
                 </div>
               </div>
             </div>

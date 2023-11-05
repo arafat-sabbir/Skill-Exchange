@@ -100,7 +100,7 @@ const SignUp = () => {
             data-aos-anchor-placement="top"
             className="hero min-h-[80vh]"
           >
-            <div className="hero-content flex-col gap-8  shadow-[0_0_50px_#D1D1D1] w-full rounded-2xl ">
+            <div className="hero-content flex-col gap-8  shadow-[0_0_50px_#D1D1D1] px-8 rounded-2xl ">
               <h1 className="text-5xl font-bold pt-10  text-main">
                 Sign Up now!
               </h1>
@@ -176,18 +176,22 @@ const SignUp = () => {
                       </a>
                     </label>
                     <div className="form-control mt-6">
-                      <button className="btn text-white  hover:bg-main bg-main border-none bg-opacity-80 font-semibold">
-                        Sign Up
+                      <button
+                        type="submit"
+                        className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
+                      >
+                        <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+                          Sign Up
+                        </span>
+                        <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                        <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
                       </button>
                     </div>
                   </form>
                   <div>
                     <p className="my-4 text-main ">
                       Do not have a account ? please :{" "}
-                      <Link
-                        to={"/signIn"}
-                        className=" font-bold text-main"
-                      >
+                      <Link to={"/signIn"} className=" font-bold text-main">
                         Sign In
                       </Link>
                     </p>

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.7.0",
     "aos": "^2.3.4",
     "axios": "^1.6.0",
     "cookie-parser": "^1.4.6",
@@ -23,8 +24,10 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.18.0",
+    "react-tabs": "^6.0.2",
     "sort-by": "^1.2.0",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.9.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

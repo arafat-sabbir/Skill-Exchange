@@ -1,21 +1,55 @@
+import { useQuery } from "@tanstack/react-query";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import useAxios from "../../../Hook/useAxios";
+import { useEffect, useState } from "react";
+
 const BrowseByCategory = () => {
+  const [category, setCategory] = useState("Web Developmnet");
+  const [jobsData, setJobsData] = useState("");
+
+  const axios = useAxios("/jobs");
+  const getJobs = async () => {
+    const response = axios.get("/jobs");
+    return response;
+  };
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["Jobs"],
+    queryFn: getJobs,
+  });
+  useEffect(() => {
+    const filtered = data?.data?.filter((ct) => ct.category === category);
+    console.log(jobsData);
+  }, [category, data?.data, jobsData]);
 
   return (
     <div className="">
-    <div className="flex justify-center items-center">
-    <div className=" w-[286px]  my-8 h-[56px] bg-no-repeat flex bg-hero-pattern">
-    <h3 className="text-white text-lg ml-[60px]  mt-3  font-bold">Browse By Category</h3>
-    </div>
-    </div>
-      <div className="flex justify-center items-center font-semibold">
-        <div className="tabs">
-          <a className="tab tab-lifted">Web Development</a>
-          <a className="tab tab-lifted tab-active text-main font-semibold">
-            Digital Marketing
-          </a>
-          <a className="tab tab-lifted font-semibold">Graphics design</a>
+      <div className="flex justify-center items-center">
+        <div className=" w-[286px]  my-8 h-[56px] bg-no-repeat flex bg-hero-pattern">
+          <h3 className="text-white text-lg ml-[60px]  mt-3  font-bold">
+            Browse By Category
+          </h3>
         </div>
       </div>
+      <Tabs>
+        <div className="flex justify-center">
+          <TabList>
+            <Tab>Web Development</Tab>
+            <Tab>Digital Marketing</Tab>
+            <Tab>Graphics Design</Tab>
+          </TabList>
+        </div>
+
+        <TabPanel>
+          <h2>Digital Marketing</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Graphics Design</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Graphics Design</h2>
+        </TabPanel>
+      </Tabs>
     </div>
   );
 };
