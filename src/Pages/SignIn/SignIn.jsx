@@ -76,7 +76,7 @@ const SignIn = () => {
               className="hero min-h-[80vh] "
             >
               <div className="hero-content flex-col shadow-[0_0_50px_#D1D1D1] px-10 rounded-xl gap-8">
-                <h1 className="text-5xl font-bold text-[#007456] pt-8">
+                <h1 className="text-5xl font-bold text-main pt-8">
                   Sign In now!
                 </h1>
                 <div className="card  w-96   pt-3">
@@ -90,7 +90,7 @@ const SignIn = () => {
                           type="emil"
                           name="email"
                           placeholder="email"
-                          className="input border border-[#00745685] bg-transparent"
+                          className="input border border-main bg-transparent"
                           required
                         />
                       </div>
@@ -103,7 +103,7 @@ const SignIn = () => {
                             type={showP ? "text" : "password"}
                             name="password"
                             placeholder="password"
-                            className="input border border-[#00745685] bg-transparent"
+                            className="input border border-main bg-transparent"
                             required
                           />
                           <span
@@ -123,18 +123,18 @@ const SignIn = () => {
                         </label>
                       </div>
                       <div className="form-control mt-6">
-                        <button className="btn text-white hover:bg-[#007456bd] bg-[#007456bd] border-none bg-opacity-80 font-semibold">
+                        <button className="btn text-white hover:bg-main bg-main border-none bg-opacity-80 font-semibold">
                           Sign In
                         </button>
                       </div>
                     </form>
-                    <div className="my-1 text-[#007456] font-medium">
+                    <div className="my-1 text-main font-medium">
                       {error && <p>Error : {error}</p>}
                       <p className="my-4">
                         Do not have a account ? :{" "}
                         <Link
                           to={"/signUp"}
-                          className=" font-bold text-[#007456]"
+                          className=" font-bold text-main"
                         >
                           Sign Up
                         </Link>
@@ -142,7 +142,7 @@ const SignIn = () => {
                     </div>
                     <button
                       onClick={handleGoogleSignin}
-                      className="btn z-50 border hover:border-[#00745685] border-[#00745685] hover:bg-transparent w-full bg-transparent font-semibold mb-3"
+                      className="btn z-50 border hover:border-main border-main hover:bg-transparent w-full bg-transparent font-semibold mb-3"
                     >
                       <FcGoogle></FcGoogle>
                       Sign IN With Google

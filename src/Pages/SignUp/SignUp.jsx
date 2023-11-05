@@ -101,7 +101,7 @@ const SignUp = () => {
             className="hero min-h-[80vh]"
           >
             <div className="hero-content flex-col gap-8  shadow-[0_0_50px_#D1D1D1] w-full rounded-2xl ">
-              <h1 className="text-5xl font-bold pt-10  text-[#007456dc]">
+              <h1 className="text-5xl font-bold pt-10  text-main">
                 Sign Up now!
               </h1>
               <div className="card backdrop-blur-3xl bg-transparent pt-3">
@@ -116,7 +116,7 @@ const SignUp = () => {
                           type="text"
                           name="name"
                           placeholder="your name"
-                          className="input bg-transparent border border-[#00745685]"
+                          className="input bg-transparent border border-main"
                           required
                         />
                       </div>
@@ -128,7 +128,7 @@ const SignUp = () => {
                           type="text"
                           name="photoUrl"
                           placeholder="photo url"
-                          className="input bg-transparent border border-[#00745685]"
+                          className="input bg-transparent border border-main"
                           required
                         />
                       </div>
@@ -142,7 +142,7 @@ const SignUp = () => {
                           type="emil"
                           name="email"
                           placeholder="email"
-                          className="input bg-transparent border border-[#00745685]"
+                          className="input bg-transparent border border-main"
                           required
                         />
                       </div>
@@ -155,7 +155,7 @@ const SignUp = () => {
                             type={showP ? "text" : "password"}
                             name="password"
                             placeholder="password"
-                            className="input bg-transparent border border-[#00745685]"
+                            className="input bg-transparent border border-main"
                             required
                           />
                           <div className="my-1 text-red-400 font-medium">
@@ -176,17 +176,17 @@ const SignUp = () => {
                       </a>
                     </label>
                     <div className="form-control mt-6">
-                      <button className="btn  hover:bg-[#007456bd] bg-[#007456bd] border-none bg-opacity-80 font-semibold">
+                      <button className="btn text-white  hover:bg-main bg-main border-none bg-opacity-80 font-semibold">
                         Sign Up
                       </button>
                     </div>
                   </form>
                   <div>
-                    <p className="my-4 text-[#007456] ">
+                    <p className="my-4 text-main ">
                       Do not have a account ? please :{" "}
                       <Link
                         to={"/signIn"}
-                        className=" font-bold text-[#007456]"
+                        className=" font-bold text-main"
                       >
                         Sign In
                       </Link>
@@ -194,7 +194,7 @@ const SignUp = () => {
                   </div>
                   <button
                     onClick={handleGoogleSignin}
-                    className="btn border  hover:border-[#00745685] border-[#00745685] z-50 hover:bg-transparent w-full mx-auto bg-transparent  font-semibold mb-3"
+                    className="btn border  hover:border-main border-main z-50 hover:bg-transparent w-full mx-auto bg-transparent  font-semibold mb-3"
                   >
                     <FcGoogle></FcGoogle>
                     Sign Up With Google

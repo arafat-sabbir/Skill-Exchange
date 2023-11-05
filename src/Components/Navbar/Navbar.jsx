@@ -80,7 +80,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to={'/'} className=" hidden lg:flex text-[#007456] font-bold items-center">
+        <Link to={'/'} className=" hidden lg:flex text-main font-bold items-center">
           <img className="w-22 h-14" src="https://i.ibb.co/ZHDJ3R6/Skill-Exchange-1.webp" alt="" />
           <p className="text-2xl  font-semibold">Skill Exchange</p>
         </Link>
@@ -104,17 +104,17 @@ const Navbar = () => {
 
         </label>
         {
-          user && <p className="font-semibold  mr-2 text-[#007456] ">{user.displayName}</p>
+          user && <p className="font-semibold  mr-2 text-main ">{user.displayName}</p>
         }
         {
-          user && <img className="w-12 mr-4 h-12  rounded-full border-2 border-[#007456]" src={user?.photoURL ? user.photoURL : ''} alt="" />
+          user && <img className="w-12 mr-4 h-12  rounded-full border-2 border-main" src={user?.photoURL ? user.photoURL : ''} alt="" />
         }
         {user ? (
-          <button className="btn hover:bg-[#007456e5] bg-[#007456e1] border-none rounded-full text-white" onClick={handleSignOut}>
+          <button className="btn hover:bg-main bg-main border-none rounded-full text-white" onClick={handleSignOut}>
             Sign Out
           </button>
         ) : (
-          <Link to={"/signIn "} className="btn rounded-full hover:bg-[#007456e8] bg-[#007456f3] border-none  w-24  text-white">
+          <Link to={"/signIn "} className="btn rounded-full hover:bg-main bg-main border-none  w-24  text-white">
             Login
           </Link>
         )}
