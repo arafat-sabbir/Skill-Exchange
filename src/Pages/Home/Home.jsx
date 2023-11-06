@@ -5,7 +5,7 @@ import UserReview from "../../Components/UserReview/UserReview";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Helmet>
         <title>Skill Exchange || Home</title>
       </Helmet>
