@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
@@ -7,47 +7,59 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 const BidJob = () => {
+  const { user } = useAuth();
+  const axios = useAxios();
+  const JobDetail = useLoaderData();
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   }, []);
-  const { user } = useAuth();
-  const axios = useAxios();
-  const JobDetail = useLoaderData();
+
+  const { mutate } = useMutation({
+    mutationKey: ["addJobs"],
+    mutationFn: (newbids) => {
+      const post = axios.post("/add-bids", newbids);
+      return post;
+    },
+    onSuccess: (data) => {
+      if (data.data.acknowledged) {
+        toast.success("Job added successfully");
+      }
+    },
+    onError: (error) => {
+      toast.error("An error occurred while adding the job", error);
+      // Handle the error or display an error message to the user
+    },
+  });
+
   const handleBid = (e) => {
     e.preventDefault();
     const form = e.target;
-    const bidderEmail = JobDetail?.email;
-    const biddingStatus = true;
+    const bidderEmail = user?.email;
+    const biddingStatus = "pending";
     const biddingPrice = form.biddingAmount.value;
-    const finisdeadline = form.deadline.value;
-    console.log(bidderEmail, biddingStatus, biddingPrice, finisdeadline);
+    const biddingdeadline = form.deadline.value;
+    const jobtitle = JobDetail?.jobtitle;
+    const sellerEmail = JobDetail?.sellerEmail;
+    const deadline = JobDetail?.deadline;
+
+    // Use the 'mutate' function to send the data to the server
     mutate({
       bidderEmail,
       biddingStatus,
       biddingPrice,
-      finisdeadline,
-    });
-    const { mutate } = useMutation({
-      mutationKey: ["addJobs"],
-      mutationFn: (newjob) => {
-        const post = axios.post("/add-jobs", newjob);
-        return post;
-      },
-      onSuccess: (data) => {
-        if (data.data.acknowledged) {
-          return toast.success("Job added successfully");
-        }
-      },
-      onError: (error) => {
-        toast.error("An error occurred while adding the job", error);
-        // Handle the error or display an error message to the user
-      },
+      biddingdeadline,
+      jobtitle,
+      sellerEmail,
+      deadline,
     });
   };
+
   const isButtonDisabled = user?.email === JobDetail?.sellerEmail;
+
   return (
     <div className="container mx-auto">
       <Helmet>
@@ -65,7 +77,7 @@ const BidJob = () => {
               <div>
                 <div className="card w-[600px] card-side bg-base-100 duration-300 border border-main hover:shadow-[0_0_20px_#FAF6EB]">
                   <div className="card-body">
-                    <h2 className="text-2xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern font-semibold text-white">
+                    <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern font-semibold text-white">
                       <p className="ml-[25px] mt-3"> {JobDetail?.jobtitle}</p>
                     </h2>
                     <p className="text-main">

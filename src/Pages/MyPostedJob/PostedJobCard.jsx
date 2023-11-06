@@ -1,8 +1,10 @@
 import { MdDeleteOutline } from "react-icons/md";
 import { RxUpdate } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
-const PostedJobCard = ({ job,handleDelete }) => {
-  const { jobtitle, minPrice, maxPrice, description, category, deadline,_id } = job;
+const PostedJobCard = ({ job, handleDelete }) => {
+  const { jobtitle, minPrice, maxPrice, description, category, deadline, _id } =
+    job;
   return (
     <div>
       <div className="group before:hover:scale-95 before:hover:h-[500px] before:hover:w-[400px] before:hover:h-[500px] before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-[400px] before:h-44 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-orange-200 to-orange-700 before:absolute before:top-0 w-[400px] h-[500px] relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
@@ -16,10 +18,15 @@ const PostedJobCard = ({ job,handleDelete }) => {
             Price : ${minPrice}-${maxPrice}
           </p>
           <div className="flex gap-20 ">
-            <button className="flex z-50 justify-center items-center gap-2 w-28 h-12 cursor-pointer rounded-md shadow-2xl text-white font-semibold bg-gradient-to-r from-[#fb7185] via-[#e11d48] to-[#be123c] hover:shadow-xl hover:shadow-red-500 hover:scale-105 duration-300 hover:from-[#be123c] hover:to-[#fb7185">
-              Update<RxUpdate></RxUpdate>
-            </button>
-            <button onClick={()=> handleDelete(_id)} className="flex z-50 justify-center items-center gap-2 w-28 h-12 cursor-pointer rounded-md shadow-2xl text-white font-semibold bg-gradient-to-r from-[#fb7185] via-[#e11d48] to-[#be123c] hover:shadow-xl hover:shadow-red-500 hover:scale-105 duration-300 hover:from-[#be123c] hover:to-[#fb7185">
+            <Link to={`/updatejob/${_id}`}>
+              <button className="flex z-50 justify-center items-center gap-2 w-28 h-12 cursor-pointer rounded-md shadow-2xl text-white font-semibold bg-gradient-to-r from-[#fb7185] via-[#e11d48] to-[#be123c] hover:shadow-xl hover:shadow-red-500 hover:scale-105 duration-300 hover:from-[#be123c] hover:to-[#fb7185">
+                Update<RxUpdate></RxUpdate>
+              </button>
+            </Link>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="flex z-50 justify-center items-center gap-2 w-28 h-12 cursor-pointer rounded-md shadow-2xl text-white font-semibold bg-gradient-to-r from-[#fb7185] via-[#e11d48] to-[#be123c] hover:shadow-xl hover:shadow-red-500 hover:scale-105 duration-300 hover:from-[#be123c] hover:to-[#fb7185"
+            >
               Delete<MdDeleteOutline></MdDeleteOutline>
             </button>
           </div>
