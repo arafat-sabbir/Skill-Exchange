@@ -26,7 +26,7 @@ const BidJob = () => {
     },
     onSuccess: (data) => {
       if (data.data.acknowledged) {
-        toast.success("Job added successfully");
+        toast.success("SuccessFully Bidded Job");
       }
     },
     onError: (error) => {
@@ -45,6 +45,7 @@ const BidJob = () => {
     const jobtitle = JobDetail?.jobtitle;
     const sellerEmail = JobDetail?.sellerEmail;
     const deadline = JobDetail?.deadline;
+    const bidded = '1'
 
     // Use the 'mutate' function to send the data to the server
     mutate({
@@ -55,6 +56,7 @@ const BidJob = () => {
       jobtitle,
       sellerEmail,
       deadline,
+      bidded,
     });
   };
 

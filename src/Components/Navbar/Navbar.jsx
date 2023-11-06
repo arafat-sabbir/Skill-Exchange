@@ -47,7 +47,7 @@ const Navbar = () => {
         <NavLink to={"/myBids"}>My Bids</NavLink>
       </li>
       <li>
-        <NavLink to={"/bidRequest"}>Bids Requests</NavLink>
+        <NavLink to={"/bidRequest"}>Bid Requests</NavLink>
       </li>
     </>
   );
