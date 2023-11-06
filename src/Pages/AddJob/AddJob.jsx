@@ -60,7 +60,7 @@ const AddJob = () => {
       </div>
       <form
         onSubmit={handleAddJob}
-        className="flex container mx-auto bg-[#F3F3F3] py-28 flex-col my-12 justify-center border-2 px-24"
+        className="flex container mx-auto bg-[#F3F3F3] rounded-xl duration-500 hover:shadow-[0_0_10px_#007456] py-28 flex-col my-12 justify-center border-2 px-24"
       >
         <div className="flex gap-4 justify-center">
           <div className="form-control w-3/12 -mt-10 mb-4">
@@ -71,7 +71,7 @@ const AddJob = () => {
               disabled
               type="email"
               placeholder="email"
-              className="input input-bordered"
+              className="input input-bordered border-main"
               defaultValue={user?.email}
               required
             />
@@ -85,14 +85,14 @@ const AddJob = () => {
               name="deadline"
               type="date"
               placeholder="Deadline"
-              className="input input-bordered"
+              className="input input-bordered border-main"
               required
             />
           </div>
         </div>
         <div className="flex gap-4 justify-center">
           <input
-            className=" input  input-bordered bg-white w-3/12 mb-4"
+            className=" input  input-bordered border-main bg-white w-3/12 mb-4"
             type="text"
             name="title"
             placeholder="Job Title"
@@ -102,7 +102,7 @@ const AddJob = () => {
           <select
             required
             onChange={handleCategory}
-            className="select  select-bordered w-3/12"
+            className="select border-main  select-bordered w-3/12"
           >
             <option disabled selected>
               Choose A Category?
@@ -114,7 +114,7 @@ const AddJob = () => {
         </div>
         <div className="flex gap-4 justify-center">
           <input
-            className=" input  input-bordered bg-white w-3/12 mb-4"
+            className=" input  input-bordered border-main bg-white w-3/12 mb-4"
             type="text"
             name="minPrice"
             id=""
@@ -122,7 +122,7 @@ const AddJob = () => {
             required
           />
           <input
-            className=" input  input-bordered bg-white w-3/12 mb-4"
+            className=" input  input-bordered border-main bg-white w-3/12 mb-4"
             type="text"
             name="maxPrice"
             id=""
@@ -131,7 +131,7 @@ const AddJob = () => {
           />
         </div>
         <textarea
-          className="border-2 rounded-lg p-2"
+          className="border border-main rounded-lg p-2"
           name="description"
           id=""
           cols="10"

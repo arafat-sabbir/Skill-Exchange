@@ -39,7 +39,7 @@ const BidJob = () => {
     e.preventDefault();
     const form = e.target;
     const bidderEmail = user?.email;
-    const biddingStatus = "pending";
+    const biddingStatus = "Pending";
     const biddingPrice = form.biddingAmount.value;
     const biddingdeadline = form.deadline.value;
     const jobtitle = JobDetail?.jobtitle;

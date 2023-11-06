@@ -1,20 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hook/useAxios";
 import useAuth from "../../Hook/useAuth";
 import { Helmet } from "react-helmet";
 
 const MyBids = () => {
   const { user } = useAuth();
+  const queryClient = useQueryClient();
   const bidderEmail = user?.email;
   const axios = useAxios();
   const getJobs = async () => {
     const response = axios.get(`/getMyBid?bidderEmail=${bidderEmail}`);
     return response;
   };
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading} = useQuery({
     queryKey: ["Jobs", user],
     queryFn: getJobs,
   });
+  const handleComplete = (id) => {
+    axios
+      .patch(`/complete-status/${id}`, { status: "Complete" })
+      .then((res) => {
+        queryClient.invalidateQueries(["Jobs", user]);
+      });
+  };
   return (
     <div className="container mx-auto">
       <Helmet>
@@ -77,13 +85,20 @@ const MyBids = () => {
                             {MyBids?.biddingStatus}
                           </td>
                           <td className=" whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                            <button className="cursor-pointer rounded-xl font-semibold overflow-hidden relative z-100 border border-main group px-4 py-1">
-                              <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                                Confirm
-                              </span>
-                              <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                              <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-                            </button>
+                            {MyBids.biddingStatus === "Progress" ? (
+                              <button
+                                onClick={() => handleComplete(MyBids?._id)}
+                                className="cursor-pointer rounded-xl font-semibold overflow-hidden relative z-100 border border-main group px-4 py-1"
+                              >
+                                <span className="relative z-10 text-main group-hover:text-white text-sm duration-500">
+                                  Complete
+                                </span>
+                                <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                                <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                              </button>
+                            ) : (
+                              ""
+                            )}
                           </td>
                         </tr>
                       ))}

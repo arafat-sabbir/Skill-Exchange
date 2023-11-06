@@ -1,21 +1,35 @@
-import { useEffect } from "react";
 import useAxios from "../../Hook/useAxios";
 import useAuth from "../../Hook/useAuth";
-import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { MdDeleteOutline } from "react-icons/md";
 import { BsCheckLg } from "react-icons/bs";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const BidRequest = () => {
   const axios = useAxios();
   const { user } = useAuth();
-  const [bidreq, setbidreq] = useState([]);
+  const queryClient = useQueryClient();
   const userEmail = user?.email;
-  useEffect(() => {
-    axios.get(`/getbidreq?bidded=1&sellerEmail=${userEmail}`).then((res) => {
-      setbidreq(res.data);
+  const getJobs = async () => {
+    const response = axios.get(`/getbidreq?bidded=1&sellerEmail=${userEmail}`);
+    return response;
+  };
+  const { data} = useQuery({
+    queryKey: ["Jobs",user],
+    queryFn: getJobs,
+  });
+  const handleAcceptBid = (id) => {
+    axios.patch(`/update-status/${id}`, { status: "Progress" })
+    .then((res) => {
+      queryClient.invalidateQueries(["Jobs", user]);
     });
-  }, [axios, userEmail]);
+  };
+  const handleRejectBid = (id) => {
+    axios.patch(`/reject-status/${id}`, { status: "Rejected" })
+    .then((res) => {
+      queryClient.invalidateQueries(["Jobs", user]);
+    });
+  };
   return (
     <div className="container mx-auto">
       <Helmet>
@@ -26,7 +40,6 @@ const BidRequest = () => {
           Bid Request
         </h3>
       </div>
-
       <div className="flex flex-col mb-52">
         <div className="-m-1.5 overflow-x-auto  ">
           <div className="p-1.5 min-w-full inline-block align-middle">
@@ -53,7 +66,7 @@ const BidRequest = () => {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase"
                     >
-                     Bidded Price
+                      Bidded Price
                     </th>
                     <th
                       scope="col"
@@ -70,9 +83,11 @@ const BidRequest = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                  {bidreq.map((MyBids) => (
+                  {data?.data.map((MyBids) => (
                     <tr key={MyBids?._id}>
-                      <td className="px-6 py-4 whitespace-nowrap font-semibold text-sm text-gray-800 dark:text-gray-200">{MyBids.jobtitle}</td>
+                      <td className="px-6 py-4 whitespace-nowrap font-semibold text-sm text-gray-800 dark:text-gray-200">
+                        {MyBids.jobtitle}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap font-semibold text-sm text-gray-800 dark:text-gray-200">
                         {MyBids?.bidderEmail}
                       </td>
@@ -86,10 +101,16 @@ const BidRequest = () => {
                         {MyBids?.biddingStatus}
                       </td>
                       <td className=" whitespace-nowrap  text-gray-800 dark:text-gray-200">
-                        <button className="mx-2 my-2 px-3 py-3 z-50 justify-center items-center gap-2  cursor-pointer rounded-full shadow-2xl text-white font-semibold bg-main hover:shadow-xl hover:shadow-main hover:scale-110 duration-300">
+                        <button
+                          onClick={() => handleAcceptBid(MyBids._id)}
+                          className="mx-2 my-2 px-3 py-3 z-50 justify-center items-center gap-2  cursor-pointer rounded-full shadow-2xl text-white font-semibold bg-main hover:shadow-xl hover:shadow-main hover:scale-110 duration-300"
+                        >
                           <BsCheckLg></BsCheckLg>
                         </button>
-                        <button className=" mx-2 my-2 px-3 py-3 z-50 justify-center items-center gap-2  cursor-pointer rounded-full shadow-2xl text-white font-semibold bg-red-500 hover:shadow-xl hover:shadow-red-500 hover:scale-110 duration-300">
+                        <button
+                          onClick={() => handleRejectBid(MyBids._id)}
+                          className=" mx-2 my-2 px-3 py-3 z-50 justify-center items-center gap-2  cursor-pointer rounded-full shadow-2xl text-white font-semibold bg-red-500 hover:shadow-xl hover:shadow-red-500 hover:scale-110 duration-300"
+                        >
                           <MdDeleteOutline></MdDeleteOutline>
                         </button>
                       </td>

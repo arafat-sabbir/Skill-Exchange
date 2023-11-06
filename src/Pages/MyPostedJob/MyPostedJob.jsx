@@ -1,20 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxios from "../../Hook/useAxios";
 import useAuth from "../../Hook/useAuth";
 import PostedJobCard from "./PostedJobCard";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
-import { useEffect } from "react";
-import { useState } from "react";
-import toast from "react-hot-toast";
 
 const MyPostedJob = () => {
   const axios = useAxios();
   const { user } = useAuth();
-  const [jobs, setJobs] = useState([]);
-  useEffect(() => {
-    axios.get(`/jobs?email=${user?.email}`).then((res) => setJobs(res?.data));
-  }, [axios, user?.email]);
+  const queryClient = useQueryClient();
+  const getJobs = async () => {
+    const response = axios.get(`/jobs?email=${user?.email}`);
+    return response;
+  };
+  const { data, isLoading} = useQuery({
+    queryKey: ["Jobs",user],
+    queryFn: getJobs,
+  });
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -30,19 +32,8 @@ const MyPostedJob = () => {
         axios.delete(`/delete-jobs/${id}`).then((res) => {
           console.log(res.data);
           if (res.data.deletedCount > 0) {
-            toast.success("Deleted Successfully", {
-              style: {
-                border: "2px solid green",
-                padding: "20px",
-                color: "#713200",
-              },
-              iconTheme: {
-                primary: "#007456",
-                secondary: "#FFFAEE",
-              },
-            });
-            const remaining = jobs.filter((job) => job._id != id);
-            setJobs(remaining);
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            queryClient.invalidateQueries(["Jobs", user]);
           }
         });
       }
@@ -58,14 +49,20 @@ const MyPostedJob = () => {
           My Posted Job
         </h3>
       </div>
-      <div className="mb-20 grid grid-cols-3 gap-10 justify-items-center">
-        {jobs.map((job) => (
-          <PostedJobCard
-            handleDelete={handleDelete}
-            key={job._id}
-            job={job}
-          ></PostedJobCard>
-        ))}
+      <div className={isLoading ?'':'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center my-20' }>
+        {isLoading ? (
+          <div className="flex justify-center items-center h-screen mx-auto  justify-items-center">
+            <img src="https://i.ibb.co/VNjjkdW/icons8-loading-circle.gif" alt="" />
+          </div>
+        ) : (
+          data.data.map((job) => (
+            <PostedJobCard
+              handleDelete={handleDelete}
+              key={job._id}
+              job={job}
+            ></PostedJobCard>
+          ))
+        )}
       </div>
     </div>
   );

@@ -92,105 +92,106 @@ const UpdateJob = () => {
           <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
         </div>
       </div>
-      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
-        <h3 className="text-white text-xl ml-[63px]  mt-3  font-bold">
-          Updated Job Info
-        </h3>
-      </div>
-
       {/* updating start here */}
-      <form
-        onSubmit={handleAupdateJob}
-        className="flex container mx-auto bg-[#F3F3F3] py-28 flex-col my-12 justify-center border-2 px-24"
-      >
-        <div className="flex gap-4 justify-center">
-          <div className="form-control w-3/12 -mt-10 mb-4">
-            <label className="label">
-              <span className="label-text text-main">Email</span>
-            </label>
-            <input
-              disabled
-              type="email"
-              placeholder="email"
-              className="input input-bordered"
-              defaultValue={user?.email}
-              required
-            />
-          </div>
-
-          <div className="form-control w-3/12 -mt-10">
-            <label className="label">
-              <span className="label-text text-main">DeadLine</span>
-            </label>
-            <input
-              name="deadline"
-              type="date"
-              placeholder="Deadline"
-              className="input input-bordered"
-              required
-            />
-          </div>
-        </div>
-        <div className="flex gap-4 justify-center">
-          <input
-            className=" input  input-bordered bg-white w-3/12 mb-4"
-            type="text"
-            name="title"
-            placeholder="Job Title"
-            id=""
-            required
-          />
-          <select
-            required
-            onChange={handleCategory}
-            className="select  select-bordered w-3/12"
-          >
-            <option disabled selected>
-              Choose A Category?
-            </option>
-            <option>Web Development</option>
-            <option>Digital Marketing</option>
-            <option>Graphics Design</option>
-          </select>
-        </div>
-        <div className="flex gap-4 justify-center">
-          <input
-            className=" input  input-bordered bg-white w-3/12 mb-4"
-            type="text"
-            name="minPrice"
-            id=""
-            placeholder="Min Price"
-            required
-          />
-          <input
-            className=" input  input-bordered bg-white w-3/12 mb-4"
-            type="text"
-            name="maxPrice"
-            id=""
-            placeholder="Max Price"
-            required
-          />
-        </div>
-        <textarea
-          className="border-2 rounded-lg p-2"
-          name="description"
-          id=""
-          cols="10"
-          rows="10"
-          placeholder="Job Description"
-          required
-        ></textarea>
-        <button
-          type="submit"
-          className="cursor-pointer my-8 rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-8 py-2"
+      <div>
+        <form
+          onSubmit={handleAupdateJob}
+          className="flex max-w-5xl mx-auto rounded-3xl border-main py-12 flex-col my-12 justify-center border-2 "
         >
-          <span className="relative z-10 text-main group-hover:text-white text-xl duration-500">
-            Update Job
-          </span>
-          <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-          <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-        </button>
-      </form>
+          <div className=" w-[286px] mb-20 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+            <h3 className="text-white text-xl ml-[63px]  mt-3  font-bold">
+              Updated Job Info
+            </h3>
+          </div>
+          <div className="flex gap-4 justify-center">
+            <div className="form-control w-3/12 -mt-10 mb-4">
+              <label className="label">
+                <span className="label-text text-main">Email</span>
+              </label>
+              <input
+                disabled
+                type="email"
+                placeholder="email"
+                className="input  input-bordered border-main"
+                defaultValue={user?.email}
+                required
+              />
+            </div>
+
+            <div className="form-control w-3/12 -mt-10">
+              <label className="label">
+                <span className="label-text text-main">DeadLine</span>
+              </label>
+              <input
+                name="deadline"
+                type="date"
+                placeholder="Deadline"
+                className="input  input-bordered border-main"
+                required
+              />
+            </div>
+          </div>
+          <div className="flex gap-4 justify-center">
+            <input
+              className=" input   input-bordered border-main bg-white w-3/12 mb-4"
+              type="text"
+              name="title"
+              placeholder="Job Title"
+              id=""
+              required
+            />
+            <select
+              required
+              onChange={handleCategory}
+              className="select  select-bordered w-3/12"
+            >
+              <option disabled selected>
+                Choose A Category?
+              </option>
+              <option>Web Development</option>
+              <option>Digital Marketing</option>
+              <option>Graphics Design</option>
+            </select>
+          </div>
+          <div className="flex gap-4 justify-center">
+            <input
+              className=" input   input-bordered border-main bg-white w-3/12 mb-4"
+              type="text"
+              name="minPrice"
+              id=""
+              placeholder="Min Price"
+              required
+            />
+            <input
+              className=" input   input-bordered border-main bg-white w-3/12 mb-4"
+              type="text"
+              name="maxPrice"
+              id=""
+              placeholder="Max Price"
+              required
+            />
+          </div>
+          <textarea
+            className="border-2 w-3/4 mx-auto border-main rounded-lg p-2"
+            name="description"
+            id=""
+            cols="5"
+            rows="10"
+            placeholder="Job Description"
+            required
+          ></textarea>
+          <button
+            type="submit"
+            className="cursor-pointer my-8 w-3/4 mx-auto rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-8 py-2"
+          >
+            <span className="relative z-10 text-main group-hover:text-white text-xl duration-500">
+              Update Job
+            </span>
+            <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+            <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -123,7 +123,7 @@ const SignIn = () => {
                         </label>
                       </div>
                       <div className="form-control mt-6">
-                      <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+                      <button className="cursor-pointer rounded-xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
                         <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
                           Sign In
                         </span>
