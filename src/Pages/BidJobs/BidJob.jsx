@@ -4,8 +4,15 @@ import useAuth from "../../Hook/useAuth";
 import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const BidJob = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const { user } = useAuth();
   const axios = useAxios();
   const JobDetail = useLoaderData();
@@ -18,10 +25,10 @@ const BidJob = () => {
     const finisdeadline = form.deadline.value;
     console.log(bidderEmail, biddingStatus, biddingPrice, finisdeadline);
     mutate({
-        bidderEmail,
-        biddingStatus,
-        biddingPrice,
-        finisdeadline
+      bidderEmail,
+      biddingStatus,
+      biddingPrice,
+      finisdeadline,
     });
     const { mutate } = useMutation({
       mutationKey: ["addJobs"],
@@ -101,12 +108,11 @@ const BidJob = () => {
               </div>
               <div className="form-control md:w-full">
                 <label className="label">
-                  <span className="label-text">Buyer Email</span>
+                  <span className="label-text">Seller Email</span>
                 </label>
                 <input
-                  id="buyeremail"
                   type="text"
-                  name="buyerEmail"
+                  name="sellerEmail"
                   className="input bg-transparent border border-main"
                   required
                   defaultValue={JobDetail.sellerEmail}
