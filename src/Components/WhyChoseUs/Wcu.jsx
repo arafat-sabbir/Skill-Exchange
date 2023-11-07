@@ -9,7 +9,7 @@ const Wcu = () => {
             Why Choose Us
           </h3>
         </div>
-        <div className="row grid grid-cols-3 gap-10">
+        <div className="row grid lg:grid-cols-3 grid-cols-1 gap-10 lg:w-auto w-[90vw] mx-auto">
           <div className="col-lg-4 col-sm-6 ">
             <div className="item">
               {" "}

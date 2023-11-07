@@ -9,13 +9,13 @@ const UserReview = () => {
       <p className="lg:w-[700px] text-center mx-auto mt-10   text-lg">
         Discover the positive impact we've made on our clients by reading through their testimonials. Our clients have experienced our service and results, and they're eager to share their positive experiences with you.
       </p>
-      <div className="relative overflow-hidden border-2 my-16 border-main rounded-3xl ">
+      <div className="relative overflow-hidden border-2 my-16 mx-4 border-main rounded-3xl ">
         {/* Background pattern */}
         <div className="flex absolute start-0 -z-[1]">
-          <div className="bg-purple-200 opacity-20 blur-3xl w-[1280px] h-[300px] hover:from-[#059669] hover:to-[#DADADA] dark:bg-purple-900 dark:opacity-20"></div>
+          <div className="bg-purple-200 opacity-20 blur-3xl  w-[1280px] h-[300px] hover:from-[#059669] hover:to-[#DADADA] dark:bg-purple-900 dark:opacity-20"></div>
         </div>
 
-        <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto">
+        <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto ">
           <div className="lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
             <div className="hidden lg:block lg:col-span-2">
               <img className="rounded-xl w-[340px]" src="https://i.ibb.co/ngL8mMM/0df361ce-42da-4709-b4e7-e07619f15bc8.webp" alt="Image Description" />
@@ -46,7 +46,7 @@ const UserReview = () => {
           </div>
         </div>
       </div>
-      <div className="relative overflow-hidden border-2 my-16 border-main rounded-3xl">
+      <div className="relative overflow-hidden border-2 my-16 mx-4 border-main rounded-3xl">
         {/* Background pattern */}
         <div className="flex absolute start-0 -z-[1]">
           <div className="bg-purple-200 opacity-20 blur-3xl w-[1280px] h-[300px] dark:bg-purple-900 dark:opacity-20"></div>
