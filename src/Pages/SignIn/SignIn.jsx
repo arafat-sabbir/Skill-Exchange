@@ -9,6 +9,7 @@ import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
   const { signWithGoogle, user, signInUser } = useAuth();
@@ -44,7 +45,7 @@ const SignIn = () => {
   const handleGoogleSignin = () => {
     signWithGoogle()
       .then(() => {
-        swal("Great!", "Sign In SuccessFully", "success");
+        toast.success('Congratulation Sign In SuccessFull')
       })
       .catch((error) => {
         console.log(error);

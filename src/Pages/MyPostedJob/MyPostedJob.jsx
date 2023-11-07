@@ -13,8 +13,8 @@ const MyPostedJob = () => {
     const response = axios.get(`/jobs?email=${user?.email}`);
     return response;
   };
-  const { data, isLoading} = useQuery({
-    queryKey: ["Jobs",user],
+  const { data, isLoading } = useQuery({
+    queryKey: ["Jobs", user],
     queryFn: getJobs,
   });
 
@@ -49,10 +49,26 @@ const MyPostedJob = () => {
           My Posted Job
         </h3>
       </div>
-      <div className={isLoading ?'':'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center my-20' }>
+      <div
+        className={
+          isLoading
+            ? ""
+            : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center my-20"
+        }
+      >
         {isLoading ? (
-          <div className="flex justify-center items-center h-screen mx-auto  justify-items-center">
-            <img src="https://i.ibb.co/VNjjkdW/icons8-loading-circle.gif" alt="" />
+          <div className="min-h-[15rem] flex flex-col bg-white  shadow-sm rounded-xl dark:bg-gray-800 dark:shadow-slate-700/[.7]">
+            <div className="flex flex-auto flex-col justify-center items-center p-4 md:p-5">
+              <div className="flex justify-center">
+                <div
+                  className="animate-spin inline-block w-10 h-10 font-bold   text-main rounded-full dark:text-main"
+                  role="status"
+                  aria-label="loading"
+                >
+                  <span className="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           data.data.map((job) => (

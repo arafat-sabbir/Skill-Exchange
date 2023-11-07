@@ -12,7 +12,7 @@ const Footer = () => {
             alt=""
           />
           <p>
-            <span className="text-2xl font-bold text-[#007456]">
+            <span className="text-2xl font-bold text-main">
               Skill Exchange
             </span>
             <br />
@@ -20,22 +20,22 @@ const Footer = () => {
           </p>
         </aside>
         <nav>
-          <header className="footer-title">Services</header>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
+          <header className=" border-b-[4px] pb-1 mb-2  border-b-main">Services</header>
+          <a className="link hover:text-main font-medium link-hover">Branding</a>
+          <a className="link hover:text-main font-medium link-hover">Design</a>
+          <a className="link hover:text-main font-medium link-hover">Marketing</a>
 
         </nav>
 
         <nav>
-          <header className="footer-title">Legal</header>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <header className="border-b-[4px] pb-1 mb-2  border-b-main">Legal</header>
+          <a className="link hover:text-main font-medium link-hover">Terms of use</a>
+          <a className="link hover:text-main font-medium link-hover">Privacy policy</a>
+          <a className="link hover:text-main font-medium link-hover">Cookie policy</a>
         </nav>
         <nav>
-          <header className="footer-title">Get In Touch</header>
-          <div className="flex gap-4 text-[#007456] text-2xl">
+          <header className="text  font-semibold border-b-[4px] pb-1 mb-2 border-b-main">Get In Touch</header>
+          <div className="flex gap-4 text-main text-2xl">
             <a>
               <FaFacebookF></FaFacebookF>
             </a>

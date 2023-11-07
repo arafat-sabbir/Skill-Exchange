@@ -1,16 +1,15 @@
 import { GoEye, GoEyeClosed } from "react-icons/go";
-import { Link } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import toast, { Toaster } from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import Footer from "../../Components/Footer/Footer";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const navigate = useNavigate()
   const { signWithGoogle, signUpUser, updateUserProfile, signOutUser } =
     useAuth();
   const correctPassPatern = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
@@ -19,12 +18,12 @@ const SignUp = () => {
   const notify = () =>
     toast.success("Sign Up Successful.", {
       style: {
-        border: "1px solid #713200",
-        padding: "16px",
-        color: "#713200",
+        border: "1px solid #007456",
+        padding: "20px",
+        color: "#007456",
       },
       iconTheme: {
-        primary: "#713200",
+        primary: "#007456",
         secondary: "#FFFAEE",
       },
     });
@@ -35,7 +34,8 @@ const SignUp = () => {
   const handleGoogleSignin = () => {
     signWithGoogle()
       .then(() => {
-        notify();
+        notify()
+        navigate('/')
       })
       .catch((error) => {
         console.log(error);
