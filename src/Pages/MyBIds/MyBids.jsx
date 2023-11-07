@@ -18,7 +18,7 @@ const MyBids = () => {
   });
   const handleComplete = (id) => {
     axios
-      .patch(`/complete-status/${id}`, { status: "Complete" })
+      .patch(`/complete-status/${id}`, { status: "Completed" })
       .then((res) => {
         queryClient.invalidateQueries(["Jobs", user]);
       });

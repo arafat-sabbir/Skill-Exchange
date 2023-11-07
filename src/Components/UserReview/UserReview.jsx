@@ -1,5 +1,3 @@
-import React from 'react';
-
 const UserReview = () => {
   return (
     <div className="max-w-7xl mx-auto mt-20 mb-16">
@@ -11,11 +9,10 @@ const UserReview = () => {
       <p className="lg:w-[700px] text-center mx-auto mt-10   text-lg">
         Discover the positive impact we've made on our clients by reading through their testimonials. Our clients have experienced our service and results, and they're eager to share their positive experiences with you.
       </p>
-
-      <div className="relative overflow-hidden border-2 my-16 border-main rounded-3xl">
+      <div className="relative overflow-hidden border-2 my-16 border-main rounded-3xl ">
         {/* Background pattern */}
         <div className="flex absolute start-0 -z-[1]">
-          <div className="bg-purple-200 opacity-20 blur-3xl w-[1280px] h-[300px] dark:bg-purple-900 dark:opacity-20"></div>
+          <div className="bg-purple-200 opacity-20 blur-3xl w-[1280px] h-[300px] hover:from-[#059669] hover:to-[#DADADA] dark:bg-purple-900 dark:opacity-20"></div>
         </div>
 
         <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto">

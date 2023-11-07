@@ -120,18 +120,16 @@ const BidRequest = () => {
                           <h3 className="flex my-4 items-center ">
                             <FcCancel></FcCancel>Bid Rejected
                           </h3>
-                        ) : MyBids.biddingStatus === "Progress" ? (
-                          // Show a progress bar here
-                          <td className="">
+                        ) : MyBids.biddingStatus === "Progress" ||MyBids.biddingStatus==="Complete" ? (
+                          <td>
                            <div className="w-[100px]">
                            <ProgressBar
-                              percent={50}
+                              percent={MyBids.biddingStatus==='Complete'?100:50}
                               filledBackground="#007456"
                             />
                            </div>
                           </td>
                         ) : (
-                          // Show both buttons for "Pending" status
                           <td>
                             <button
                               onClick={() => handleAcceptBid(MyBids._id)}
