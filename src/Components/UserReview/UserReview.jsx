@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserReview = () => {
   return (
-    <div className="max-w-7xl mx-auto mt-40 mb-16">
+    <div className="max-w-7xl mx-auto mt-20 mb-16">
       <div className="w-[286px] text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
         <h3 className="text-white text-2xl ml-[70px] mt-3 font-bold">
           Client Review

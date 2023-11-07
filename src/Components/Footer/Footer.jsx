@@ -34,7 +34,7 @@ const Footer = () => {
           <a className="link hover:text-main font-medium link-hover">Cookie policy</a>
         </nav>
         <nav>
-          <header className="text  font-semibold border-b-[4px] pb-1 mb-2 border-b-main">Get In Touch</header>
+          <header className="text  font-semibold border-b-[4px] pb-1 mb-2  border-b-main">Get In Touch</header>
           <div className="flex gap-4 text-main text-2xl">
             <a>
               <FaFacebookF></FaFacebookF>

@@ -37,18 +37,22 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li>
-        <NavLink to={"/addJob"}>Add Job</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/myPostedJob"}>My Posted Job</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/myBids"}>My Bids</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/bidRequest"}>Bid Requests</NavLink>
-      </li>
+      {user && (
+        <ul className="lg:flex">
+          <li>
+            <NavLink to={"/addJob"}>Add Job</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/myPostedJob"}>My Posted Job</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/myBids"}>My Bids</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/bidRequest"}>Bid Requests</NavLink>
+          </li>
+        </ul>
+      )}
     </>
   );
   return (
@@ -130,13 +134,16 @@ const Navbar = () => {
             />
           )}
           {user ? (
-             <button onClick={handleSignOut} className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-4 py-2">
-             <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-               Sign Out
-             </span>
-             <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-             <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-           </button>
+            <button
+              onClick={handleSignOut}
+              className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-4 py-2"
+            >
+              <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+                Sign Out
+              </span>
+              <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+              <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+            </button>
           ) : (
             <Link to={"/signIn "} className="">
               <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">

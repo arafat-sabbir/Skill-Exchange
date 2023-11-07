@@ -9,58 +9,53 @@ const Faq = () => {
 
   const faqData = [
     {
-      question: "Can I cancel at any time?",
+      question: "Can I Reject My Job  Bid Request?",
       answer:
-        "Yes, you can cancel anytime. No questions are asked while you cancel, but we would highly appreciate if you will give us some feedback.",
+        "Yes, you can reject anytime. No questions are asked while you reject, but we would highly appreciate if you will give The Bidder  some feedback about Why You rejected The Bid.",
     },
     {
-      question: "My team has credits. How do we use them?",
+      question: "Can I Update My Job Post Info  if something Goes Wrong?",
       answer:
-        "Once your team signs up for a subscription plan, this is where we sit down, grab a cup of coffee, and dial in the details.",
+        "Once your'e signs up ,You can See A Option On Navbar My Posted Job There You can See ALl of your Job With Detail info You can Update the Job From There...",
     },
     {
-      question: "How does Preline's pricing work?",
+      question: "How can I see All the Job Post I have been Bidded For..?",
       answer:
-        "Our subscriptions are tiered. Understanding the task at hand and ironing out the wrinkles is key.",
+        "Once Your'e Logged In You can See A Option On Navbar As My Bids You can See All the job You have Been Bidded On there.",
     },
     {
-      question: "How secure is Preline?",
+      question: "How Can I see All of Job Bid Request?",
       answer:
-        "Protecting the data you trust to Preline is our first priority. This part is really crucial in keeping the project in line to completion.",
+        "You can See ALl of Your Job Post Bid Request Once You're logged In You can see Them all On the Bid Requests Option From Navbar..",
     },
     {
-      question: "How do I get access to a theme I purchased?",
+      question: "Can I Delete A Job Post If I Have A Change Of mind?",
       answer:
-        "If you lose the link for a theme you purchased, don't panic! We've got you covered. You can log in to your account, tap your avatar in the upper right corner, and tap Purchases. If you didn't create a login or can't remember the information, you can use our handy Redownload page. Just remember to use the same email you originally made your purchases with.",
-    },
-    {
-      question: "Upgrade License Type",
-      answer:
-        "There may be times when you need to upgrade your license from the original type you purchased, and we have a solution that ensures you can apply your original purchase cost to the new license purchase.",
+        "Yes You Can! If You have Change of Mind You Can See All the Job On My Posted Job Section Once Your'e Logged From There You Can Delete The Job Post You Want..",
     },
   ];
 
   return (
     <div className=" my-20">
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-[#faf6eb7a] rounded-3xl">
+      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-[#fcf9ffc4] rounded-3xl">
         <div className=" w-[296px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
           <h3 className="text-white text-2xl ml-[48px]  mt-3  font-bold">
             Frequanlty Asked
           </h3>
         </div>
         <div className="max-w-2xl mx-auto">
-          <div className="hs-accordion-group">
+          <div className="hs-accordion-group ">
             {faqData.map((item, index) => (
               <div
                 className={`hs-accordion ${
                   index === activeAccordion
                     ? "hs-accordion-active:bg-gray-100"
                     : ""
-                } rounded-xl p-6 dark:hs-accordion-active:bg-white/[.05]`}
+                } rounded-xl p-6 dark:hs-accordion-active:bg-white/[.05] border border-main mb-4`}
                 key={index}
               >
                 <button
-                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-main dark:text-gray-200 dark:hover:text-main dark:focus:outline-none  dark:focus:ring-1 dark:focus:ring-gray-600"
                   onClick={() => handleAccordionClick(index)}
                   aria-controls={`hs-basic-with-title-and-arrow-stretched-collapse-${index}`}
                 >
@@ -68,7 +63,7 @@ const Faq = () => {
                   <svg
                     className={`hs-accordion-active:${
                       index === activeAccordion ? "block" : "hidden"
-                    } flex-shrink-0 w-5 h-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400`}
+                    } flex-shrink-0 w-5 h-5 text-gray-600 group-hover:text-main dark:text-main`}
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
