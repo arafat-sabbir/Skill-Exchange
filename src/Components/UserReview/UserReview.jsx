@@ -6,7 +6,7 @@ const UserReview = () => {
           Client Review
         </h3>
       </div>
-      <p className="lg:w-[700px] text-center mx-auto mt-10   text-lg">
+      <p className="lg:w-[700px] text-center mx-auto mt-10   text-lg md:w-auto w-[90vw]">
         Discover the positive impact we've made on our clients by reading through their testimonials. Our clients have experienced our service and results, and they're eager to share their positive experiences with you.
       </p>
       <div className="relative overflow-hidden border-2 my-16 mx-4 border-main rounded-3xl ">

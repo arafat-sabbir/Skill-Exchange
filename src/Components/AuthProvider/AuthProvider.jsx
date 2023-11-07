@@ -72,6 +72,7 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, [user?.email, axios, auth]);
+  console.log(user);
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
 };
 

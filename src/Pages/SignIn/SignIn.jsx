@@ -45,7 +45,7 @@ const SignIn = () => {
   const handleGoogleSignin = () => {
     signWithGoogle()
       .then(() => {
-        toast.success('Congratulation Sign In SuccessFull')
+        toast.success("Congratulation Sign In SuccessFull");
       })
       .catch((error) => {
         console.log(error);
@@ -54,15 +54,22 @@ const SignIn = () => {
   AOS.init();
   return (
     <>
-      <div>
+      <div className="bg-[#faf6eb]">
         <Helmet>
           <title>Skill Exchange || Sign In</title>
         </Helmet>
-        <div className="flex justify-center items-center container mx-auto ">
-          <div className="flex-1">
+        <div className="pt-10">
+          <div className=" w-[286px] py-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+            <h3 className="text-white text-2xl ml-[100px]  -mt-8 font-bold">
+              Sign In
+            </h3>
+          </div>
+        </div>
+        <div className="flex justify-between items-center container mx-auto ">
+          <div className="flex-1 hidden lg:block">
             <img
-              src="https://i.ibb.co/QQ0sDLF/3094352.webp"
-              className="w-11/12 mx-auto"
+              src="https://i.ibb.co/4gH8PKH/login.png"
+              className="w-7/12 mx-auto"
               alt=""
             />
           </div>
@@ -70,13 +77,13 @@ const SignIn = () => {
             <div
               data-aos="zoom-in"
               data-aos-offset="200"
-              data-aos-duration="1000"
+              data-aos-duration="600"
               data-aos-mirror="true"
               data-aos-once="false"
               data-aos-anchor-placement="top"
               className="hero min-h-[80vh] "
             >
-              <div className="hero-content flex-col shadow-[0_0_50px_#D1D1D1] px-10 rounded-xl gap-8">
+              <div className="hero-content flex-col md:w-auto w-[90vw] md:my-auto my-10 shadow-[0_0_50px_#D1D1D1] px-10 bg-white rounded-xl gap-8">
                 <h1 className="text-5xl font-bold text-main pt-8">
                   Sign In now!
                 </h1>
@@ -124,13 +131,13 @@ const SignIn = () => {
                         </label>
                       </div>
                       <div className="form-control mt-6">
-                      <button className="cursor-pointer rounded-xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
-                        <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                          Sign In
-                        </span>
-                        <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                        <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-                      </button>
+                        <button className="cursor-pointer rounded-xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+                          <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+                            Sign In
+                          </span>
+                          <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                          <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                        </button>
                       </div>
                     </form>
                     <div className="my-1 text-main font-medium">

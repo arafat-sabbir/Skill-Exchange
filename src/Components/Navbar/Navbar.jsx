@@ -123,37 +123,56 @@ const Navbar = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
-          {user && (
-            <p className="font-semibold  mr-2 text-main ">{user.displayName}</p>
-          )}
-          {user && (
-            <img
-              className="w-12 mr-4 h-12  rounded-full border-2 border-main"
-              src={user?.photoURL ? user.photoURL : ""}
-              alt=""
-            />
-          )}
+          <div className="dropdown dropdown-bottom dropdown-end">
+            <label tabIndex={0} className="">
+              {user && (
+                <img
+                  className="w-12 mr-4 h-12  rounded-full border-2 border-main"
+                  src={user?.photoURL ? user.photoURL : ""}
+                  alt=""
+                />
+              )}
+            </label>
+            {user && (
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                <img
+                  className=" w-12 mx-auto  rounded-full mb-2 mt-2 border-2 border-main"
+                  src={user?.photoURL ? user.photoURL : ""}
+                  alt=""
+                />
+                <p className="font-semibold text-center mr-2 mb-2 text-main ">
+                  {user.displayName}
+                </p>
+                <p className="font-semibold text-center mr-2 mb-2  text-main ">
+                  {user.email}
+                </p>
+                <button
+                  onClick={handleSignOut}
+                  className="cursor-pointer w-11/12 mx-auto  rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2 py-1 mb-2"
+                >
+                  <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+                    Sign Out
+                  </span>
+                  <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                  <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                </button>
+              </ul>
+            )}
+          </div>
           {user ? (
-            <button
-              onClick={handleSignOut}
-              className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-4 py-2"
-            >
-              <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                Sign Out
-              </span>
-              <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-              <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-            </button>
+            ""
           ) : (
-            <Link to={"/signIn "} className="">
-              <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
-                <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                  Sign In
-                </span>
-                <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-              </button>
-            </Link>
+            <div>
+              <Link to={"/signIn "} className="">
+                <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+                  <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+                    Sign In
+                  </span>
+                  <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                  <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                </button>
+              </Link>
+            </div>
           )}
         </div>
       </div>

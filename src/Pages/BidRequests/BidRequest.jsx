@@ -7,10 +7,12 @@ import { FcCancel } from "react-icons/fc";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar } from "react-step-progress-bar";
+import { useState } from "react";
 
 const BidRequest = () => {
   const axios = useAxios();
   const { user } = useAuth();
+  const [status, setStatus] = useState("");
   const queryClient = useQueryClient();
   const userEmail = user?.email;
   const getJobs = async () => {
@@ -18,19 +20,22 @@ const BidRequest = () => {
     return response;
   };
   const { data, isLoading } = useQuery({
-    queryKey: ["Jobs", user],
+    queryKey: ["Jobs", user, status],
     queryFn: getJobs,
   });
   const handleAcceptBid = (id) => {
     axios.patch(`/update-status/${id}`, { status: "Progress" }).then((res) => {
       queryClient.invalidateQueries(["Jobs", user]);
+      setStatus(data?.data.biddingStatus);
     });
   };
   const handleRejectBid = (id) => {
     axios.patch(`/reject-status/${id}`, { status: "Rejected" }).then((res) => {
       queryClient.invalidateQueries(["Jobs", user]);
+      setStatus(data?.data.biddingStatus);
     });
   };
+  
   return (
     <div className="container mx-auto">
       <Helmet>
@@ -120,14 +125,17 @@ const BidRequest = () => {
                           <h3 className="flex my-4 items-center ">
                             <FcCancel></FcCancel>Bid Rejected
                           </h3>
-                        ) : MyBids.biddingStatus === "Progress" ||MyBids.biddingStatus==="Complete" ? (
+                        ) : MyBids.biddingStatus === "Progress" ||
+                          MyBids.biddingStatus === "Completed" ? (
                           <td>
-                           <div className="w-[100px]">
-                           <ProgressBar
-                              percent={MyBids.biddingStatus==='Complete'?100:50}
-                              filledBackground="#007456"
-                            />
-                           </div>
+                            <div className="w-[100px]">
+                              <ProgressBar
+                                percent={
+                                  MyBids.biddingStatus === "Completed" ? 100 : 50
+                                }
+                                filledBackground="#007456"
+                              />
+                            </div>
                           </td>
                         ) : (
                           <td>

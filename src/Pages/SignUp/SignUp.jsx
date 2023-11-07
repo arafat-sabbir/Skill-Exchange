@@ -78,14 +78,14 @@ const SignUp = () => {
       });
   };
   return (
-    <div>
+    <div className="bg-[#faf6eb]">
       <Helmet>
         <title>Skill Exchange || Sign Up</title>
       </Helmet>
-      <div className="flex container mx-auto justify-center items-center justify-items-center gap-6">
+      <div className="flex container mx-auto justify-center  items-center justify-items-center gap-6">
         <div className="flex-1">
           <img
-            src="https://i.ibb.co/QQ0sDLF/3094352.webp"
+            src="https://i.ibb.co/syhzCBr/pngwing-com-2.png"
             className="w-11/12 mx-auto"
             alt=""
           />
@@ -94,13 +94,13 @@ const SignUp = () => {
           <div
             data-aos="zoom-in"
             data-aos-offset="200"
-            data-aos-duration="1000"
+            data-aos-duration="600"
             data-aos-mirror="true"
             data-aos-once="false"
             data-aos-anchor-placement="top"
             className="hero min-h-[80vh]"
           >
-            <div className="hero-content flex-col gap-8  shadow-[0_0_50px_#D1D1D1] px-8 rounded-2xl ">
+            <div className="hero-content flex-col gap-8 bg-white shadow-[0_0_50px_#D1D1D1] px-8 rounded-2xl ">
               <h1 className="text-5xl font-bold pt-10  text-main">
                 Sign Up now!
               </h1>

@@ -5,15 +5,15 @@ const Banner = () => {
         <div className="flex-1 text-3xl text-black font-semibold leading-[50px]">
           <div className="mb-4 border-l-4 border-[#007456]">
             <h1 className=" ml-4">
-              <span className="text-4xl">Worried About Jobs?</span> <br /> Can't
+              <span className="md:text-4xl text-3xl">Worried About Jobs?</span> <br /> Can't
               Find The Job You're Looking For!
             </h1>
           </div>
         <div className="mb-4 border-l-4 border-[#007456] mt-6">
         <h1 className="text-[#007456] ml-4">
             {" "}
-            <span className="text-4xl"> On Skill-Exchange</span> <br /> Find
-            world’s best <span>Jobs From Home!</span>
+            <span className="md:text-4xl text-3xl"> On Skill-Exchange</span> Find
+            World’s best <span>Jobs From Home!</span>
           </h1>
         </div>
           <div className="flex items-center pt-10 pb-10 p-4 md:h-40 ">
