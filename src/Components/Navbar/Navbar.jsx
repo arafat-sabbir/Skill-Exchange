@@ -127,14 +127,14 @@ const Navbar = () => {
             <label tabIndex={0} className="">
               {user && (
                 <img
-                  className="w-12 mr-4 h-12  rounded-full border-2 border-main"
+                  className="w-12 mr-4 h-12  rounded-full border-2 border-main mb-4 mt-4"
                   src={user?.photoURL ? user.photoURL : ""}
                   alt=""
                 />
               )}
             </label>
             {user && (
-              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-56">
                 <img
                   className=" w-12 mx-auto  rounded-full mb-2 mt-2 border-2 border-main"
                   src={user?.photoURL ? user.photoURL : ""}

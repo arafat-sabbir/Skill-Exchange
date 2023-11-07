@@ -5,6 +5,7 @@ import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { useState } from "react";
 
 const BidJob = () => {
   const { user } = useAuth();
@@ -34,6 +35,7 @@ const BidJob = () => {
       // Handle the error or display an error message to the user
     },
   });
+  const [isButtonDisabled, setisButtonDisabled] = useState(false);
 
   const handleBid = (e) => {
     e.preventDefault();
@@ -45,7 +47,7 @@ const BidJob = () => {
     const jobtitle = JobDetail?.jobtitle;
     const sellerEmail = JobDetail?.sellerEmail;
     const deadline = JobDetail?.deadline;
-    const bidded = '1'
+    const bidded = "1";
 
     // Use the 'mutate' function to send the data to the server
     mutate({
@@ -60,7 +62,20 @@ const BidJob = () => {
     });
   };
 
-  const isButtonDisabled = user?.email === JobDetail?.sellerEmail;
+  const DeadlineDate = new Date(JobDetail?.deadline);
+  const unixtoday = new Date(Date.now());
+  const daydifferent = Math.floor(
+    (DeadlineDate - unixtoday) / (1000 * 60 * 60 * 24)
+  );
+
+  useEffect(() => {
+    if (user?.email === JobDetail?.sellerEmail) {
+      setisButtonDisabled(true);
+    } else if (daydifferent < 1) {
+      setisButtonDisabled(true);
+    }
+  }, [JobDetail.sellerEmail,user?.email,daydifferent]);
+  console.log(daydifferent);
 
   return (
     <div className="container mx-auto">
@@ -174,6 +189,8 @@ const BidJob = () => {
                     : " rounded-2xl text-main font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
                 }
               >
+                <p className="text-red-500 font-semibold">{daydifferent<1?'Cant Bid Deadline Is Over':''}</p>
+                <p className="text-red-500 font-semibold">{user?.email === JobDetail?.sellerEmail?'You Cant Bid Your Own Job':''}</p>
                 <span className="relative z-10  text-main group-hover:text-white text-lg duration-500">
                   Bid Now
                 </span>
