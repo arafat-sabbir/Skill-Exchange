@@ -41,8 +41,8 @@ const Faq = () => {
   ];
 
   return (
-    <div>
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div className=" my-20">
+      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-[#faf6eb7a] rounded-3xl">
         <div className=" w-[296px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
           <h3 className="text-white text-2xl ml-[48px]  mt-3  font-bold">
             Frequanlty Asked
