@@ -60,10 +60,10 @@ const AddJob = () => {
       </div>
       <form
         onSubmit={handleAddJob}
-        className="flex container mx-auto bg-[#F3F3F3] rounded-xl duration-500 hover:shadow-[0_0_10px_#007456] py-28 flex-col my-12 justify-center border-2 px-24"
+        className="flex container lg:w-auto w-[90vw] mx-auto bg-[#F3F3F3] rounded-xl duration-500 hover:shadow-[0_0_10px_#007456] lg:py-36 py-20 flex-col my-12 justify-center border-2 lg:px-12"
       >
-        <div className="flex gap-4 justify-center">
-          <div className="form-control w-3/12 -mt-10 mb-4">
+        <div className="flex lg:flex-row flex-col w-[90%] lg:w-9/12 lg:gap-4  mx-auto lg:justify-center">
+          <div className="form-control lg:w-[50%]  -mt-10 lg:mb-4 mb-10 mx-auto w-full ">
             <label className="label">
               <span className="label-text text-main">Email</span>
             </label>
@@ -77,7 +77,7 @@ const AddJob = () => {
             />
           </div>
 
-          <div className="form-control w-3/12 -mt-10">
+          <div className="form-control lg:w-[50%] mx-auto w-full -mt-10">
             <label className="label">
               <span className="label-text text-main">DeadLine</span>
             </label>
@@ -90,9 +90,9 @@ const AddJob = () => {
             />
           </div>
         </div>
-        <div className="flex gap-4 justify-center">
+        <div className="flex lg:flex-row flex-col w-[90%] lg:w-9/12 lg:gap-4  mx-auto lg:justify-center">
           <input
-            className=" input  input-bordered border-main bg-white w-3/12 mb-4"
+            className=" input mx-auto input-bordered border-main bg-white w-full lg:w-[50%] lg:mb-4 my-6 lg:my-auto "
             type="text"
             name="title"
             placeholder="Job Title"
@@ -102,7 +102,7 @@ const AddJob = () => {
           <select
             required
             onChange={handleCategory}
-            className="select border-main  select-bordered w-3/12"
+            className="select border-main w-full  select-bordered lg:w-[50%] mb-4 lg:mb-auto"
           >
             <option disabled selected>
               Choose A Category?
@@ -112,9 +112,9 @@ const AddJob = () => {
             <option>Graphics Design</option>
           </select>
         </div>
-        <div className="flex gap-4 justify-center">
+        <div className="flex lg:flex-row flex-col w-[90%] lg:w-9/12 lg:gap-4  mx-auto lg:justify-center">
           <input
-            className=" input  input-bordered border-main bg-white w-3/12 mb-4"
+            className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
             type="text"
             name="minPrice"
             id=""
@@ -122,7 +122,7 @@ const AddJob = () => {
             required
           />
           <input
-            className=" input  input-bordered border-main bg-white w-3/12 mb-4"
+            className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
             type="text"
             name="maxPrice"
             id=""
@@ -131,7 +131,7 @@ const AddJob = () => {
           />
         </div>
         <textarea
-          className="border border-main rounded-lg p-2"
+          className="border lg:w-9/12 w-[90%] mx-auto border-main rounded-lg p-2"
           name="description"
           id=""
           cols="10"
@@ -141,7 +141,7 @@ const AddJob = () => {
         ></textarea>
         <button
           type="submit"
-          className="cursor-pointer my-8 rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-8 py-2"
+          className="cursor-pointer my-8 lg:mb-auto lg:w-9/12 w-[90%] mx-auto rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-8 py-2"
         >
           <span className="relative z-10 text-main group-hover:text-white text-xl duration-500">
             Add Job

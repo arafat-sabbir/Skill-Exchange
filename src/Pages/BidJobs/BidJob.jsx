@@ -88,11 +88,11 @@ const BidJob = () => {
         </h3>
       </div>
       <div className="flex justify-center items-center">
-        <div className=" rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+        <div className=" rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2">
           <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-            <div className="grid  justify-items-center container mx-auto my-12">
+            <div className="grid  justify-items-center container mx-auto my-2">
               <div>
-                <div className="card w-[600px] card-side bg-base-100 duration-300 border border-main ">
+                <div className="card w-[90vw] lg:w-[600px] card-side bg-base-100 duration-300 border border-main ">
                   <div className="card-body">
                     <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern font-semibold text-white">
                       <p className="ml-[25px] mt-3"> {JobDetail?.jobtitle}</p>
@@ -112,14 +112,14 @@ const BidJob = () => {
         </div>
       </div>
       {/* Bidding Form Start */}
-      <div className="border border-main my-10 rounded-3xl">
+      <div className="border border-main mx-auto lg:w-auto w-[90vw] my-10 rounded-3xl">
         <div className="w-[286px] my-10   text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
           <h3 className="text-white text-xl ml-[95px]  mt-3  font-bold">
             Bidding Info
           </h3>
         </div>
         <div>
-          <form onSubmit={handleBid} className="w-1/2 mx-auto mb-20">
+          <form onSubmit={handleBid} className="lg:w-1/2 w-[90%] mx-auto mb-20">
             <div className="md:flex gap-4">
               <div className="form-control lg:w-full">
                 <label className="label">

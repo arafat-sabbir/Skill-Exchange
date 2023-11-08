@@ -138,7 +138,7 @@ const BidRequest = () => {
                             </div>
                           </td>
                         ) : (
-                          <td>
+                          <td className="flex">
                             <button
                               onClick={() => handleAcceptBid(MyBids._id)}
                               className="mx-2 my-2 px-3 py-3 z-50 justify-center items-center gap-2 cursor-pointer rounded-full shadow-2xl text-white font-semibold bg-main hover:shadow-xl hover:shadow-main hover:scale-110 duration-300"
