@@ -123,7 +123,7 @@ const BidJob = () => {
             <div className="md:flex gap-4">
               <div className="form-control lg:w-full">
                 <label className="label">
-                  <span className="label-text">your Email</span>
+                  <span className="label-text">Your Email</span>
                 </label>
                 <input
                   type="text"

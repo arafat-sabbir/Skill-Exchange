@@ -85,7 +85,7 @@ const SignUp = () => {
       <div className="flex container mx-auto justify-center  items-center justify-items-center gap-6">
         <div className="flex-1">
           <img
-            src="https://i.ibb.co/syhzCBr/pngwing-com-2.png"
+            src="https://i.ibb.co/crGqCBB/7843dbff-3105-471b-9e00-63d4f49125f2-1.webp"
             className="w-11/12 mx-auto"
             alt=""
           />

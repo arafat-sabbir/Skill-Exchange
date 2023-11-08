@@ -56,13 +56,7 @@ const SignIn = () => {
         <Helmet>
           <title>Skill Exchange || Sign In</title>
         </Helmet>
-        <div className="pt-10">
-          <div className=" w-[286px] py-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
-            <h3 className="text-white text-2xl ml-[100px]  -mt-8 font-bold">
-              Sign In
-            </h3>
-          </div>
-        </div>
+        
         <div className="flex justify-between items-center container mx-auto ">
           <div className="flex-1 hidden lg:block">
             <img

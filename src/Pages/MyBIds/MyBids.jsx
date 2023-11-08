@@ -96,7 +96,7 @@ const MyBids = () => {
                               {MyBids?.biddingStatus}
                             </td>
                             <td className=" whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                              {MyBids.biddingStatus === "Progress" ? (
+                              {MyBids.biddingStatus === "In Progress" ? (
                                 <button
                                   onClick={() => handleComplete(MyBids?._id)}
                                   className="cursor-pointer rounded-xl font-semibold overflow-hidden relative z-100 border border-main group px-4 py-1"

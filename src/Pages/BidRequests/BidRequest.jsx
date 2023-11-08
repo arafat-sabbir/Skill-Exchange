@@ -12,7 +12,6 @@ import { useState } from "react";
 const BidRequest = () => {
   const axios = useAxios();
   const { user } = useAuth();
-  const [status, setStatus] = useState("");
   const queryClient = useQueryClient();
   const userEmail = user?.email;
   const getJobs = async () => {
@@ -20,22 +19,20 @@ const BidRequest = () => {
     return response;
   };
   const { data, isLoading } = useQuery({
-    queryKey: ["Jobs", user, status],
+    queryKey: ["Jobs", user],
     queryFn: getJobs,
   });
   const handleAcceptBid = (id) => {
-    axios.patch(`/update-status/${id}`, { status: "Progress" }).then((res) => {
+    axios.patch(`/update-status/${id}`, { status: "In Progress" }).then((res) => {
       queryClient.invalidateQueries(["Jobs", user]);
-      setStatus(data?.data.biddingStatus);
     });
   };
   const handleRejectBid = (id) => {
-    axios.patch(`/reject-status/${id}`, { status: "Rejected" }).then((res) => {
-      queryClient.invalidateQueries(["Jobs", user]);
-      setStatus(data?.data.biddingStatus);
-    });
+    axios
+      .patch(`/reject-status/${id}`, { status: "Rejected" })
+      .then((res) => {});
   };
-  
+
   return (
     <div className="container mx-auto">
       <Helmet>
@@ -125,13 +122,15 @@ const BidRequest = () => {
                           <h3 className="flex my-4 items-center ">
                             <FcCancel></FcCancel>Bid Rejected
                           </h3>
-                        ) : MyBids.biddingStatus === "Progress" ||
+                        ) : MyBids.biddingStatus === "In Progress" ||
                           MyBids.biddingStatus === "Completed" ? (
                           <td>
                             <div className="w-[100px]">
                               <ProgressBar
                                 percent={
-                                  MyBids.biddingStatus === "Completed" ? 100 : 50
+                                  MyBids.biddingStatus === "Completed"
+                                    ? 100
+                                    : 50
                                 }
                                 filledBackground="#007456"
                               />
