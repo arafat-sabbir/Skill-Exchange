@@ -42,7 +42,7 @@ const MyPostedJob = () => {
   return (
     <div className=" container mx-auto">
       <Helmet>
-        <title>Skill Exchange || Add Jobs</title>
+        <title>Skill Exchange || My Posted Job</title>
       </Helmet>
       <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
         <h3 className="text-white text-2xl ml-[60px]  mt-3  font-bold">
@@ -57,15 +57,11 @@ const MyPostedJob = () => {
         }
       >
         {isLoading ? (
-       <div className="min-h-[15rem] flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-       <div className="flex flex-auto flex-col justify-center items-center p-4 md:p-5">
-         <div className="flex justify-center">
-           <div className="animate-spin inline-block w-10 h-10 font-bold  border-[3px] border-current border-t-transparent text-main rounded-full dark:text-main" role="status" aria-label="loading">
-             <span className="sr-only">Loading...</span>
-           </div>
-         </div>
-       </div>
-     </div>
+      <div className="flex justify-center items-center">
+      <div className="w-32 aspect-square rounded-full relative flex justify-center items-center animate-[spin_3s_linear_infinite] z-40 bg-[conic-gradient(white_0deg,white_300deg,transparent_270deg,transparent_360deg)] before:animate-[spin_2s_linear_infinite] before:absolute before:w-[60%] before:aspect-square before:rounded-full before:z-[80] before:bg-[conic-gradient(white_0deg,white_270deg,transparent_180deg,transparent_360deg)] after:absolute after:w-3/4 after:aspect-square after:rounded-full after:z-[60] after:animate-[spin_3s_linear_infinite] after:bg-[conic-gradient(#065f46_0deg,#065f46_180deg,transparent_180deg,transparent_360deg)]">
+        <span className="absolute w-[85%] aspect-square rounded-full z-[60] animate-[spin_5s_linear_infinite] bg-[conic-gradient(#34d399_0deg,#34d399_180deg,transparent_180deg,transparent_360deg)]"></span>
+      </div>
+    </div>
         ) : (
           data?.data?.map((job) => (
             <PostedJobCard
