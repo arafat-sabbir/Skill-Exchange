@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoader(false);
-      const useremail = currentUser?.email;
+      const useremail = {email:currentUser?.email};
       if (currentUser) {
         axios.post("/user/accessToken", useremail,)
         .then((res) => {
