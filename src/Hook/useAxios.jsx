@@ -1,13 +1,12 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://skill-exchange-server.vercel.app/api',
-    withCredentials:true
-    
-  });
+  baseURL: "http://localhost:5000/api",
+  withCredentials: true,
+});
 
 const useAxios = () => {
-    return instance;
+  return instance;
 };
 
 export default useAxios;

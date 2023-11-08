@@ -67,7 +67,7 @@ const MyPostedJob = () => {
        </div>
      </div>
         ) : (
-          data.data.map((job) => (
+          data?.data?.map((job) => (
             <PostedJobCard
               handleDelete={handleDelete}
               key={job._id}
