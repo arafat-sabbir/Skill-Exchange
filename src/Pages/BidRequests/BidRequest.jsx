@@ -7,7 +7,6 @@ import { FcCancel } from "react-icons/fc";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar } from "react-step-progress-bar";
-import { useState } from "react";
 
 const BidRequest = () => {
   const axios = useAxios();
@@ -30,7 +29,10 @@ const BidRequest = () => {
   const handleRejectBid = (id) => {
     axios
       .patch(`/reject-status/${id}`, { status: "Rejected" })
-      .then((res) => {});
+      .then((res) => {
+        console.log(res.data);
+        queryClient.invalidateQueries(["Jobs", user]);
+      });
   };
 
   return (

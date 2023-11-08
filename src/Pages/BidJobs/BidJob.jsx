@@ -189,10 +189,10 @@ const BidJob = () => {
                     : " rounded-2xl text-main font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
                 }
               >
-                <p className="text-red-500 font-semibold">{daydifferent<1?'Cant Bid Deadline Is Over':''}</p>
+                <p className="text-red-500 font-semibold">{daydifferent<1?"Can't Bid Deadline Is Over":''}</p>
                 <p className="text-red-500 font-semibold">{user?.email === JobDetail?.sellerEmail?'You Cant Bid Your Own Job':''}</p>
                 <span className="relative z-10  text-main group-hover:text-white text-lg duration-500">
-                  Bid Now
+                Bid on The Project
                 </span>
                 {isButtonDisabled ? (
                   ""

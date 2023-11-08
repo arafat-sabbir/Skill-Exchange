@@ -83,17 +83,19 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link
+          <div className="hidden lg:flex text-main font-bold items-center">
+          <NavLink
             to={"/"}
-            className=" hidden lg:flex text-main font-bold items-center"
-          >
-            <img
-              className="w-22 h-14"
-              src="https://i.ibb.co/ZHDJ3R6/Skill-Exchange-1.webp"
-              alt=""
-            />
-            <p className="text-2xl  font-semibold">Skill Exchange</p>
-          </Link>
+              className="!flex text-main font-bold items-center"
+            >
+              <img
+                className="w-22 h-14"
+                src="https://i.ibb.co/ZHDJ3R6/Skill-Exchange-1.webp"
+                alt=""
+              />
+              <p className="text-2xl  font-semibold">Skill Exchange</p>
+            </NavLink>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal  font-semibold gap-4 px-1">

@@ -2,6 +2,9 @@ import { useQueryClient, useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hook/useAxios";
 import useAuth from "../../Hook/useAuth";
 import { Helmet } from "react-helmet";
+import { FcCancel } from "react-icons/fc";
+import { MdOutlinePendingActions } from "react-icons/md";
+import { ProgressBar } from "react-step-progress-bar";
 
 const MyBids = () => {
   const { user } = useAuth();
@@ -9,7 +12,9 @@ const MyBids = () => {
   const bidderEmail = user?.email;
   const axios = useAxios();
   const getJobs = async () => {
-    const response = axios.get(`/getMyBid?bidderEmail=${bidderEmail}`);
+    const response = axios.get(
+      `/getMyBid?bidderEmail=${bidderEmail}&sortfield=${data?.data.biddingStatus}`
+    );
     return response;
   };
   const { data, isLoading } = useQuery({
@@ -34,15 +39,19 @@ const MyBids = () => {
         </h3>
       </div>
       {isLoading ? (
-      <div className="min-h-[15rem] flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-      <div className="flex flex-auto flex-col justify-center items-center p-4 md:p-5">
-        <div className="flex justify-center">
-          <div className="animate-spin inline-block w-10 h-10 font-bold  border-[3px] border-current border-t-transparent text-main rounded-full dark:text-main" role="status" aria-label="loading">
-            <span className="sr-only">Loading...</span>
+        <div className="min-h-[15rem] flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+          <div className="flex flex-auto flex-col justify-center items-center p-4 md:p-5">
+            <div className="flex justify-center">
+              <div
+                className="animate-spin inline-block w-10 h-10 font-bold  border-[3px] border-current border-t-transparent text-main rounded-full dark:text-main"
+                role="status"
+                aria-label="loading"
+              >
+                <span className="sr-only">Loading...</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
       ) : (
         <div className="flex flex-col justify-center ">
           <div className="flex flex-col mb-52">
@@ -107,6 +116,22 @@ const MyBids = () => {
                                   <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
                                   <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
                                 </button>
+                              ) : MyBids.biddingStatus === "Rejected" ? (
+                                <h3 className="flex my-4 items-center ">
+                                  <FcCancel></FcCancel>Bid Rejected
+                                </h3>
+                              ) : MyBids.biddingStatus === "Pending" ? (
+                                <h3 className="flex text-xs items-center">
+                                  <MdOutlinePendingActions className=""></MdOutlinePendingActions>
+                                  Pending Approval
+                                </h3>
+                              ) : MyBids.biddingStatus === "Completed" ? (
+                                <div className="w-[100px]">
+                                  <ProgressBar
+                                    percent={100}
+                                    filledBackground="#007456"
+                                  />
+                                </div>
                               ) : (
                                 ""
                               )}

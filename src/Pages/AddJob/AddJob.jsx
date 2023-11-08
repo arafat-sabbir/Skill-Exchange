@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
   const axios = useAxios();
   const { user } = useAuth();
+  const navigate = useNavigate()
   const [category, setCategory] = useState("");
   const handleCategory = (e) => {
     const category = e.target.value;
@@ -40,7 +42,9 @@ const AddJob = () => {
     },
     onSuccess: (data) => {
       if (data.data.acknowledged) {
+        navigate('/myPostedJob')
         return toast.success("Job added successfully");
+
       }
     },
     onError: (error) => {

@@ -61,7 +61,6 @@ const SignUp = () => {
     signUpUser(email, password)
       .then((result) => {
         e.target.reset();
-        console.log(result);
         setError("");
         notify();
         updateUserProfile(name, photoUrl)

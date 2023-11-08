@@ -14,6 +14,18 @@ const SignIn = () => {
   const [showP, setShowp] = useState(false);
   const [error, setError] = useState(null);
   const location = useLocation();
+  const notify = () =>
+    toast.success("Sign In Successful.", {
+      style: {
+        border: "1px solid #007456",
+        padding: "20px",
+        color: "#007456",
+      },
+      iconTheme: {
+        primary: "#007456",
+        secondary: "#FFFAEE",
+      },
+    });
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -24,8 +36,7 @@ const SignIn = () => {
 
     signInUser(email, password)
       .then((result) => {
-        console.log(result);
-        swal("Great!", "Sign In SuccessFully", "success");
+        notify();
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password") {
@@ -56,7 +67,7 @@ const SignIn = () => {
         <Helmet>
           <title>Skill Exchange || Sign In</title>
         </Helmet>
-        
+
         <div className="flex justify-between items-center container mx-auto ">
           <div className="flex-1 hidden lg:block">
             <img

@@ -4,7 +4,7 @@ import { BsTwitter, BsInstagram } from "react-icons/bs";
 const Footer = () => {
   return (
     <div className="bg-[#FAF6EB]">
-      <footer className="footer p-10 container mx-auto justify-between">
+      <footer className="footer px-10 pt-6 container mx-auto justify-between">
         <aside>
           <img
             src="https://i.ibb.co/ZHDJ3R6/Skill-Exchange-1.webp"
@@ -12,29 +12,42 @@ const Footer = () => {
             alt=""
           />
           <p>
-            <span className="text-2xl font-bold text-main">
-              Skill Exchange
-            </span>
+            <span className="text-2xl font-bold text-main">Skill Exchange</span>
             <br />
             Providing reliable tech since 2009
           </p>
         </aside>
         <nav>
-          <header className=" border-b-[4px] pb-1 mb-2  border-b-main">Services</header>
-          <a className="link hover:text-main font-medium link-hover">Branding</a>
+          <header className=" border-b-[4px] pb-1 mb-2  border-b-main">
+            Services
+          </header>
+          <a className="link hover:text-main font-medium link-hover">
+            Branding
+          </a>
           <a className="link hover:text-main font-medium link-hover">Design</a>
-          <a className="link hover:text-main font-medium link-hover">Marketing</a>
-
+          <a className="link hover:text-main font-medium link-hover">
+            Marketing
+          </a>
         </nav>
 
         <nav>
-          <header className="border-b-[4px] pb-1 mb-2  border-b-main">Legal</header>
-          <a className="link hover:text-main font-medium link-hover">Terms of use</a>
-          <a className="link hover:text-main font-medium link-hover">Privacy policy</a>
-          <a className="link hover:text-main font-medium link-hover">Cookie policy</a>
+          <header className="border-b-[4px] pb-1 mb-2  border-b-main">
+            Legal
+          </header>
+          <a className="link hover:text-main font-medium link-hover">
+            Terms of use
+          </a>
+          <a className="link hover:text-main font-medium link-hover">
+            Privacy policy
+          </a>
+          <a className="link hover:text-main font-medium link-hover">
+            Cookie policy
+          </a>
         </nav>
         <nav>
-          <header className="text  font-semibold border-b-[4px] pb-1 mb-2  border-b-main">Get In Touch</header>
+          <header className="text  font-semibold border-b-[4px] pb-1 mb-2  border-b-main">
+            Get In Touch
+          </header>
           <div className="flex gap-4 text-main text-2xl">
             <a>
               <FaFacebookF></FaFacebookF>
@@ -48,6 +61,7 @@ const Footer = () => {
           </div>
         </nav>
       </footer>
+      <p className="text-sm font-medium pt-4 t text-center pb-10 text-main ">Copyright © 2023 - All right reserved by Skill-Exchange Ltd</p>
     </div>
   );
 };
