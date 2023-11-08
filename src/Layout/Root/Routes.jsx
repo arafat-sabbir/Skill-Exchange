@@ -49,12 +49,12 @@ const routes = createBrowserRouter([
             {
                 path:'/bidJob/:id',
                 element:<PrivateRoute><BidJob></BidJob></PrivateRoute>,
-                loader:({params})=> fetch(`http://localhost:5000/api/bidJobs/${params.id}`)
+                loader:({params})=> fetch(`https://skill-exchange-server.vercel.app/api/bidJobs/${params.id}`)
             },
             {
                 path:'/updatejob/:id',
                 element:<PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
-                loader:({params})=> fetch(`http://localhost:5000/api/bidJobs/${params.id}`)
+                loader:({params})=> fetch(`https://skill-exchange-server.vercel.app/api/bidJobs/${params.id}`)
             }
 
 
