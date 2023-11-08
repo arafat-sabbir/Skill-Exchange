@@ -54,7 +54,7 @@ const SignIn = () => {
   const handleGoogleSignin = () => {
     signWithGoogle()
       .then(() => {
-        toast.success("Congratulation Sign In SuccessFull");
+        notify()
       })
       .catch((error) => {
         console.log(error);

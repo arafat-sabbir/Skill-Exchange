@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import { useState } from "react";
 
 const BidJob = () => {
   const { user } = useAuth();
+  const navigate = useNavigate()
   const axios = useAxios();
   const JobDetail = useLoaderData();
 
@@ -27,7 +28,9 @@ const BidJob = () => {
     },
     onSuccess: (data) => {
       if (data.data.acknowledged) {
+        navigate('/myBids')
         toast.success("SuccessFully Bidded Job");
+        
       }
     },
     onError: (error) => {
@@ -89,7 +92,7 @@ const BidJob = () => {
       </div>
       <div className="flex justify-center items-center">
         <div className=" rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2">
-          <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+          <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
             <div className="grid  justify-items-center container mx-auto my-2">
               <div>
                 <div className="card w-[90vw] lg:w-[600px] card-side bg-base-100 duration-300 border border-main ">
@@ -97,11 +100,11 @@ const BidJob = () => {
                     <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern font-semibold text-white">
                       <p className="ml-[25px] mt-3"> {JobDetail?.jobtitle}</p>
                     </h2>
-                    <p className="text-main">
+                    <p className="text-black">
                       Price : ${JobDetail.minPrice} - ${JobDetail.maxPrice}
                     </p>
-                    <p className="text-main">Deadline : {JobDetail.deadline}</p>
-                    <p className="text-main">{JobDetail.description}</p>
+                    <p className="text-black">Deadline : {JobDetail.deadline}</p>
+                    <p className="text-black">{JobDetail.description}</p>
                   </div>
                 </div>
               </div>
@@ -186,12 +189,12 @@ const BidJob = () => {
                 className={
                   isButtonDisabled
                     ? "cursor-none bg-gray-100 px-6 py-2 rounded-2xl  "
-                    : " rounded-2xl text-main font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
+                    : " rounded-2xl text-black font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
                 }
               >
                 <p className="text-red-500 font-semibold">{daydifferent<1?"Can't Bid Deadline Is Over":''}</p>
                 <p className="text-red-500 font-semibold">{user?.email === JobDetail?.sellerEmail?'You Cant Bid Your Own Job':''}</p>
-                <span className="relative z-10  text-main group-hover:text-white text-lg duration-500">
+                <span className="relative z-10  text-black group-hover:text-white text-lg duration-500">
                 Bid on The Project
                 </span>
                 {isButtonDisabled ? (

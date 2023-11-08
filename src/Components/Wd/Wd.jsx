@@ -24,22 +24,22 @@ const Wd = () => {
       {data?.data?.map((wd) => (
         <div key={wd._id}>
           <div className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2 py-2">
-            <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+            <span className="relative z-10  group-hover:text-white text-lg duration-500">
               <div className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border border-main hover:shadow-[0_0_40px_#D1D1D1]">
                 <div className="card-body">
-                  <h2 className="text-2xl font-semibold text-main">
+                  <h2 className="text-2xl text-black font-semibold ">
                     {wd?.jobtitle}
                   </h2>
-                  <p className="text-main">
+                  <p className="text-black">
                     Price : ${wd.minPrice} - ${wd.maxPrice}
                   </p>
-                  <p className="text-main">Deadline : {wd.deadline}</p>
-                  <p className="text-main">Seller : {wd.sellerEmail}</p>
-                  <p className="text-main">{wd.description}</p>
+                  <p className="text-black">Deadline : {wd.deadline}</p>
+                  <p className="text-black">Seller : {wd.sellerEmail}</p>
+                  <p className="text-black">{wd.description}</p>
                   <div className="card-actions justify-end">
                     <Link to={`/bidJob/${wd._id}`}>
                       <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
-                        <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
+                        <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
                           Bid Now
                         </span>
                         <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
