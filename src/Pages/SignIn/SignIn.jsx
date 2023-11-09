@@ -63,7 +63,7 @@ const SignIn = () => {
   AOS.init();
   return (
     <>
-      <div className="bg-[#faf6eb]">
+      <div className="bg-[#f8f0dd]">
         <Helmet>
           <title>Skill Exchange || Sign In</title>
         </Helmet>
@@ -143,7 +143,7 @@ const SignIn = () => {
                         </button>
                       </div>
                     </form>
-                    <div className="my-1 text-main font-medium">
+                    <div className="my-1 text-red-500 font-medium">
                       {error && <p>Error : {error}</p>}
                       <p className="my-4">
                         Do not have a account ? :{" "}

@@ -56,7 +56,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-[#FAF6EB]">
+    <div className="bg-[#f8f0dd]">
       <div className="navbar  justify-center  py-6  container mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">

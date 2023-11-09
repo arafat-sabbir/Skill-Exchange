@@ -73,7 +73,7 @@ const UpdateJob = () => {
           <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
             <div className="grid  justify-items-center container mx-auto my-12">
               <div>
-                <div className="card w-[600px] card-side bg-base-100 duration-300 border border-main hover:shadow-[0_0_20px_#FAF6EB]">
+                <div className="card w-[600px] card-side bg-base-100 duration-300 border border-main hover:shadow-[0_0_20px_#f8f0dd]">
                   <div className="card-body">
                     <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern font-semibold text-white">
                       <p className="ml-[25px] mt-3"> {jobinfo?.jobtitle}</p>

@@ -108,9 +108,9 @@ const MyBids = () => {
                                   <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
                                   <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
                                 </button>
-                              ) : MyBids.biddingStatus === "Rejected" ? (
+                              ) : MyBids.biddingStatus === "Canceled" ? (
                                 <h3 className="flex my-4 items-center ">
-                                  <FcCancel></FcCancel>Bid Rejected
+                                  <FcCancel></FcCancel>Bid Canceled
                                 </h3>
                               ) : MyBids.biddingStatus === "Pending" ? (
                                 <h3 className="flex text-xs items-center">

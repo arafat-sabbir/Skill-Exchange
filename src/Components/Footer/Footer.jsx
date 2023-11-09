@@ -3,7 +3,7 @@ import { BsTwitter, BsInstagram } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className="bg-[#FAF6EB]">
+    <div className="bg-[#f8f0dd]">
       <footer className="footer px-10 pt-6 container mx-auto justify-between">
         <aside>
           <img

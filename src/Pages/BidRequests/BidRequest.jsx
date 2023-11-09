@@ -28,7 +28,7 @@ const BidRequest = () => {
   };
   const handleRejectBid = (id) => {
     axios
-      .patch(`/reject-status/${id}`, { status: "Rejected" })
+      .patch(`/reject-status/${id}`, { status: "Canceled" })
       .then((res) => {
         console.log(res.data);
         queryClient.invalidateQueries(["Jobs", user]);
@@ -112,9 +112,9 @@ const BidRequest = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">
                           {MyBids?.biddingStatus}
                         </td>
-                        {MyBids.biddingStatus === "Rejected" ? (
+                        {MyBids.biddingStatus === "Canceled" ? (
                           <h3 className="flex my-4 items-center ">
-                            <FcCancel></FcCancel>Bid Rejected
+                            <FcCancel></FcCancel>Bid Canceled
                           </h3>
                         ) : MyBids.biddingStatus === "In Progress" ||
                           MyBids.biddingStatus === "Completed" ? (

@@ -77,7 +77,7 @@ const SignUp = () => {
       });
   };
   return (
-    <div className="bg-[#faf6eb]">
+    <div className="bg-[#f8f0dd]">
       <Helmet>
         <title>Skill Exchange || Sign Up</title>
       </Helmet>
