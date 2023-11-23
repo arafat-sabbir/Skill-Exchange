@@ -2,13 +2,13 @@ const MybidsTable = () => {
   return (
     <div>
       <tr>
-        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">
           John Brown
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
           45
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
           New York No. 1 Lake Park
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

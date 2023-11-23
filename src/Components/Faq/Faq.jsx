@@ -36,7 +36,7 @@ const Faq = () => {
   ];
 
   return (
-    <div className=" my-20">
+    <div className=" my-20 text-black">
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-[#fcf9ffc4] rounded-3xl">
         <div className=" w-[296px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
           <h3 className="text-white text-2xl ml-[48px]  mt-3  font-bold">
@@ -51,11 +51,11 @@ const Faq = () => {
                   index === activeAccordion
                     ? "hs-accordion-active:bg-gray-100"
                     : ""
-                } rounded-xl p-6 dark:hs-accordion-active:bg-white/[.05] border border-main mb-4`}
+                } rounded-xl p-6 border border-main mb-4`}
                 key={index}
               >
                 <button
-                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-main dark:text-gray-200 dark:hover:text-main dark:focus:outline-none  dark:focus:ring-1 dark:focus:ring-gray-600"
+                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-black rounded-lg transition hover:text-main"
                   onClick={() => handleAccordionClick(index)}
                   aria-controls={`hs-basic-with-title-and-arrow-stretched-collapse-${index}`}
                 >
@@ -63,7 +63,7 @@ const Faq = () => {
                   <svg
                     className={`hs-accordion-active:${
                       index === activeAccordion ? "block" : "hidden"
-                    } flex-shrink-0 w-5 h-5 text-gray-600 group-hover:text-main dark:text-main`}
+                    } flex-shrink-0 w-5 h-5 text-black group-hover:text-main `}
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -84,7 +84,7 @@ const Faq = () => {
                   } overflow-hidden transition-[height] duration-300`}
                   aria-labelledby={`hs-basic-with-title-and-arrow-stretched-heading-${index}`}
                 >
-                  <p className="text-gray-800 dark:text-gray-200">
+                  <p className="text-black font-medium">
                     {item.answer}
                   </p>
                 </div>

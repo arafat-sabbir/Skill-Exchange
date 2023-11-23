@@ -13,7 +13,7 @@ const PostedJobCard = ({ job, handleDelete }) => {
         <div className="space-y-4 z-50">
           <span className="text-2xl font-semibold">{jobtitle}</span>
           <p className="text-xl font-semibold">{category}</p>
-          <p className="text-xl font-semibold">Deadline : {deadline}</p>
+          <p className="text-xl font-semibold">Deadline: {deadline}</p>
           <p className="text-md font-semibold">
             Price : ${minPrice}-${maxPrice}
           </p>

@@ -12,7 +12,7 @@ const UserReview = () => {
       <div className="relative overflow-hidden border-2 my-16 mx-4 border-main rounded-3xl ">
         {/* Background pattern */}
         <div className="flex absolute start-0 -z-[1]">
-          <div className="bg-purple-200 opacity-20 blur-3xl  w-[1280px] h-[300px] hover:from-[#059669] hover:to-[#DADADA] dark:bg-purple-900 dark:opacity-20"></div>
+          <div className="bg-purple-200 opacity-20 blur-3xl  w-[1280px] h-[300px] hover:from-[#059669] hover:to-[#DADADA] "></div>
         </div>
 
         <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto ">
@@ -25,17 +25,17 @@ const UserReview = () => {
               <blockquote>
                <img src="https://i.ibb.co/0h8nt3p/icons8-logo-240.png" className='w-16 mb-1' alt="" />
 
-                <p className="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal dark:text-gray-200">
+                <p className="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal">
                  Using Skill-Exchange For About A user Now I usually Hire People for My Company Job It Was A Great Experience Using Skill-Exchange..
                 </p>
 
                 <footer className="mt-6">
                   <div className="flex items-center">
                     <div className="ms-4 lg:ms-0">
-                      <p className="font-semibold text-gray-800 dark:text-gray-200">
+                      <p className="font-semibold text-gray-800">
                         Jon Abraham
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600 ">
                         Head of Type-Chart.io
                       </p>
                     </div>
@@ -49,7 +49,7 @@ const UserReview = () => {
       <div className="relative overflow-hidden border-2 my-16 mx-4 border-main rounded-3xl">
         {/* Background pattern */}
         <div className="flex absolute start-0 -z-[1]">
-          <div className="bg-purple-200 opacity-20 blur-3xl w-[1280px] h-[300px] dark:bg-purple-900 dark:opacity-20"></div>
+          <div className="bg-purple-200 opacity-20 blur-3xl w-[1280px] h-[300px]"></div>
         </div>
 
         <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto">
@@ -62,17 +62,17 @@ const UserReview = () => {
               <blockquote>
                <img src="https://i.ibb.co/mC31N2Y/icons8-logo-240-1.png" className='w-16 mb-2' alt="" />
 
-                <p className="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal dark:text-gray-200">
+                <p className="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal">
                 The Working Experience In Skill-Exchange is Excellent. It Makes The Job Finding Process As Relevant As Possible For Me.....
                 </p>
 
                 <footer className="mt-6">
                   <div className="flex items-center">
                     <div className="ms-4 lg:ms-0">
-                      <p className="font-semibold text-gray-800 dark:text-gray-200">
+                      <p className="font-semibold text-gray-800">
                         Jon Abraham
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600">
                         Head of Type-Chart.io
                       </p>
                     </div>

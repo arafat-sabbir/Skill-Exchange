@@ -49,8 +49,8 @@ const MyBids = () => {
           <div className="flex flex-col mb-52">
             <div className="-m-1.5 overflow-x-auto  ">
               <div className="p-1.5 min-w-full inline-block align-middle">
-                <div className="border overflow-hidden dark:border-gray-700 rounded-xl">
-                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <div className="border overflow-hidden rounded-xl">
+                  <table className="min-w-full divide-y divide-gray-200 ">
                     <thead>
                       <tr>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
@@ -82,21 +82,21 @@ const MyBids = () => {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody className="divide-y divide-gray-200 ">
                       {!isLoading &&
                         data?.data?.map((MyBids) => (
                           <tr key={MyBids?._id}>
                             <td className="p-4">{MyBids.jobtitle}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">
                               {MyBids?.sellerEmail}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
                               {MyBids?.biddingdeadline}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
                               {MyBids?.biddingStatus}
                             </td>
-                            <td className=" whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            <td className=" whitespace-nowrap text-sm text-gray-800 ">
                               {MyBids.biddingStatus === "In Progress" ? (
                                 <button
                                   onClick={() => handleComplete(MyBids?._id)}
