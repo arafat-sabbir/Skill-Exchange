@@ -1,7 +1,6 @@
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import { FcGoogle } from "react-icons/fc";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import swal from "sweetalert";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useAuth from "../../Hook/useAuth";
