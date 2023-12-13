@@ -9,7 +9,7 @@ const BrowseByCategory = () => {
   return (
     <div className=" mt-20">
       <div className="flex justify-center items-center">
-        <div className=" w-[286px]  my-8 h-[56px] bg-no-repeat flex bg-hero-pattern">
+        <div className=" w-[286px]  my-8 h-[56px] bg-no-repeat flex ">
           <h3 className="text-white text-lg ml-[60px]  mt-3  font-bold">
             Browse By Category
           </h3>

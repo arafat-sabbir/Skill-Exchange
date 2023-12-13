@@ -40,7 +40,7 @@ const BidRequest = () => {
       <Helmet>
         <title>Skill Exchange || Bid Requests</title>
       </Helmet>
-      <div className=" w-[286px] my-20 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+      <div className=" w-[286px] my-20 text-center mx-auto h-[56px] bg-no-repeat flex ">
         <h3 className="text-white text-2xl ml-[85px]  mt-3  font-bold">
           Bid Request
         </h3>

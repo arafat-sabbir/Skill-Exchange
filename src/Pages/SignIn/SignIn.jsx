@@ -62,7 +62,7 @@ const SignIn = () => {
   AOS.init();
   return (
     <>
-      <div className="bg-[#f8f0dd]">
+      <div className="bg-[#EEF0E5]">
         <Helmet>
           <title>Skill Exchange || Sign In</title>
         </Helmet>
@@ -85,7 +85,7 @@ const SignIn = () => {
               data-aos-anchor-placement="top"
               className="hero min-h-[80vh] "
             >
-              <div className="hero-content flex-col md:w-auto w-[90vw] md:my-auto my-10 shadow-[0_0_50px_#D1D1D1] px-10 bg-white rounded-xl gap-8">
+              <div className="hero-content flex-col md:w-auto w-[90vw] md:my-auto my-10 shadow-[0_0_50px_#D1D1D1] px-10 bg-white bg-opacity-70 rounded-xl gap-8">
                 <h1 className="text-5xl font-bold text-main pt-8">
                   Sign In now!
                 </h1>
@@ -142,7 +142,7 @@ const SignIn = () => {
                         </button>
                       </div>
                     </form>
-                    <div className="my-1 text-red-500 font-medium">
+                    <div className="my-1 text-green-700 font-medium">
                       {error && <p>Error : {error}</p>}
                       <p className="my-4">
                         Do not have a account ? :{" "}

@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hook/useAxios";
 import { Link } from "react-router-dom";
+import { IoBookmarkOutline } from "react-icons/io5";
+import useAuth from "../../Hook/useAuth";
+import toast from "react-hot-toast";
+
 
 const Wd = () => {
   const category = "Web Development";
@@ -13,6 +17,19 @@ const Wd = () => {
     queryKey: ["Jobs", category],
     queryFn: getJobs,
   });
+  const {user} = useAuth()
+  const handleaddtoBookmark = (post)=>{
+    const bookmarkData = {
+      bookmarkUser : user.email,
+      bookmarkPost : post
+    }
+    axios.post('/addtobookmark',bookmarkData)
+    .then(res => {
+      if(res.data.insertedId){
+        toast.success('Post Added To Bookmark SuccessFully')
+      }
+    })
+  }
   return isLoading ? (
     <div className="flex justify-center items-center">
       <div className="w-32 aspect-square rounded-full relative flex justify-center items-center animate-[spin_3s_linear_infinite] z-40 bg-[conic-gradient(white_0deg,white_300deg,transparent_270deg,transparent_360deg)] before:animate-[spin_2s_linear_infinite] before:absolute before:w-[60%] before:aspect-square before:rounded-full before:z-[80] before:bg-[conic-gradient(white_0deg,white_270deg,transparent_180deg,transparent_360deg)] after:absolute after:w-3/4 after:aspect-square after:rounded-full after:z-[60] after:animate-[spin_3s_linear_infinite] after:bg-[conic-gradient(#065f46_0deg,#065f46_180deg,transparent_180deg,transparent_360deg)]">
@@ -22,10 +39,8 @@ const Wd = () => {
   ) : (
     <div className="grid lg:grid-cols-2  gap-4 justify-items-center container mx-auto my-12">
       {data?.data?.map((wd) => (
-        <div key={wd._id}>
-          <div className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2 py-2">
-            <span className="relative z-10  group-hover:text-white text-lg duration-500">
-              <div className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border border-main hover:shadow-[0_0_40px_#D1D1D1]">
+
+              <div key={wd._id} className="card lg:w-[600px] w-[90vw] font-medium tracking-wide card-side bg-base-100 duration-300 border-2 border-main hover:shadow-[0_0_40px_#D1D1D1]">
                 <div className="card-body">
                   <h2 className="text-2xl text-black font-semibold ">
                     {wd?.jobtitle}
@@ -38,7 +53,7 @@ const Wd = () => {
                   <p className="text-black">{wd.description}</p>
                   <div className="card-actions justify-end">
                     <Link to={`/bidJob/${wd._id}`}>
-                      <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+                      <button className="cursor-pointer rounded-full font-semibold overflow-hidden relative z-100 border border-main group px-4">
                         <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
                           Bid Now
                         </span>
@@ -46,14 +61,13 @@ const Wd = () => {
                         <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
                       </button>
                     </Link>
+                    <button onClick={()=>handleaddtoBookmark(wd)} className="p-2  font-bold text-xl"><IoBookmarkOutline/></button>
                   </div>
                 </div>
               </div>
-            </span>
-            <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-            <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-          </div>
-        </div>
+            
+            
+        
       ))}
     </div>
   );

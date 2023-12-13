@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hook/useAxios";
 import { Link } from "react-router-dom";
+import { IoBookmarkOutline } from "react-icons/io5";
+import useAuth from "../../Hook/useAuth";
+import toast from "react-hot-toast";
 
 const Dm = () => {
   const category = "Digital Marketing";
@@ -13,6 +16,19 @@ const Dm = () => {
     queryKey: ["Jobs",category],
     queryFn: getJobs,
   });
+  const {user} = useAuth()
+  const handleaddtoBookmark = (post)=>{
+    const bookmarkData = {
+      bookmarkUser : user.email,
+      bookmarkPost : post
+    }
+    axios.post('/addtobookmark',bookmarkData)
+    .then(res => {
+      if(res.data.insertedId){
+        toast.success('Post Added To Bookmark SuccessFully')
+      }
+    })
+  }
 
   return (
     isLoading ?
@@ -24,10 +40,8 @@ const Dm = () => {
       :
     <div className="grid lg:grid-cols-2 gap-4 justify-items-center container mx-auto my-12">
       {data?.data?.map((dm) => (
-        <div key={dm._id}>
-          <div className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2 py-2">
-            <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
-            <div className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border border-main hover:shadow-[0_0_40px_#D1D1D1]">
+
+            <div key={dm._id} className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border-2 tracking-wide font-medium border-main hover:shadow-[0_0_40px_#D1D1D1]">
             <div className="card-body">
               <h2 className="text-2xl font-semibold text-black">
                 {dm?.jobtitle}
@@ -40,22 +54,21 @@ const Dm = () => {
               <p className="text-black">{dm.description}</p>
               <div className="card-actions justify-end">
                 <Link to={`/bidJob/${dm._id}`}>
-                  <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+                  <button className="cursor-pointer  rounded-full font-semibold overflow-hidden relative z-100 border border-main group px-4">
                     <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
                       Bid Now
                     </span>
                     <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
                     <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
                   </button>
+                  <button onClick={()=>handleaddtoBookmark(dm)} className="p-2  font-bold text-xl"><IoBookmarkOutline/></button>
                 </Link>
               </div>
             </div>
           </div>
-            </span>
-            <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-            <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-          </div>
-        </div>
+           
+
+
       ))}
     </div>
   );

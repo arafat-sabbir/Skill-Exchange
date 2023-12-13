@@ -63,7 +63,7 @@ const UpdateJob = () => {
       <Helmet>
         <title>Skill Exchange || Update Job</title>
       </Helmet>
-      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
         <h3 className="text-white text-xl ml-[63px]  mt-3  font-bold">
           Previous Job Info
         </h3>
@@ -75,7 +75,7 @@ const UpdateJob = () => {
               <div>
                 <div className="card w-[600px] card-side bg-base-100 duration-300 border border-main hover:shadow-[0_0_20px_#f8f0dd]">
                   <div className="card-body">
-                    <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern font-semibold text-white">
+                    <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex  font-semibold text-white">
                       <p className="ml-[25px] mt-3"> {jobinfo?.jobtitle}</p>
                     </h2>
                     <p className="text-main">
@@ -98,7 +98,7 @@ const UpdateJob = () => {
           onSubmit={handleAupdateJob}
           className="flex max-w-5xl mx-auto rounded-3xl border-main py-12 flex-col my-12 justify-center border-2 "
         >
-          <div className=" w-[286px] mb-20 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+          <div className=" w-[286px] mb-20 text-center mx-auto h-[56px] bg-no-repeat flex ">
             <h3 className="text-white text-xl ml-[63px]  mt-3  font-bold">
               Updated Job Info
             </h3>

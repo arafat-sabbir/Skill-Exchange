@@ -56,7 +56,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-[#f8f0dd]">
+    <div className="bg-[#EEF0E5]">
       <div className="navbar  justify-center  py-6  container mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -166,7 +166,7 @@ const Navbar = () => {
           ) : (
             <div>
               <Link to={"/signIn "} className="">
-                <button className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
+                <button className="cursor-pointer rounded-full font-semibold overflow-hidden relative z-100 border border-main group px-4 py-1">
                   <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
                     Sign In
                   </span>

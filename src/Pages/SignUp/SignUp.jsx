@@ -77,7 +77,7 @@ const SignUp = () => {
       });
   };
   return (
-    <div className="bg-[#f8f0dd]">
+    <div className="bg-[#EEF0E5]">
       <Helmet>
         <title>Skill Exchange || Sign Up</title>
       </Helmet>
@@ -99,7 +99,7 @@ const SignUp = () => {
             data-aos-anchor-placement="top"
             className="hero min-h-[80vh]"
           >
-            <div className="hero-content flex-col gap-8 bg-white shadow-[0_0_50px_#D1D1D1] px-8 rounded-2xl ">
+            <div className="hero-content flex-col gap-8 bg-white bg-opacity-70 shadow-[0_0_50px_#D1D1D1] px-8 rounded-2xl ">
               <h1 className="text-5xl font-bold pt-10  text-main">
                 Sign Up now!
               </h1>

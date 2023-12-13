@@ -1,7 +1,7 @@
 const UserReview = () => {
   return (
     <div className="max-w-7xl mx-auto mt-20 mb-16">
-      <div className="w-[286px] text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+      <div className="w-[286px] text-center mx-auto h-[56px] bg-no-repeat flex ">
         <h3 className="text-white text-2xl ml-[70px] mt-3 font-bold">
           Client Review
         </h3>
@@ -12,7 +12,7 @@ const UserReview = () => {
       <div className="relative overflow-hidden border-2 my-16 mx-4 border-main rounded-3xl ">
         {/* Background pattern */}
         <div className="flex absolute start-0 -z-[1]">
-          <div className="bg-purple-200 opacity-20 blur-3xl  w-[1280px] h-[300px] hover:from-[#059669] hover:to-[#DADADA] "></div>
+          <div className=" opacity-20 blur-3xl  w-[1280px] h-[300px] hover:from-[#059669] hover:to-[#DADADA] "></div>
         </div>
 
         <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto ">
@@ -49,7 +49,7 @@ const UserReview = () => {
       <div className="relative overflow-hidden border-2 my-16 mx-4 border-main rounded-3xl">
         {/* Background pattern */}
         <div className="flex absolute start-0 -z-[1]">
-          <div className="bg-purple-200 opacity-20 blur-3xl w-[1280px] h-[300px]"></div>
+          <div className=" opacity-20 blur-3xl w-[1280px] h-[300px]"></div>
         </div>
 
         <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto">

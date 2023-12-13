@@ -78,26 +78,24 @@ const BidJob = () => {
       setisButtonDisabled(true);
     }
   }, [JobDetail.sellerEmail,user?.email,daydifferent]);
-  console.log(daydifferent);
 
   return (
     <div className="container mx-auto">
       <Helmet>
         <title>Skill Exchange || {JobDetail.jobtitle}</title>
       </Helmet>
-      <div className="w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+      <div className="w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
         <h3 className="text-white text-xl ml-[75px]  mt-3  font-bold">
           Job Detail | Bid
         </h3>
       </div>
       <div className="flex justify-center items-center">
-        <div className=" rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2">
-          <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
+
             <div className="grid  justify-items-center container mx-auto my-2">
               <div>
-                <div className="card w-[90vw] lg:w-[600px] card-side bg-base-100 duration-300 border border-main ">
+                <div className="card w-[90vw] lg:w-[600px] card-side bg-base-100 duration-300 border-2 shadow-[0_0_10px_] border-main ">
                   <div className="card-body">
-                    <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern font-semibold text-white">
+                    <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex  font-semibold text-white">
                       <p className="ml-[25px] mt-3"> {JobDetail?.jobtitle}</p>
                     </h2>
                     <p className="text-black">
@@ -109,14 +107,10 @@ const BidJob = () => {
                 </div>
               </div>
             </div>
-          </span>
-          <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-          <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-        </div>
       </div>
       {/* Bidding Form Start */}
       <div className="border border-main mx-auto lg:w-auto w-[90vw] my-10 rounded-3xl">
-        <div className="w-[286px] my-10   text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+        <div className="w-[286px] my-10   text-center mx-auto h-[56px] bg-no-repeat flex ">
           <h3 className="text-white text-xl ml-[95px]  mt-3  font-bold">
             Bidding Info
           </h3>

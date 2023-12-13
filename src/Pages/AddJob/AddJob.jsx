@@ -57,7 +57,7 @@ const AddJob = () => {
       <Helmet>
         <title>Skill Exchange || Add Jobs</title>
       </Helmet>
-      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
         <h3 className="text-white text-2xl ml-[60px] mt-1  font-bold">
           Add Job
         </h3>

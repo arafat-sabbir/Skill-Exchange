@@ -44,7 +44,7 @@ const MyPostedJob = () => {
       <Helmet>
         <title>Skill Exchange || My Posted Job</title>
       </Helmet>
-      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
         <h3 className="text-white text-2xl ml-[60px]  mt-3  font-bold">
           My Posted Job
         </h3>

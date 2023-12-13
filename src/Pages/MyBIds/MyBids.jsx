@@ -33,7 +33,7 @@ const MyBids = () => {
       <Helmet>
         <title>Skill Exchange || My Bids</title>
       </Helmet>
-      <div className=" w-[286px] my-20 text-center mx-auto h-[56px] bg-no-repeat flex bg-hero-pattern">
+      <div className=" w-[286px] my-20 text-center mx-auto h-[56px] bg-no-repeat flex ">
         <h3 className="text-white text-2xl ml-[100px]  mt-3  font-bold">
           My Bids
         </h3>
