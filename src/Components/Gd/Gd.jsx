@@ -38,7 +38,7 @@ const Gd = () => {
   ) : (
     <div className="grid lg:grid-cols-1 xl:grid-cols-2  gap-10 justify-items-center container mx-auto my-12">
       {data?.data?.map((gd) => (
-        <div key={gd._id} className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border-2 text-black tracking-wide font-medium border-main hover:shadow-[0_0_40px_#D1D1D1]">
+        <div key={gd._id} className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border tracking-wide font-medium border-main hover:shadow-[0_0_40px_#D1D1D1] shadow-[0_0_40px_#D1D1D1]">
           <div className="card-body">
             <h2 className="text-2xl font-semibold text-black">
               {gd?.jobtitle}

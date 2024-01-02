@@ -40,7 +40,7 @@ const Dm = () => {
       {data?.data?.map((dm) => (
         <div
           key={dm._id}
-          className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border-2 tracking-wide font-medium border-main hover:shadow-[0_0_40px_#D1D1D1]"
+          className="card lg:w-[600px] w-[90vw] card-side bg-base-100 duration-300 border tracking-wide font-medium border-main hover:shadow-[0_0_40px_#D1D1D1] shadow-[0_0_40px_#D1D1D1]"
         >
           <div className="card-body">
             <h2 className="text-2xl font-semibold text-black">
