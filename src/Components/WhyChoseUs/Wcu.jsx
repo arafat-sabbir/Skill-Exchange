@@ -4,14 +4,12 @@ const Wcu = () => {
   return (
     <div className="feat bg-gray pt-5 pb-5 mt-20">
       <div className="container mx-auto">
-        <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
-          <h3 className="text-white text-2xl ml-[60px]  mt-3  font-bold">
+          <h3 className="mt-3  mb-16 font-semibold text-3xl text-center">
             Why Choose Us
           </h3>
-        </div>
         <div className="row grid lg:grid-cols-3 grid-cols-1 gap-10 lg:w-auto w-[90vw] mx-auto">
           <div className="col-lg-4 col-sm-6 ">
-            <div className="item">
+          <div className="item">
               {" "}
               <span className="icon feature_box_col_one flex justify-center items-center mx-auto">
                 <img src="https://i.ibb.co/824FCcc/icons8-affordable-64.png" alt="" />

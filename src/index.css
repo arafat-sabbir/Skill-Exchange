@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -10,4 +10,7 @@
 }
 .disabled {
   cursor: not-allowed !important;
+}
+.font-title{
+  font-family: 'Sacramento', cursive;
 }

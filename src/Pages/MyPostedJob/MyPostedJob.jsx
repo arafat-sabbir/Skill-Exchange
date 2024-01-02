@@ -44,11 +44,9 @@ const MyPostedJob = () => {
       <Helmet>
         <title>Skill Exchange || My Posted Job</title>
       </Helmet>
-      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
-        <h3 className="text-white text-2xl ml-[60px]  mt-3  font-bold">
+        <h3 className=" my-16 font-semibold text-3xl text-center">
           My Posted Job
         </h3>
-      </div>
       <div
         className={
           isLoading

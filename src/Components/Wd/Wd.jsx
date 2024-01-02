@@ -37,7 +37,7 @@ const Wd = () => {
       </div>
     </div>
   ) : (
-    <div className="grid lg:grid-cols-2  gap-4 justify-items-center container mx-auto my-12">
+    <div className="grid lg:grid-cols-1 xl:grid-cols-2  gap-10 justify-items-center container mx-auto my-12">
       {data?.data?.map((wd) => (
 
               <div key={wd._id} className="card lg:w-[600px] w-[90vw] font-medium tracking-wide card-side bg-base-100 duration-300 border-2 border-main hover:shadow-[0_0_40px_#D1D1D1]">

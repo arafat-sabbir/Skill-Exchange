@@ -38,11 +38,9 @@ const Faq = () => {
   return (
     <div className=" my-20 text-black">
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-3xl">
-        <div className=" w-[296px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
-          <h3 className="text-white text-2xl ml-[48px]  mt-3  font-bold">
-            Frequanlty Asked
+          <h3 className="mt-3  mb-16 font-semibold text-3xl text-center ">
+            Frequently Asked Question
           </h3>
-        </div>
         <div className="max-w-2xl mx-auto">
           <div className="hs-accordion-group ">
             {faqData.map((item, index) => (

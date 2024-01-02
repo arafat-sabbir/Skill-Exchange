@@ -7,13 +7,12 @@ import Wd from "../../../Components/Wd/Wd";
 const BrowseByCategory = () => {
 
   return (
-    <div className=" mt-20">
+    <div className="mt-20">
       <div className="flex justify-center items-center">
-        <div className=" w-[286px]  my-8 h-[56px] bg-no-repeat flex ">
-          <h3 className="text-white text-lg ml-[60px]  mt-3  font-bold">
-            Browse By Category
+       
+          <h3 className="mt-3  mb-16 font-semibold text-3xl">
+            Browse By <span className="text-main font-title">Category</span>
           </h3>
-        </div>
       </div>
       <Tabs>
         <div className="flex justify-center">

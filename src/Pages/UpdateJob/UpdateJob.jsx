@@ -63,11 +63,9 @@ const UpdateJob = () => {
       <Helmet>
         <title>Skill Exchange || Update Job</title>
       </Helmet>
-      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
-        <h3 className="text-white text-xl ml-[63px]  mt-3  font-bold">
+        <h3 className="mt-3  mb-16 font-semibold text-3xl text-center">
           Previous Job Info
         </h3>
-      </div>
       <div className="flex justify-center items-center">
         <div className=" rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
           <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">

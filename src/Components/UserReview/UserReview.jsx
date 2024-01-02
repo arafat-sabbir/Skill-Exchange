@@ -1,11 +1,9 @@
 const UserReview = () => {
   return (
     <div className="max-w-7xl mx-auto mt-20 mb-16">
-      <div className="w-[286px] text-center mx-auto h-[56px] bg-no-repeat flex ">
-        <h3 className="text-white text-2xl ml-[70px] mt-3 font-bold">
+        <h3 className="mt-3  mb-16 font-semibold text-3xl text-center">
           Client Review
         </h3>
-      </div>
       <p className="lg:w-[700px] text-center mx-auto mt-10   text-lg md:w-auto w-[90vw]">
         Discover the positive impact we've made on our clients by reading through their testimonials. Our clients have experienced our service and results, and they're eager to share their positive experiences with you.
       </p>

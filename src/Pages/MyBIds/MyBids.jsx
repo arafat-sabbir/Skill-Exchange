@@ -33,11 +33,9 @@ const MyBids = () => {
       <Helmet>
         <title>Skill Exchange || My Bids</title>
       </Helmet>
-      <div className=" w-[286px] my-20 text-center mx-auto h-[56px] bg-no-repeat flex ">
-        <h3 className="text-white text-2xl ml-[100px]  mt-3  font-bold">
+        <h3 className=" my-16 font-semibold text-3xl text-center">
           My Bids
         </h3>
-      </div>
       {isLoading ? (
        <div className="flex justify-center items-center">
        <div className="w-32 aspect-square rounded-full relative flex justify-center items-center animate-[spin_3s_linear_infinite] z-40 bg-[conic-gradient(white_0deg,white_300deg,transparent_270deg,transparent_360deg)] before:animate-[spin_2s_linear_infinite] before:absolute before:w-[60%] before:aspect-square before:rounded-full before:z-[80] before:bg-[conic-gradient(white_0deg,white_270deg,transparent_180deg,transparent_360deg)] after:absolute after:w-3/4 after:aspect-square after:rounded-full after:z-[60] after:animate-[spin_3s_linear_infinite] after:bg-[conic-gradient(#065f46_0deg,#065f46_180deg,transparent_180deg,transparent_360deg)]">

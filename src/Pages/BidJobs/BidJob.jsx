@@ -4,12 +4,12 @@ import useAuth from "../../Hook/useAuth";
 import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 
 const BidJob = () => {
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const axios = useAxios();
   const JobDetail = useLoaderData();
 
@@ -28,9 +28,8 @@ const BidJob = () => {
     },
     onSuccess: (data) => {
       if (data.data.acknowledged) {
-        navigate('/myBids')
+        navigate("/myBids");
         toast.success("SuccessFully Bidded Job");
-        
       }
     },
     onError: (error) => {
@@ -77,78 +76,115 @@ const BidJob = () => {
     } else if (daydifferent < 1) {
       setisButtonDisabled(true);
     }
-  }, [JobDetail.sellerEmail,user?.email,daydifferent]);
-  const {data:review} = useQuery({
-    queryKey:["review"],
-    queryFn:async()=>{
-      const res = await axios.get(`/review/${JobDetail._id}`)
+  }, [JobDetail.sellerEmail, user?.email, daydifferent]);
+  const { data: review,refetch } = useQuery({
+    queryKey: ["review"],
+    queryFn: async () => {
+      const res = await axios.get(`/review/${JobDetail._id}`);
       return res.data;
+    },
+  });
+  console.log(review);
+  const reviewref = useRef();
+  const handleSubmitReview = (id) => {
+    const review = reviewref.current.value;
+    if(!review){
+     return toast.error("Review Can't Be Empty")
     }
-  })
+    reviewref.current.value=""
+    const tid = toast.loading("Submitting Review")
+    const reviewDetail = {
+      ReviewerName: user.displayName,
+      ReviewerEmail: user.email,
+      Review: review,
+      postid:id
+    };
+    axios.post('/addReview',reviewDetail)
+    .then(res=> {
+      if(res.data.insertedId){
+        toast.success("Review Submitted Successfully",{id:tid})
+        refetch()
+      }
+    })
+  };
   return (
     <div className="container mx-auto">
       <Helmet>
         <title>Skill Exchange || {JobDetail.jobtitle}</title>
       </Helmet>
-      <div className="w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
-        <h3 className="text-white text-xl ml-[75px]  mt-3  font-bold">
-          Job Detail | Bid
-        </h3>
-      </div>
+      <h3 className="my-10 font-semibold text-3xl text-center">
+        Job Detail | Bid
+      </h3>
       <div className="flex justify-center items-center">
-
-            <div className="grid  justify-items-center container mx-auto my-2">
-              <div>
-                <div className="card w-[90vw] lg:w-[600px] card-side bg-base-100 duration-300 border-2 shadow-[0_0_10px_] border-main ">
-                  <div className="card-body">
-                    <h2 className="text-xl w-[286px] my-4 text-center mx-auto h-[56px] bg-no-repeat flex  font-semibold text-white">
-                      <p className="ml-[25px] mt-3"> {JobDetail?.jobtitle}</p>
-                    </h2>
-                    <p className="text-black">
-                      Price : ${JobDetail.minPrice} - ${JobDetail.maxPrice}
-                    </p>
-                    <p className="text-black">Deadline : {JobDetail.deadline}</p>
-                    <p className="text-black">{JobDetail.description}</p>
+        <div className="grid  justify-items-center container mx-auto my-2">
+          <div>
+            <div className="card w-[90vw] lg:w-[600px] card-side bg-base-100 duration-300 border-2 shadow-[0_0_10px_] border-main ">
+              <div className="card-body">
+                <p className="my-4 font-semibold text-3xl text-center">
+                  {" "}
+                  {JobDetail?.jobtitle}
+                </p>
+                <p className="text-black">
+                  <span className="text-lg font-semibold">Price :</span> $
+                  {JobDetail.minPrice} - ${JobDetail.maxPrice}
+                </p>
+                <p className="text-black">
+                  {" "}
+                  <span className="text-lg font-semibold">Deadline :</span>{" "}
+                  {JobDetail.deadline}
+                </p>
+                <p className="text-black">{JobDetail.description}</p>
+                {/* Open the modal using document.getElementById('ID').showModal() method */}
+                <button
+                  className="text-black text-center border-2 p-1 rounded-full border-main font-semibold w-[100px] ml-auto "
+                  onClick={() =>
+                    document.getElementById("my_modal_1").showModal()
+                  }
+                >
+                  Review job
+                </button>
+                <dialog id="my_modal_1" className="modal">
+                  <div className="modal-box pt-14">
+                    <textarea
+                      ref={reviewref}
+                      className="border-2 border-main flex p-4  justify-center ml-8 rounded-xl"
+                      name="text-area"
+                      id=""
+                      cols="40"
+                      rows="6"
+                      placeholder="Your Review"
+                    ></textarea>
+                    <div className="modal-action">
+                      <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button>Cancel</button>
+                        <button
+                          onClick={() => handleSubmitReview(JobDetail._id)}
+                          className="ml-4"
+                        >
+                          Submit
+                        </button>
+                      </form>
+                    </div>
                   </div>
-                </div>
+                </dialog>
               </div>
             </div>
+          </div>
+        </div>
       </div>
       {/* Bidding Form Start */}
-      <div className="border border-main mx-auto lg:w-auto w-[90vw] my-10 rounded-3xl">
+      <div className="border shadow-[5px_5px_10px_] border-main mx-auto lg:max-w-4xl w-[90vw] my-10 rounded-3xl">
         <div className="w-[286px] my-10   text-center mx-auto h-[56px] bg-no-repeat flex ">
-          <h3 className="text-white text-xl ml-[95px]  mt-3  font-bold">
+          <h3 className="font-semibold text-3xl text-center ml-14 text-main">
             Bidding Info
           </h3>
         </div>
         <div>
-          {
-            review.map(item =>   <div key={item._id} className="card lg:w-[600px] w-[90vw] font-medium tracking-wide card-side bg-base-100 duration-300 border-2 border-main hover:shadow-[0_0_40px_#D1D1D1]">
-            <div className="card-body">
-              <h2 className="text-2xl text-black font-semibold ">
-                {item?.jobtitle}
-              </h2>
-              <p className="text-black">
-                Price : ${item.minPrice} - ${item.maxPrice}
-              </p>
-              <p className="text-black">Deadline : {item.deadline}</p>
-              <p className="text-black">Seller : {item.sellerEmail}</p>
-              <p className="text-black">{item.description}</p>
-              <div className="card-actions justify-end">
-                <Link to={`/bidJob/${item._id}`}>
-                  <button className="cursor-pointer rounded-full font-semibold overflow-hidden relative z-100 border border-main group px-4">
-                    <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
-                      Bid Now
-                    </span>
-                    <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                    <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>)
-          }
-          <form onSubmit={handleBid} className="lg:w-1/2 w-[90%] mx-auto mb-20">
+          <form
+            onSubmit={handleBid}
+            className="lg:w-1/2  w-[90%] mx-auto mb-20"
+          >
             <div className="md:flex gap-4">
               <div className="form-control lg:w-full">
                 <label className="label">
@@ -218,10 +254,16 @@ const BidJob = () => {
                     : " rounded-2xl text-black font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
                 }
               >
-                <p className="text-red-500 font-semibold">{daydifferent<1?"Can't Bid Deadline Is Over":''}</p>
-                <p className="text-red-500 font-semibold">{user?.email === JobDetail?.sellerEmail?'You Cant Bid Your Own Job':''}</p>
+                <p className="text-red-500 font-semibold">
+                  {daydifferent < 1 ? "Can't Bid Deadline Is Over" : ""}
+                </p>
+                <p className="text-red-500 font-semibold">
+                  {user?.email === JobDetail?.sellerEmail
+                    ? "You Cant Bid Your Own Job"
+                    : ""}
+                </p>
                 <span className="relative z-10  text-black group-hover:text-white text-lg duration-500">
-                Bid on The Project
+                  Bid on The Project
                 </span>
                 {isButtonDisabled ? (
                   ""
@@ -236,6 +278,35 @@ const BidJob = () => {
           </form>
         </div>
       </div>
+       <div>
+        <h3 className="text-3xl font-semibold text-center  my-10">Client Review On This Post</h3>
+     {
+      review? <div className="grid grid-cols-1 md:grid-cols-2 mb-10 lg:grid-cols-3 gap-10 justify-items-center">
+      {review?.map((item) => (
+          <div
+            key={item._id}
+            className="card shadow-[0_0_10px] lg:w-96 w-[90vw] font-medium tracking-wide card-side bg-base-100 duration-300 border-2 border-main hover:shadow-[0_0_40px_#D1D1D1]"
+          >
+            <div className="card-body">
+              
+              <p className="text-black">
+                Reviewer : {item.ReviewerName}
+              </p>
+              <p className="text-black text-sm">Reviewer Email : {item.ReviewerEmail}</p>
+              <p>{item.Review}</p>
+            </div>
+          </div>
+        ))}
+      </div>: <div className="flex flex-col justify-items-center  h-[20vh] my-10 justify-center items-center w-[80vw]">
+          <img
+            className="mx-auto"
+            src="https://i.ibb.co/PFzsmpn/icons8-404-restricted-web-page-on-internet-browser-layout-100.png"
+            alt=""
+          />
+          <h3 className="text-3xl font-semibold text-center text-red-500">NoOne Reviewed This Job</h3>
+        </div> 
+     }
+       </div>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { Typewriter } from 'react-simple-typewriter'
+
 const Banner = () => {
   return (
     <div className="bg-[#EEF0E5]">
@@ -10,10 +12,18 @@ const Banner = () => {
             </h1>
           </div>
         <div className="mb-4 border-l-4 border-[#007456] mt-6">
-        <h1 className="text-[#007456] ml-4">
+        <h1 className=" ml-4">
             {" "}
-            <span className="md:text-4xl text-3xl"> On Skill-Exchange</span> Find
-            World’s best <span>Jobs From Home!</span>
+            On  <span className=" text-[#007456]">  Skill-Exchange</span>
+             <br /> <Typewriter
+            words={["Find World’s best Jobs From Home.."," Elevate your career with the finest work-from-home opportunities worldwide..","Redefine your work-life balance with the world's top remote jobs..","Join the future of work: Seamless, global, and rewarding – Find your perfect job..","Craft your career path without boundaries.."]}
+            loop={true}
+            cursor
+            cursorStyle=''
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
           </h1>
         </div>
           <div className="flex items-center pt-10 pb-10 p-4 md:h-40 ">

@@ -57,11 +57,9 @@ const AddJob = () => {
       <Helmet>
         <title>Skill Exchange || Add Jobs</title>
       </Helmet>
-      <div className=" w-[286px] my-10 text-center mx-auto h-[56px] bg-no-repeat flex ">
-        <h3 className="text-white text-2xl ml-[60px] mt-1  font-bold">
+        <h3 className="  my-16 font-semibold text-3xl text-center">
           Add Job
         </h3>
-      </div>
       <form
         onSubmit={handleAddJob}
         className="flex container lg:w-auto w-[90vw] mx-auto bg-[#F3F3F3] rounded-xl duration-500 hover:shadow-[0_0_10px_#007456] lg:py-36 py-20 flex-col my-12 justify-center border-2 lg:px-12"

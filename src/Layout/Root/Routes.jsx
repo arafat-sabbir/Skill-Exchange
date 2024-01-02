@@ -11,6 +11,7 @@ import BidRequest from "../../Pages/BidRequests/BidRequest";
 import PrivateRoute from "../../Components/PrivateRoute/PrivateRoute";
 import BidJob from "../../Pages/BidJobs/BidJob";
 import UpdateJob from "../../Pages/UpdateJob/UpdateJob";
+import Bookmark from "../../Pages/Bookmark/Bookmark";
 
 const routes = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const routes = createBrowserRouter([
                 path:'/updatejob/:id',
                 element:<PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
                 loader:({params})=> fetch(`https://skill-exchange-server.vercel.app/api/bidJobs/${params.id}`)
+            },
+            {
+                path:"/bookmark",
+                element:<Bookmark></Bookmark>
             }
 
 
