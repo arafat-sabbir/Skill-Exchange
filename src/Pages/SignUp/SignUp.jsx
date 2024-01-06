@@ -3,14 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import useAxios from "../../Hook/useAxios";
+import useAuth from "../../Hook/useAuth";
 
 const SignUp = () => {
-  const navigate = useNavigate()
-  const { signWithGoogle, signUpUser, updateUserProfile, signOutUser } =
+  const navigate = useNavigate();
+  const axios = useAxios();
+  const { signWithGoogle, signUpUser, updateUserProfile, signOutUser,} =
     useAuth();
   const correctPassPatern = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
   const [showP, setShowp] = useState(false);
@@ -31,11 +33,21 @@ const SignUp = () => {
   const handleShowP = () => {
     setShowp(!showP);
   };
-  const handleGoogleSignin = () => {
+  new Date().toDateString();
+  const handleGoogleSignin = async () => {
     signWithGoogle()
-      .then(() => {
-        notify()
-        navigate('/')
+        .then((res) => {
+        const userData = {
+          userEmail: res.user.email,
+          userName: res.user.displayName,
+          userPhoto: res.user.photoURL,
+          creationDate: new Date().toDateString(),
+        };
+        axios.post("/createUser", userData).then((res) => {
+          console.log(res.data);
+        });
+        notify();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -77,18 +89,11 @@ const SignUp = () => {
       });
   };
   return (
-    <div className="bg-[#EEF0E5]">
+    <div className="">
       <Helmet>
         <title>Skill Exchange || Sign Up</title>
       </Helmet>
-      <div className="flex container mx-auto justify-center  items-center justify-items-center gap-6">
-        <div className="flex-1 hidden lg:block">
-          <img
-            src="https://i.ibb.co/crGqCBB/7843dbff-3105-471b-9e00-63d4f49125f2-1.webp"
-            className="w-11/12 mx-auto"
-            alt=""
-          />
-        </div>
+      <div className="flex h-screen  container mx-auto justify-center  items-center justify-items-center gap-6">
         <div className="flex-1">
           <div
             data-aos="zoom-in"

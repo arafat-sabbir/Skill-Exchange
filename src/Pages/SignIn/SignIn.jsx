@@ -38,12 +38,8 @@ const SignIn = () => {
         notify();
       })
       .catch((error) => {
-        if (error.code === "auth/wrong-password") {
-          setError("Password doesn't match");
-        } else if (error.code === "auth/user-not-found") {
-          setError("Email doesn't match");
-        } else {
-          setError(error.message);
+        if(error){
+          toast.error("Invalid Email And Password")
         }
       });
   };
@@ -62,19 +58,12 @@ const SignIn = () => {
   AOS.init();
   return (
     <>
-      <div className="bg-[#EEF0E5]">
+      <div className="">
         <Helmet>
           <title>Skill Exchange || Sign In</title>
         </Helmet>
 
-        <div className="flex justify-between items-center container mx-auto ">
-          <div className="flex-1 hidden lg:block">
-            <img
-              src="https://i.ibb.co/4gH8PKH/login.png"
-              className="w-7/12 mx-auto"
-              alt=""
-            />
-          </div>
+        <div className="flex h-screen justify-between items-center container mx-auto ">
           <div className="flex-1">
             <div
               data-aos="zoom-in"
@@ -133,17 +122,12 @@ const SignIn = () => {
                         </label>
                       </div>
                       <div className="form-control mt-6">
-                        <button className="cursor-pointer rounded-xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2">
-                          <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                            Sign In
-                          </span>
-                          <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                          <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                        <button type="submit" className="btn bg-white hover:bg-white border-1 border-main hover:border-main">
+                          Sign In
                         </button>
                       </div>
                     </form>
-                    <div className="my-1 text-green-700 font-medium">
-                      {error && <p>Error : {error}</p>}
+                    <div className="my-1 font-medium">
                       <p className="my-4">
                         Do not have a account ? :{" "}
                         <Link to={"/signUp"} className=" font-bold text-main">

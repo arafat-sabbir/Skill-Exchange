@@ -12,6 +12,7 @@ import PrivateRoute from "../../Components/PrivateRoute/PrivateRoute";
 import BidJob from "../../Pages/BidJobs/BidJob";
 import UpdateJob from "../../Pages/UpdateJob/UpdateJob";
 import Bookmark from "../../Pages/Bookmark/Bookmark";
+import Dashboard from "../../Pages/Dashboard/Dashboard";
 
 const routes = createBrowserRouter([
     {
@@ -22,14 +23,6 @@ const routes = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
-            },
-            {
-                path:'signIn',
-                element:<SignIn></SignIn>
-            },
-            {
-                path:'signUp',
-                element:<SignUp></SignUp>
             },
             {
                 path:'/addJob',
@@ -60,10 +53,23 @@ const routes = createBrowserRouter([
             {
                 path:"/bookmark",
                 element:<Bookmark></Bookmark>
-            }
+            },
+            
 
 
         ]
+    },
+    {
+        path:'/dashBoard',
+        element:<Dashboard></Dashboard>
+    },
+    {
+        path:'signIn',
+        element:<SignIn></SignIn>
+    },
+    {
+        path:'signUp',
+        element:<SignUp></SignUp>
     }
    ])
 

@@ -13,7 +13,7 @@ const Wd = () => {
     const response = axios.get(`/jobsBy-category?category=${category}`);
     return response;
   };
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, } = useQuery({
     queryKey: ["Jobs", category],
     queryFn: getJobs,
   });
