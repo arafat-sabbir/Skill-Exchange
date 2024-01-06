@@ -15,50 +15,24 @@ const SignUp = () => {
   const imageHostingKey = import.meta.env.VITE_IMAGE_HOST_KEY;
   const imageHostingAPi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
   const navigate = useNavigate();
+  
   const axiosSecure = useAxios();
-  const { signWithGoogle, signUpUser, updateUserProfile, signOutUser } =
+  const {  signUpUser, updateUserProfile } =
     useAuth();
   // Regex For Checking Right Passwords Pattern
   const correctPassPatern = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
   const [showP, setShowp] = useState(false);
   const [error, setError] = useState("");
   // Notify Message For Successfully Sign UP
-  const notify = () =>
-    toast.success("Sign Up Successful.", {
-      style: {
-        border: "1px solid #007456",
-        padding: "20px",
-        color: "#007456",
-      },
-      iconTheme: {
-        primary: "#007456",
-        secondary: "#FFFAEE",
-      },
-    });
   // Show And Hide Password
   const handleShowP = () => {
     setShowp(!showP);
   };
-  // Google Sign In
-  const handleGoogleSignin = async () => {
-    signWithGoogle()
-      .then((res) => {
-        const userData = {
-          userEmail: res.user.email,
-          userName: res.user.displayName,
-          userPhoto: res.user.photoURL,
-          creationDate: new Date().toDateString(),
-        };
-        axiosSecure.post("/createUser", userData).then((res) => {
-          console.log(res.data);
-        });
-        notify();
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // handle role for user
+  const [role,setRole] = useState();
+  const handleRole =(e)=>{
+    setRole(e.target.value)
+  }
   // Aos Init For animation
   AOS.init();
   // Photo Related Tasks
@@ -75,6 +49,7 @@ const SignUp = () => {
 
   // Email And Password Sign Up
   const handleSubmit = async (e) => {
+    const toastId = toast.loading("SignUp Processing..")
     e.preventDefault();
     const res = await axios.post(imageHostingAPi, formData, {
       headers: {
@@ -96,14 +71,23 @@ const SignUp = () => {
       );
     }
     signUpUser(email, password)
-      .then((result) => {
+      .then((res) => {
         e.target.reset();
         setError("");
-        notify();
+        toast.success("Sign Up Successfully ",{id:toastId})
         updateUserProfile(name, photoUrl)
-          .then((result) => {
-            console.log(result);
-            signOutUser();
+          .then(() => {
+            navigate(location.state?location.state:'/')
+            const userData = {
+              userEmail: res.user.email,
+              userName: res.user.displayName,
+              userPhoto: res.user.photoURL,
+              creationDate: new Date().toDateString(),
+              role:role.toLowerCase()
+            };
+            axiosSecure.post("/createUser", userData).then((res) => {
+              console.log(res.data);
+            });
           })
           .catch((error) => {
             console.log(error);
@@ -146,7 +130,7 @@ const SignUp = () => {
                         type="text"
                         name="name"
                         placeholder="your name"
-                        className="input bg-transparent border border-main"
+                        className="input bg-transparent border  border-black hover:border-dashed focus:border-main focus:ring-0"
                         required
                       />
                     </div>
@@ -157,7 +141,7 @@ const SignUp = () => {
                       </label>
 
                       <div className="relative w-full">
-                        <label className="label absolute -z-50 input pt-2  input-bordered bg-gray-100 hover:bg-gray-100 border-dashed border-main focus:border-main w-full ">
+                        <label className="label absolute -z-50 input pt-2  input-bordered  border-black hover:border-dashed focus:border-main focus:ring-0 w-full ">
                           <span className="label-text ">
                             {photoName || "Choose Profile Picture"}
                           </span>
@@ -167,7 +151,7 @@ const SignUp = () => {
                           accept="images/*"
                           type="file"
                           placeholder="upload your Photo"
-                          className="input pt-2 opacity-0 input-bordered bg-gray-100 hover:bg-gray-100 border-dashed border-main focus:border-main"
+                          className="input pt-2 opacity-0 input-bordered bg-gray-100 hover:bg-gray-100 border-dashed  border-black hover:border-dashed focus:border-main focus:ring-0"
                         />
                       </div>
                     </div>
@@ -180,10 +164,25 @@ const SignUp = () => {
                         type="email"
                         name="email"
                         placeholder="email"
-                        className="input bg-transparent border border-main"
+                        className="input bg-transparent border  border-black hover:border-dashed focus:border-main focus:ring-0"
                         required
                       />
                     </div>
+                    {/* user role */}
+                    <label className="form-control w-full ">
+                      <div className="label">
+                        <span className="label-text">
+                          Your Role
+                        </span>
+                      </div>
+                      <select onChange={handleRole} className="select select-bordered">
+                        <option disabled selected>
+                         Select Your Role
+                        </option>
+                        <option>Client</option>
+                        <option>FreeLancer</option>
+                      </select>
+                    </label>
                     {/* User Password */}
                     <div className="form-control w-full">
                       <label className="label">
@@ -194,7 +193,7 @@ const SignUp = () => {
                           type={showP ? "text" : "password"}
                           name="password"
                           placeholder="password"
-                          className="input bg-transparent border border-main"
+                          className="input bg-transparent border  border-black hover:border-dashed focus:border-main focus:ring-0"
                           required
                         />
                         <div className="my-1 text-red-400 font-medium">
@@ -208,16 +207,10 @@ const SignUp = () => {
                         </span>
                       </div>
                     </div>
-
-                    <label className="flex justify-center my-2 w-full">
-                      <a href="#" className="label-text-alt   link link-hover">
-                        Forgot password?
-                      </a>
-                    </label>
                     <div className="form-control mt-6">
                       <button
                         type="submit"
-                        className="btn bg-white hover:bg-white border-1 border-main hover:border-main"
+                        className="btn border border-black hover:border-black hover:border-dashed focus:border-main focus:ring-0 z-50 hover:bg-transparent w-full mx-auto bg-transparent  font-semibold mb-3"
                       >
                         Sign In
                       </button>
@@ -231,13 +224,6 @@ const SignUp = () => {
                       </Link>
                     </p>
                   </div>
-                  <button
-                    onClick={handleGoogleSignin}
-                    className="btn border  hover:border-main border-main z-50 hover:bg-transparent w-full mx-auto bg-transparent  font-semibold mb-3"
-                  >
-                    <FcGoogle></FcGoogle>
-                    Sign Up With Google
-                  </button>
                 </div>
               </div>
             </div>

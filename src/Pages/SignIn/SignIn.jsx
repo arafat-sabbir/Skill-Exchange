@@ -74,7 +74,7 @@ const SignIn = () => {
               data-aos-anchor-placement="top"
               className="hero min-h-[80vh] "
             >
-              <div className="hero-content flex-col md:w-auto w-[90vw] md:my-auto my-10 shadow-[0_0_10px_1px_#D1D1D1] px-10 bg-white bg-opacity-70 rounded-xl gap-8">
+              <div className="hero-content flex-col md:w-auto w-[99vw] md:my-auto my-10 md:shadow-[0_0_10px_1px_#D1D1D1] md:px-10 bg-white bg-opacity-70 rounded-xl">
                 <h1 className="text-5xl font-bold text-main pt-8">
                   Sign In now!
                 </h1>
@@ -89,7 +89,7 @@ const SignIn = () => {
                           type="emil"
                           name="email"
                           placeholder="email"
-                          className="input border border-main bg-transparent"
+                          className="input border border-main bg-transparent focus:border-dashed"
                           required
                         />
                       </div>
@@ -102,7 +102,7 @@ const SignIn = () => {
                             type={showP ? "text" : "password"}
                             name="password"
                             placeholder="password"
-                            className="input border border-main bg-transparent"
+                            className="input border border-main bg-transparent focus:border-dashed"
                             required
                           />
                           <span
@@ -135,13 +135,6 @@ const SignIn = () => {
                         </Link>
                       </p>
                     </div>
-                    <button
-                      onClick={handleGoogleSignin}
-                      className="btn z-50 border hover:border-main border-main hover:bg-transparent w-full bg-transparent font-semibold mb-3"
-                    >
-                      <FcGoogle></FcGoogle>
-                      Sign IN With Google
-                    </button>
                   </div>
                 </div>
               </div>
