@@ -8,15 +8,21 @@ import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import useAxios from "../../Hook/useAxios";
 import useAuth from "../../Hook/useAuth";
+import axios from "axios";
 
 const SignUp = () => {
+  // Image Related Functions
+  const imageHostingKey = import.meta.env.VITE_IMAGE_HOST_KEY;
+  const imageHostingAPi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
   const navigate = useNavigate();
-  const axios = useAxios();
-  const { signWithGoogle, signUpUser, updateUserProfile, signOutUser,} =
+  const axiosSecure = useAxios();
+  const { signWithGoogle, signUpUser, updateUserProfile, signOutUser } =
     useAuth();
+  // Regex For Checking Right Passwords Pattern
   const correctPassPatern = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
   const [showP, setShowp] = useState(false);
   const [error, setError] = useState("");
+  // Notify Message For Successfully Sign UP
   const notify = () =>
     toast.success("Sign Up Successful.", {
       style: {
@@ -29,21 +35,21 @@ const SignUp = () => {
         secondary: "#FFFAEE",
       },
     });
-
+  // Show And Hide Password
   const handleShowP = () => {
     setShowp(!showP);
   };
-  new Date().toDateString();
+  // Google Sign In
   const handleGoogleSignin = async () => {
     signWithGoogle()
-        .then((res) => {
+      .then((res) => {
         const userData = {
           userEmail: res.user.email,
           userName: res.user.displayName,
           userPhoto: res.user.photoURL,
           creationDate: new Date().toDateString(),
         };
-        axios.post("/createUser", userData).then((res) => {
+        axiosSecure.post("/createUser", userData).then((res) => {
           console.log(res.data);
         });
         notify();
@@ -53,15 +59,35 @@ const SignUp = () => {
         console.log(error);
       });
   };
+  // Aos Init For animation
   AOS.init();
-  const handleSubmit = (e) => {
+  // Photo Related Tasks
+  const [photoName, setPhotoName] = useState("");
+  const [photo, setPhoto] = useState("");
+  // make a form data to send the data to imagebb
+  const formData = new FormData();
+  formData.append("image", photo);
+  const handlePhotoUpload = (e) => {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const name = form.get("name");
-    const photoUrl = form.get("photoUrl");
-    const email = form.get("email");
-    const password = form.get("password");
+    setPhotoName(e.target.files[0].name);
+    setPhoto(e.target.files[0]);
+  };
 
+  // Email And Password Sign Up
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await axios.post(imageHostingAPi, formData, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    const form = e.target;
+    const name = form.name.value;
+    const photoUrl = res.data.data.display_url;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(form.email.value);
     if (password.length < 6) {
       return setError("Password should be at least 6 characters long.");
     } else if (!correctPassPatern.test(password)) {
@@ -69,7 +95,6 @@ const SignUp = () => {
         "Your password should contain at least one uppercase letter and One Special Character ."
       );
     }
-
     signUpUser(email, password)
       .then((result) => {
         e.target.reset();
@@ -104,76 +129,86 @@ const SignUp = () => {
             data-aos-anchor-placement="top"
             className="hero min-h-[80vh]"
           >
-            <div className="hero-content flex-col gap-8 bg-white bg-opacity-70 shadow-[0_0_50px_#D1D1D1] px-8 rounded-2xl ">
+            <div className="hero-content flex-col gap-8 bg-white bg-opacity-70 shadow-[0_0_10px_1px_#D1D1D1] px-8 rounded-2xl ">
               <h1 className="text-5xl font-bold pt-10  text-main">
                 Sign Up now!
               </h1>
               <div className="card backdrop-blur-3xl bg-transparent pt-3">
                 <div className="card-body">
                   <form onSubmit={handleSubmit}>
-                    <div className="md:flex gap-4">
-                      <div className="form-control lg:w-full">
-                        <label className="label">
-                          <span className="label-text">Name</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="your name"
-                          className="input bg-transparent border border-main"
-                          required
-                        />
-                      </div>
-                      <div className="form-control md:w-full">
-                        <label className="label">
-                          <span className="label-text">Photo url</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="photoUrl"
-                          placeholder="photo url"
-                          className="input bg-transparent border border-main"
-                          required
-                        />
-                      </div>
+                    {/* user Name */}
+
+                    <div className="form-control lg:w-full">
+                      <label className="label">
+                        <span className="label-text">Name</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="your name"
+                        className="input bg-transparent border border-main"
+                        required
+                      />
                     </div>
-                    <div className="md:flex gap-4">
-                      <div className="form-control w-full">
-                        <label className="label">
-                          <span className="label-text">Email</span>
-                        </label>
-                        <input
-                          type="emil"
-                          name="email"
-                          placeholder="email"
-                          className="input bg-transparent border border-main"
-                          required
-                        />
-                      </div>
-                      <div className="form-control w-full">
-                        <label className="label">
-                          <span className="label-text">Password</span>
-                        </label>
-                        <div className="form-control relative">
-                          <input
-                            type={showP ? "text" : "password"}
-                            name="password"
-                            placeholder="password"
-                            className="input bg-transparent border border-main"
-                            required
-                          />
-                          <div className="my-1 text-red-400 font-medium">
-                            {error && <p>{error}</p>}
-                          </div>
-                          <span
-                            className="absolute top-4 right-2"
-                            onClick={handleShowP}
-                          >
-                            {showP ? <GoEye /> : <GoEyeClosed />}
+                    {/* user Photo  */}
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Photo</span>
+                      </label>
+
+                      <div className="relative w-full">
+                        <label className="label absolute -z-50 input pt-2  input-bordered bg-gray-100 hover:bg-gray-100 border-dashed border-main focus:border-main w-full ">
+                          <span className="label-text ">
+                            {photoName || "Choose Profile Picture"}
                           </span>
-                        </div>
+                        </label>
+                        <input
+                          onChange={handlePhotoUpload}
+                          accept="images/*"
+                          type="file"
+                          placeholder="upload your Photo"
+                          className="input pt-2 opacity-0 input-bordered bg-gray-100 hover:bg-gray-100 border-dashed border-main focus:border-main"
+                        />
                       </div>
                     </div>
+                    {/* user Email */}
+                    <div className="form-control w-full">
+                      <label className="label">
+                        <span className="label-text">Email</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="email"
+                        className="input bg-transparent border border-main"
+                        required
+                      />
+                    </div>
+                    {/* User Password */}
+                    <div className="form-control w-full">
+                      <label className="label">
+                        <span className="label-text">Password</span>
+                      </label>
+                      <div className="form-control relative">
+                        <input
+                          type={showP ? "text" : "password"}
+                          name="password"
+                          placeholder="password"
+                          className="input bg-transparent border border-main"
+                          required
+                        />
+                        <div className="my-1 text-red-400 font-medium">
+                          {error && <p>{error}</p>}
+                        </div>
+                        <span
+                          className="absolute top-4 right-2"
+                          onClick={handleShowP}
+                        >
+                          {showP ? <GoEye /> : <GoEyeClosed />}
+                        </span>
+                      </div>
+                    </div>
+
                     <label className="flex justify-center my-2 w-full">
                       <a href="#" className="label-text-alt   link link-hover">
                         Forgot password?
@@ -182,13 +217,9 @@ const SignUp = () => {
                     <div className="form-control mt-6">
                       <button
                         type="submit"
-                        className="cursor-pointer rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
+                        className="btn bg-white hover:bg-white border-1 border-main hover:border-main"
                       >
-                        <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                          Sign Up
-                        </span>
-                        <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                        <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                        Sign In
                       </button>
                     </div>
                   </form>

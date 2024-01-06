@@ -23,11 +23,11 @@ const Dashboard = () => {
       {/* Sidebar content here */}
       <div className="absolute  bottom-4 flex ml-16 flex-col justify-center items-center">
           <img
-            src={user.photoURL}
+            src={user?.photoURL}
             className="h-20 w-20 border-2 border-main  rounded-full mx-auto "
             alt=""
           />
-          <h1 className="font-semibold text-xl mt-2">{user.displayName}</h1>
+          <h1 className="font-semibold text-xl mt-2">{user?.displayName}</h1>
           <Link to={'/'}>
           <button className=" text-black font-semibold flex justify-center gap-2 bg-red-100 p-2 rounded-sm mt-2 left-96 top-10">
           {" "}

@@ -60,7 +60,7 @@ const SignIn = () => {
     <>
       <div className="">
         <Helmet>
-          <title>Skill Exchange || Sign In</title>
+          <title>Skill Exchange | Sign In</title>
         </Helmet>
 
         <div className="flex h-screen justify-between items-center container mx-auto ">
@@ -74,7 +74,7 @@ const SignIn = () => {
               data-aos-anchor-placement="top"
               className="hero min-h-[80vh] "
             >
-              <div className="hero-content flex-col md:w-auto w-[90vw] md:my-auto my-10 shadow-[0_0_50px_#D1D1D1] px-10 bg-white bg-opacity-70 rounded-xl gap-8">
+              <div className="hero-content flex-col md:w-auto w-[90vw] md:my-auto my-10 shadow-[0_0_10px_1px_#D1D1D1] px-10 bg-white bg-opacity-70 rounded-xl gap-8">
                 <h1 className="text-5xl font-bold text-main pt-8">
                   Sign In now!
                 </h1>
