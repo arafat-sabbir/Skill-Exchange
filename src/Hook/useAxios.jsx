@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const instance = axios.create({
-  baseURL: "https://skill-exchange-server.vercel.app/api",
+  baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
 
