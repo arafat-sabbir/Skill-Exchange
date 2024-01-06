@@ -9,8 +9,8 @@ const Bookmark = () => {
   const axios = useAxios();
   const { user } = useAuth();
   // Get the Bookmark Data From Db based On user Email
-  const { data: Bookmark,refetch } = useQuery({
-    queryKey: ["bookmark",user],
+  const { data: Bookmark, refetch } = useQuery({
+    queryKey: ["bookmark", user],
     queryFn: async () => {
       const res = await axios.get(`/bookmarks?email=${user.email}`);
       return res.data;
@@ -21,7 +21,7 @@ const Bookmark = () => {
     const toastId = toast.loading("Removing Bookmark...");
     axios.delete(`/deleteBookmark/${item._id}`).then((res) => {
       if (res.data) {
-        refetch()
+        refetch();
         toast.success(" Bookmark Removed SuccessFully", { id: toastId });
       }
     });
@@ -62,13 +62,13 @@ const Bookmark = () => {
               <p className="text-black">{item.bookmarkPost.description}</p>
               <div className="flex justify-end absolute bottom-4 right-4">
                 <Link to={`/bidJob/${item.bookmarkPost._id}`}>
-                <button className="cursor-pointer rounded-sm font-semibold overflow-hidden relative z-100 border border-main group px-4 py-1">
-               <span className="relative z-10 text-black group-hover:text-white duration-500">
-                 Bid Now
-               </span>
-               <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-               <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-             </button>
+                  <button className="cursor-pointer rounded-sm font-semibold overflow-hidden relative z-100 border border-main group px-4 py-1">
+                    <span className="relative z-10 text-black group-hover:text-white duration-500">
+                      Bid Now
+                    </span>
+                    <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                    <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                  </button>
                 </Link>
               </div>
             </div>

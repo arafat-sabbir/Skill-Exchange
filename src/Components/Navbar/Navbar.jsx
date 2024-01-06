@@ -89,14 +89,14 @@ const Navbar = () => {
           <div className="hidden lg:flex text-main font-bold items-center">
           <NavLink
             to={"/"}
-              className="!flex text-main font-bold items-center"
+              className="!flex  font-bold items-center"
             >
               <img
                 className="w-22 h-14"
-                src="https://i.ibb.co/ZHDJ3R6/Skill-Exchange-1.webp"
+                src="https://i.ibb.co/8m1d6zD/Untitled-design.png"
                 alt=""
               />
-              <p className="text-2xl  font-semibold">Skill Exchange</p>
+              <p className="text-2xl text-black  font-semibold">Skill Exchange</p>
             </NavLink>
           </div>
         </div>
