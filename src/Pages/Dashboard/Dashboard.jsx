@@ -1,10 +1,13 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaListCheck } from "react-icons/fa6";
 import { IoReturnUpBack } from "react-icons/io5";
-import { FaListUl } from "react-icons/fa6";
+import { FaListUl,FaListOl,FaCodePullRequest  } from "react-icons/fa6";
 import useAuth from "../../Hook/useAuth";
 import useUserInfo from "../../Hook/useUserInfo";
 import { BiLogOutCircle } from "react-icons/bi";
+import { CgProfile } from "react-icons/cg";
+import { IoAddSharp } from "react-icons/io5";
+
 
 const Dashboard = () => {
   const { user,signOutUser } = useAuth();
@@ -87,37 +90,37 @@ const Dashboard = () => {
             {/* Routes Based on Role */}
             {/* Global Route */}
             <NavLink to={"/dashboard/profile"}>
-                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
-                    <FaListCheck className="mr-4"></FaListCheck>Profile
+                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-center text-[15px] font-medium min-w-full">
+                    <CgProfile className="mr-4 text-lg"></CgProfile>Profile
                   </button>
                 </NavLink>
             {userInfo?.role === "client" ? (
               <>
                 <NavLink to={"/dashboard/addJob"}>
-                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
-                    <FaListCheck className="mr-4"></FaListCheck> Add Job
+                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-center text-[15px] font-medium min-w-full">
+                    <IoAddSharp className="mr-4 text-lg"></IoAddSharp> Add Job
                   </button>
                 </NavLink>
                 <NavLink to={"/dashboard/myPostedJob"}>
-                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
-                    <FaListCheck className="mr-4"></FaListCheck> My Posted job
+                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-center text-[15px] font-medium min-w-full">
+                    <FaListOl className="mr-4"></FaListOl> My Posted job
                   </button>
                 </NavLink>
                 <NavLink to={"/dashboard/bidRequest"}>
-                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
-                    <FaListCheck className="mr-4"></FaListCheck> Bid Requests
+                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-center text-[15px] font-medium min-w-full">
+                    <FaCodePullRequest className="mr-4"></FaCodePullRequest> Bid Requests
                   </button>
                 </NavLink>
               </>
             ) : userInfo.role==="freelancer"?(
               <>
               <NavLink to={"/dashboard/myBids"}>
-                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
+                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-center text-[15px] font-medium min-w-full">
                     <FaListCheck className="mr-4"></FaListCheck> My Bids
                   </button>
                 </NavLink>
                 <NavLink to={"/dashboard/bookmarks"}>
-                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
+                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-center text-[15px] font-medium min-w-full">
                     <FaListCheck className="mr-4"></FaListCheck> Bookmarks
                   </button>
                 </NavLink>

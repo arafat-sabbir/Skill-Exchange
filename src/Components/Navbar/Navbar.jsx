@@ -96,7 +96,7 @@ const Navbar = () => {
                   {user.email}
                 </p>
                 <li className="btn w-9/12 mx-auto btn-sm mt-2 btn-outline btn-success">
-                  <NavLink to={"/profile"}>View Profile</NavLink>
+                  <NavLink to={"/dashboard/profile"}>View Profile</NavLink>
                 </li>
 
                 <li className="mt-4">
