@@ -13,6 +13,7 @@ import BidJob from "../../Pages/BidJobs/BidJob";
 import UpdateJob from "../../Pages/UpdateJob/UpdateJob";
 import Bookmark from "../../Pages/Bookmark/Bookmark";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
+import Profile from "../../Pages/Profile/Profile";
 
 const routes = createBrowserRouter([
   {
@@ -77,14 +78,16 @@ const routes = createBrowserRouter([
       {
         path: "myBids",
         element: (
-          <PrivateRoute>
             <MyBids></MyBids>
-          </PrivateRoute>
         ),
       },
       {
-        path: "bookmark",
+        path: "bookmarks",
         element: <Bookmark></Bookmark>,
+      },
+      {
+        path: "profile",
+        element:<Profile></Profile>,
       }
     ],
   },

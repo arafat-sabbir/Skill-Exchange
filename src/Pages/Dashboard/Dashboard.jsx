@@ -85,6 +85,12 @@ const Dashboard = () => {
               </div>
             </div>
             {/* Routes Based on Role */}
+            {/* Global Route */}
+            <NavLink to={"/dashboard/profile"}>
+                  <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
+                    <FaListCheck className="mr-4"></FaListCheck>Profile
+                  </button>
+                </NavLink>
             {userInfo?.role === "client" ? (
               <>
                 <NavLink to={"/dashboard/addJob"}>
@@ -110,7 +116,7 @@ const Dashboard = () => {
                     <FaListCheck className="mr-4"></FaListCheck> My Bids
                   </button>
                 </NavLink>
-                <NavLink to={"/dashboard/myPostedJob"}>
+                <NavLink to={"/dashboard/bookmarks"}>
                   <button className="text-center py-2 bg-red-100 px-12  flex items-center mt-10 justify-between min-w-full">
                     <FaListCheck className="mr-4"></FaListCheck> Bookmarks
                   </button>

@@ -20,25 +20,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      {user && (
-        <ul className="lg:flex">
-          <li>
-            <NavLink to={"/addJob"}>Add Job</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/myPostedJob"}>My Posted Job</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/myBids"}>My Bids</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/bidRequest"}>Bid Requests</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/bookmark"}>My Bookmark</NavLink>
-          </li>
-        </ul>
-      )}
+      <li>
+        <NavLink to={"/dashboard/profile"}>DashBoard</NavLink>
+      </li>
     </>
   );
   return (
@@ -116,7 +100,7 @@ const Navbar = () => {
                 </li>
 
                 <li className="mt-4">
-                  <NavLink to={"/dashBoard"}>DashBoard</NavLink>
+                  <NavLink to={"/dashBoard/profile"}>DashBoard</NavLink>
                 </li>
                 <button onClick={handleSignOut}>
                   Sign Out
