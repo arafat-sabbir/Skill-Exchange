@@ -6,13 +6,13 @@ const Banner = () => {
     <div className="">
       <div className="flex  container flex-col-reverse lg:flex-row p-4 md:p-auto mx-auto place-items-center lg:h-[65vh]">
         <div className="flex-1 text-3xl text-black font-semibold leading-[50px]">
-          <div className="mb-4 border-l-4 border-[#007456]">
+          <div className="mb-4 md:text-4xl text-center md:text-start leading-10 text-2xl md:border-l-4 md:border-[#007456]">
             <h1 className=" ml-4">
-              <span className="md:text-4xl text-3xl">Worried About Jobs?</span>{" "}
+              <span className="">Worried About Jobs?</span>
               <br /> Can't Find The Job You're Looking For!
             </h1>
           </div>
-          <div className="mb-4 border-l-4 border-[#007456] mt-6">
+          <div className="mb-4 md:text-4xl text-center md:text-start leading-10 text-2xl md:border-l-4 md:border-[#007456] mt-6">
             <h1 className=" ml-4">
               {" "}
               On <span className=" text-[#007456]"> Skill-Exchange</span>
@@ -34,7 +34,7 @@ const Banner = () => {
               />
             </h1>
           </div>
-          <div className="flex items-center pt-10 pb-10 p-4 md:h-40 ">
+          <div className=" hidden md:flex items-center pt-10 pb-10 p-4 md:h-40 ">
             <div className="flex flex-col md:flex-row">
               <div className="flex items-start h-28 md:w-40 w-60 justify-center px-4 mx-0.5 my-0.5 border-r-4 border-[#007456]">
                 <div className="flex-col">

@@ -25,7 +25,7 @@ const Dashboard = () => {
     <div className="flex">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
+        <div className="drawer-content !h-full">
           {/* Page content here */}
           <Outlet></Outlet>
           <label

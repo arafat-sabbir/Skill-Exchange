@@ -53,19 +53,19 @@ const AddJob = () => {
     },
   });
   return (
-    <div>
+    <div className="h-screen flex flex-col justify-center">
       <Helmet>
         <title>Skill Exchange || Add Jobs</title>
       </Helmet>
+      <form
+        onSubmit={handleAddJob}
+        className="flex w-1/2 mx-auto p-16  flex-col justify-center shadow-2xl"
+      >
         <h3 className=" font-semibold text-3xl text-center">
           Add Job
         </h3>
-      <form
-        onSubmit={handleAddJob}
-        className="flex container flex-col justify-center border-4"
-      >
-        <div className="">
-          <div className="form-control">
+        <div className="flex gap-3 my-6">
+          <div className="form-control w-full">
             <label className="label">
               <span className="label-text text-main">Email</span>
             </label>
@@ -78,7 +78,7 @@ const AddJob = () => {
               required
             />
           </div>
-          <div className="form-control ">
+          <div className="form-control w-full">
             <label className="label">
               <span className="label-text text-main">DeadLine</span>
             </label>
@@ -91,7 +91,7 @@ const AddJob = () => {
             />
           </div>
         </div>
-        <div className="flex ">
+        <div className="flex  gap-3 ">
           <input
             className=" input mx-auto input-bordered border-main bg-white w-full lg:w-[50%] lg:mb-4 my-6 lg:my-auto "
             type="text"
@@ -113,7 +113,7 @@ const AddJob = () => {
             <option>Graphics Design</option>
           </select>
         </div>
-        <div className="flex ">
+        <div className="flex  gap-3 ">
           <input
             className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
             type="text"
@@ -132,11 +132,11 @@ const AddJob = () => {
           />
         </div>
         <textarea
-          className="border"
+          className="border rounded-xl p-4"
           name="description"
           id=""
           cols="10"
-          rows="10"
+          rows="6"
           placeholder="Job Description"
           required
         ></textarea>
