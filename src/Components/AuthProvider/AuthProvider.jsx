@@ -67,7 +67,6 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         axios.post("/user/accessToken", useremail,)
         .then((res) => {
-            console.log(res.data);
           });
       } else {
         axios.post("/user/signOut", {user:user?.email}, {

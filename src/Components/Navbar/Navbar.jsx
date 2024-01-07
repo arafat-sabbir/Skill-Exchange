@@ -3,9 +3,8 @@ import "../Navbar/Navbar.css";
 import useAuth from "../../Hook/useAuth";
 
 const Navbar = () => {
-
-
   const { user, signOutUser } = useAuth();
+
   const handleSignOut = () => {
     signOutUser()
       .then((result) => {
@@ -15,7 +14,6 @@ const Navbar = () => {
         console.log(error);
       });
   };
-
 
   const links = (
     <>
@@ -38,9 +36,6 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink to={"/bookmark"}>My Bookmark</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/dashBoard"}>DashBoard</NavLink>
           </li>
         </ul>
       )}
@@ -75,16 +70,15 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="hidden lg:flex text-main font-bold items-center">
-          <NavLink
-            to={"/"}
-              className="!flex  font-bold items-center"
-            >
+            <NavLink to={"/"} className="!flex  font-bold items-center">
               <img
                 className="w-10 h-10"
                 src="https://i.ibb.co/8m1d6zD/Untitled-design.png"
                 alt=""
               />
-              <p className="text-2xl text-black  font-semibold">Skill Exchange</p>
+              <p className="text-2xl text-black  font-semibold">
+                Skill Exchange
+              </p>
             </NavLink>
           </div>
         </div>
@@ -105,7 +99,7 @@ const Navbar = () => {
               )}
             </label>
             {user && (
-              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-56">
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-72 ">
                 <img
                   className=" w-12 mx-auto  rounded-full mb-2 mt-2 border-2 border-main"
                   src={user?.photoURL ? user.photoURL : ""}
@@ -117,15 +111,15 @@ const Navbar = () => {
                 <p className="font-semibold text-center mr-2 mb-2  text-main ">
                   {user.email}
                 </p>
-                <button
-                  onClick={handleSignOut}
-                  className="cursor-pointer w-11/12 mx-auto  rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-2 py-1 mb-2"
-                >
-                  <span className="relative z-10 text-main group-hover:text-white text-lg duration-500">
-                    Sign Out
-                  </span>
-                  <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                  <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+                <li className="btn w-9/12 mx-auto btn-sm mt-2 btn-outline btn-success">
+                  <NavLink to={"/profile"}>View Profile</NavLink>
+                </li>
+
+                <li className="mt-4">
+                  <NavLink to={"/dashBoard"}>DashBoard</NavLink>
+                </li>
+                <button onClick={handleSignOut}>
+                  Sign Out
                 </button>
               </ul>
             )}

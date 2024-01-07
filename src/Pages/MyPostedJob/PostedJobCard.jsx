@@ -18,9 +18,11 @@ const PostedJobCard = ({ job, handleDelete }) => {
             Price : ${minPrice}-${maxPrice}
           </p>
           <div className="flex gap-20 ">
-            <Link to={`/updatejob/${_id}`}>
-              <button className="flex z-50 justify-center items-center gap-2 w-28 h-12 cursor-pointer rounded-md shadow-2xl text-white font-semibold bg-gradient-to-r from-[#34D399] via-[#10B981] to-[#059669]
- hover:shadow-xl hover:shadow-green-500 hover:scale-105 duration-300 hover:from-[#059669] ">
+            <Link to={`/dashboard/updatejob/${_id}`}>
+              <button
+                className="flex z-50 justify-center items-center gap-2 w-28 h-12 cursor-pointer rounded-md shadow-2xl text-white font-semibold bg-gradient-to-r from-[#34D399] via-[#10B981] to-[#059669]
+                hover:shadow-xl hover:shadow-green-500 hover:scale-105 duration-300 hover:from-[#059669] "
+              >
                 Update<RxUpdate></RxUpdate>
               </button>
             </Link>
