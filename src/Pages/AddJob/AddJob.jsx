@@ -57,15 +57,15 @@ const AddJob = () => {
       <Helmet>
         <title>Skill Exchange || Add Jobs</title>
       </Helmet>
-        <h3 className="  my-16 font-semibold text-3xl text-center">
+        <h3 className=" font-semibold text-3xl text-center">
           Add Job
         </h3>
       <form
         onSubmit={handleAddJob}
-        className="flex container lg:w-auto w-[90vw] mx-auto bg-[#F3F3F3] rounded-xl duration-500 hover:shadow-[0_0_10px_#007456] lg:py-36 py-20 flex-col my-12 justify-center border-2 lg:px-12"
+        className="flex container flex-col justify-center border-4"
       >
-        <div className="flex lg:flex-row flex-col w-[90%] lg:w-9/12 lg:gap-4  mx-auto lg:justify-center">
-          <div className="form-control lg:w-[50%]  -mt-10 lg:mb-4 mb-10 mx-auto w-full ">
+        <div className="">
+          <div className="form-control">
             <label className="label">
               <span className="label-text text-main">Email</span>
             </label>
@@ -78,8 +78,7 @@ const AddJob = () => {
               required
             />
           </div>
-
-          <div className="form-control lg:w-[50%] mx-auto w-full -mt-10">
+          <div className="form-control ">
             <label className="label">
               <span className="label-text text-main">DeadLine</span>
             </label>
@@ -92,7 +91,7 @@ const AddJob = () => {
             />
           </div>
         </div>
-        <div className="flex lg:flex-row flex-col w-[90%] lg:w-9/12 lg:gap-4  mx-auto lg:justify-center">
+        <div className="flex ">
           <input
             className=" input mx-auto input-bordered border-main bg-white w-full lg:w-[50%] lg:mb-4 my-6 lg:my-auto "
             type="text"
@@ -114,7 +113,7 @@ const AddJob = () => {
             <option>Graphics Design</option>
           </select>
         </div>
-        <div className="flex lg:flex-row flex-col w-[90%] lg:w-9/12 lg:gap-4  mx-auto lg:justify-center">
+        <div className="flex ">
           <input
             className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
             type="text"
@@ -133,7 +132,7 @@ const AddJob = () => {
           />
         </div>
         <textarea
-          className="border lg:w-9/12 w-[90%] mx-auto border-main rounded-lg p-2"
+          className="border"
           name="description"
           id=""
           cols="10"
