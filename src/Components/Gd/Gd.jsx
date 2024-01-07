@@ -38,9 +38,9 @@ const Gd = () => {
       {data?.data?.map((gd) => (
       <div
       key={gd._id}
-      className=" lg:w-[600px] w-[90vw]  duration-300 border tracking-wide font-medium shadow-[0_0_40px_#D1D1D1]"
+      className=" lg:w-[600px] w-[90vw]  duration-300 border tracking-wide font-medium relative shadow-[0_0_40px_#D1D1D1] pb-6"
     >
-      <div className="card-body">
+      <div className="card-body  ">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl text-black font-semibold ">
             {gd?.jobtitle}
@@ -58,7 +58,7 @@ const Gd = () => {
         <p className="text-black">Deadline : {gd.deadline}</p>
         <p className="text-black">Seller : {gd.sellerEmail}</p>
         <p className="text-black">{gd.description}</p>
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-end absolute bottom-6 right-4">
           <Link to={`/bidJob/${gd._id}`}>
             <button className="cursor-pointer rounded-full font-semibold overflow-hidden relative z-100 border border-main group px-4">
               <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
