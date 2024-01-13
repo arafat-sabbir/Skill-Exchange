@@ -37,7 +37,7 @@ const BidRequest = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="lg:container w-[97vw] mx-auto">
       <Helmet>
         <title>Skill Exchange || Bid Requests</title>
       </Helmet>
@@ -46,8 +46,8 @@ const BidRequest = () => {
         <UseLoading></UseLoading>
       ) : (
         
-        <div className="border-2 rounded-xl">
-            <table className="lg:w-full overflow-x-auto">
+        <div className="border-2 rounded-xl  overflow-x-scroll lg:overflow-hidden">
+            <table className="lg:w-full">
             <thead>
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">
