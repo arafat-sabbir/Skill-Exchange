@@ -72,14 +72,14 @@ const Dashboard = () => {
               {/* Navigation */}
               <div className="absolute bottom-4  w-full flex flex-col items-center">
                 <Link to={"/"} className="w-full">
-                  <button className="text-lg font-bold  flex justify-center gap-2 text-red-400 p-2 rounded-sm mt-2 left-80 hover:bg-red-100 w-full hover:text-black transition-all duration-300 top-10">
+                  <button className="text-lg font-bold  flex justify-center gap-2 text-green-700 p-2 rounded-sm mt-2 left-80 hover:bg-red-100 w-full hover:text-black transition-all duration-300 top-10">
                     <span className="text-2xl">
                       <IoReturnUpBack />
                     </span>
                      Home
                   </button>
                 </Link>
-                <button onClick={handleSignOut} className="w-full text-lg font-bold  flex justify-center gap-2 text-red-400 p-2 rounded-sm mt-2 left-80 hover:bg-red-100 hover:text-black transition-all duration-300 top-10">
+                <button onClick={handleSignOut} className="w-full text-lg font-bold  flex justify-center gap-2 text-green-700 p-2 rounded-sm mt-2 left-80 hover:bg-red-100 hover:text-black transition-all duration-300 top-10">
                     <span className="text-2xl">
                       <BiLogOutCircle />
                     </span>{" "}

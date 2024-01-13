@@ -61,7 +61,7 @@ const Wcu = () => {
             <div className="item">
               {" "}
               <span className="icon feature_box_col_five flex justify-center items-center mx-auto">
-                <img src="https://i.ibb.co/RyB1CXY/icons8-update-64.png" alt="" />
+                <img src="https://i.ibb.co/bQMKNch/icons8-update-64.png" alt="" />
               </span>
               <h6 className="font-semibold text-xl">Update Anytime</h6>
               <p>
@@ -73,7 +73,7 @@ const Wcu = () => {
             <div className="item">
               {" "}
               <span className="icon feature_box_col_six flex justify-center items-center mx-auto">
-                <img src="https://i.ibb.co/VWyYR2T/icons8-multiple-choice-64.png" alt="" />
+                <img src="https://i.ibb.co/dJKcdNP/icons8-category-48.png" alt="" />
               </span>
               <h6 className="font-semibold text-xl">Multiple Category</h6>
               <p>
