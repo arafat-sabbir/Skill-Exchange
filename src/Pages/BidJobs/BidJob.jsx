@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
+import JobDetailPage from "./JobDetailPage";
+import BidJobForm from "../../Utility/Forms/BidJobForm";
 
 const BidJob = () => {
   const { user } = useAuth();
@@ -28,8 +30,8 @@ const BidJob = () => {
     },
     onSuccess: (data) => {
       if (data.data.acknowledged) {
-        navigate("/myBids");
-        toast.success("SuccessFully Bidded Job");
+        navigate("/dashboard/myBids");
+        toast.success("SuccessFully Bided Job");
       }
     },
     onError: (error) => {
@@ -37,7 +39,7 @@ const BidJob = () => {
       // Handle the error or display an error message to the user
     },
   });
-  const [isButtonDisabled, setisButtonDisabled] = useState(false);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
 
   const handleBid = (e) => {
     e.preventDefault();
@@ -50,6 +52,18 @@ const BidJob = () => {
     const sellerEmail = JobDetail?.sellerEmail;
     const deadline = JobDetail?.deadline;
     const bidded = "1";
+    // Check The Day Difference Between Deadline And Today
+    const DeadlineDate = new Date(JobDetail?.deadline);
+    const unixToday = new Date(Date.now());
+    const dayDifferent = Math.floor(
+      (DeadlineDate - unixToday) / (1000 * 60 * 60 * 24)
+    );
+    // Validate Deadline And Post Author
+    if (dayDifferent < 1) {
+      return toast.error("Can't Bid Job Deadline Is Over")
+    } else if (user?.email === JobDetail?.sellerEmail) {
+      return toast.error("You Can't Bid Your Own Job")
+    }
 
     // Use the 'mutate' function to send the data to the server
     mutate({
@@ -64,19 +78,6 @@ const BidJob = () => {
     });
   };
 
-  const DeadlineDate = new Date(JobDetail?.deadline);
-  const unixtoday = new Date(Date.now());
-  const daydifferent = Math.floor(
-    (DeadlineDate - unixtoday) / (1000 * 60 * 60 * 24)
-  );
-
-  useEffect(() => {
-    if (user?.email === JobDetail?.sellerEmail) {
-      setisButtonDisabled(true);
-    } else if (daydifferent < 1) {
-      setisButtonDisabled(true);
-    }
-  }, [JobDetail.sellerEmail, user?.email, daydifferent]);
   const { data: review, refetch } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
@@ -84,14 +85,15 @@ const BidJob = () => {
       return res.data;
     },
   });
-  console.log(review);
-  const reviewref = useRef();
+  // Review TextArea Ref
+  const reviewRef = useRef();
+  // Submit Review Function
   const handleSubmitReview = (id) => {
-    const review = reviewref.current.value;
+    const review = reviewRef.current.value;
     if (!review) {
       return toast.error("Review Can't Be Empty");
     }
-    reviewref.current.value = "";
+    reviewRef.current.value = "";
     const tid = toast.loading("Submitting Review");
     const reviewDetail = {
       ReviewerName: user.displayName,
@@ -117,183 +119,18 @@ const BidJob = () => {
       <div className="flex justify-center items-center">
         <div className="grid  justify-items-center container mx-auto my-2">
           {/* Previous Job Detail */}
-          <div className="min-w-5xl w-[600px] shadow-[0_0_70px_#E0E0E0] px-8 py-4 bg-white rounded-lg  dark:bg-gray-800">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-light text-gray-600 dark:text-gray-400">
-               Deadline : {JobDetail.deadline}
-              </span>
-              <button className="px-3 py-1 text-sm font-bold text-gray-100 transition-duration-300 transform bg-gray-600 rounded cursor-pointer ">
-               {JobDetail.category}
-              </button>
-            </div>
-            <div className="mt-2">
-              <p className="text-xl font-bold text-gray-700 dark:text-white dark:hover:text-gray-200 ">
-              {JobDetail?.jobtitle}
-              </p>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">adfa</p>
-            </div>
-
-            <div className="flex items-center justify-between mt-4">
-            <button
-                className="text-black border p-1 hover:border-gray-700 hover:scale-95 transition duration-300 font-semibold w-[100px] "
-                onClick={() =>
-                  document.getElementById("my_modal_1").showModal()
-                }
-              >
-                Review job
-              </button>
-              <dialog id="my_modal_1" className="modal">
-                <div className="modal-box pt-14">
-                  <textarea
-                    ref={reviewref}
-                    className="border-2 border-main flex p-4  justify-center ml-8 rounded-xl"
-                    name="text-area"
-                    id=""
-                    cols="40"
-                    rows="6"
-                    placeholder="Your Review"
-                  ></textarea>
-                  <div className="modal-action">
-                    <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button>Cancel</button>
-                      <button
-                        onClick={() => handleSubmitReview(JobDetail._id)}
-                        className="ml-4"
-                      >
-                        Submit
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </dialog>
-
-              <div className="flex items-center">
-                <img
-                  className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
-                  src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80"
-                  alt="avatar"
-                />
-                <a
-                  className="font-bold text-gray-700 cursor-pointer dark:text-gray-200"
-                  tabIndex="0"
-                >
-                  Khatab wedaa
-                </a>
-              </div>
-            </div>
-          </div>
+          <JobDetailPage JobDetail={JobDetail} handleSubmitReview={handleSubmitReview} reviewRef={reviewRef}></JobDetailPage>
           {/* Previous job detail end */}
         </div>
       </div>
       {/* Bidding Form Start */}
-      <div className="border shadow-[5px_5px_10px_] border-main mx-auto lg:max-w-4xl w-[90vw] my-10 rounded-3xl">
-        <div className="w-[286px] my-10   text-center mx-auto h-[56px] bg-no-repeat flex ">
-          <h3 className="font-semibold text-3xl text-center ml-14 text-main">
-            Bidding Info
-          </h3>
-        </div>
-        <div>
-          <form
-            onSubmit={handleBid}
-            className="lg:w-1/2  w-[90%] mx-auto mb-20"
-          >
-            <div className="md:flex gap-4">
-              <div className="form-control lg:w-full">
-                <label className="label">
-                  <span className="label-text">Your Email</span>
-                </label>
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="your email"
-                  className="input bg-transparent border border-main"
-                  required
-                  defaultValue={user?.email}
-                  disabled
-                />
-              </div>
-              <div className="form-control md:w-full">
-                <label className="label">
-                  <span className="label-text">Seller Email</span>
-                </label>
-                <input
-                  type="text"
-                  name="sellerEmail"
-                  className="input bg-transparent border border-main"
-                  required
-                  defaultValue={JobDetail.sellerEmail}
-                  disabled
-                />
-              </div>
-            </div>
-            <div className="md:flex gap-4">
-              <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text">Bidding Amount</span>
-                </label>
-                <input
-                  type="text"
-                  name="biddingAmount"
-                  placeholder="bidding amount"
-                  className="input bg-transparent border border-main"
-                  required
-                />
-              </div>
-              <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text">Deadline</span>
-                </label>
-                <div className="form-control relative">
-                  <input
-                    type="date"
-                    name="deadline"
-                    className="input bg-transparent border border-main"
-                    required
-                  />
-
-                  <div className="my-1 text-red-400 font-medium"></div>
-                  <span className="absolute top-4 right-2"></span>
-                </div>
-              </div>
-            </div>
-            <div className="form-control mt-6">
-              <button
-                disabled={isButtonDisabled}
-                type="submit"
-                className={
-                  isButtonDisabled
-                    ? "cursor-none bg-gray-100 px-6 py-2 rounded-2xl  "
-                    : " rounded-2xl text-black font-semibold overflow-hidden relative z-100 border border-main group px-6 py-2"
-                }
-              >
-                <p className="text-red-500 font-semibold">
-                  {daydifferent < 1 ? "Can't Bid Deadline Is Over" : ""}
-                </p>
-                <p className="text-red-500 font-semibold">
-                  {user?.email === JobDetail?.sellerEmail
-                    ? "You Cant Bid Your Own Job"
-                    : ""}
-                </p>
-                <span className="relative z-10  text-black group-hover:text-white text-lg duration-500">
-                  Bid on The Project
-                </span>
-                {isButtonDisabled ? (
-                  ""
-                ) : (
-                  <div>
-                    <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                    <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-                  </div>
-                )}
-              </button>
-            </div>
-          </form>
-        </div>
+      <div>
+        <BidJobForm handleBid={handleBid} isButtonDisabled={isButtonDisabled} user={user} JobDetail={JobDetail} ></BidJobForm>
+        {/* Bidding End */}
       </div>
       <div>
         <h3 className="text-3xl font-semibold text-center  my-10">
-          Client Review On This Post
+          Freelancer Review On This Client
         </h3>
         {review ? (
           <div className="grid grid-cols-1 md:grid-cols-2 mb-10 lg:grid-cols-3 gap-10 justify-items-center">

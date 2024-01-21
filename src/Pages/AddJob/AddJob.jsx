@@ -59,7 +59,7 @@ const AddJob = () => {
             disabled
             type="email"
             placeholder="email"
-            className="input  input-bordered border rounded-sm border-gray-500 focus:border-main focus:outline-none"
+            className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
             defaultValue={user?.email}
             required
           />
@@ -72,13 +72,13 @@ const AddJob = () => {
             name="deadline"
             type="date"
             placeholder="Deadline"
-            className="input  input-bordered border rounded-sm border-gray-500 focus:border-main focus:outline-none"
+            className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
             required
           />
         </div>
         <div className="flex  gap-3 ">
           <input
-            className=" input mx-auto input-bordered border-main bg-white w-full lg:w-[50%] lg:mb-4 my-6 lg:my-auto "
+            className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main w-[50%]"
             type="text"
             name="title"
             placeholder="Job Title"
@@ -88,7 +88,7 @@ const AddJob = () => {
           <select
             required
             onChange={handleCategory}
-            className="select border-main w-full  select-bordered lg:w-[50%] mb-4 lg:mb-auto"
+            className="select border-gray-500 focus:border-main w-full rounded-sm  select-bordered lg:w-[50%] mb-4 lg:mb-auto"
           >
             <option disabled selected>
               Choose A Category?
@@ -100,7 +100,7 @@ const AddJob = () => {
         </div>
         <div className="flex  gap-3 ">
           <input
-            className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
+            className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main w-[50%]"
             type="text"
             name="minPrice"
             id=""
@@ -108,7 +108,7 @@ const AddJob = () => {
             required
           />
           <input
-            className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
+            className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main w-[50%]"
             type="text"
             name="maxPrice"
             id=""

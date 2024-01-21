@@ -38,7 +38,7 @@ const MyBids = () => {
       {isLoading ? (
         <UseLoading></UseLoading>
       ) : (
-        <div className="border overflow-x-scroll rounded-xl">
+        <div className="border overflow-x-scroll lg:overflow-x-hidden rounded-xl">
           <table className="min-w-full divide-y divide-gray-200 ">
             <thead>
               <tr>
