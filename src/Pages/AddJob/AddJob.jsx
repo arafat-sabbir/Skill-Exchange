@@ -31,7 +31,7 @@ const AddJob = () => {
     axios.post("/add-jobs", jobData)
     .then(data=>{
       if (data.data.acknowledged) {
-        navigate('/myPostedJob')
+        navigate('/dashboard/myPostedJob')
         return toast.success("Job added successfully");
       }
     })

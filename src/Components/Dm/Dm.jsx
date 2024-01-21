@@ -19,13 +19,16 @@ const Dm = () => {
   });
   const { user } = useAuth();
   const handleaddtoBookmark = (post) => {
+    if(user.email===post.sellerEmail){
+      return toast.error("You can't Bookmark Your Own Job")
+    }
     const bookmarkData = {
       bookmarkUser: user.email,
       bookmarkPost: post,
     };
     axios.post("/addtobookmark", bookmarkData).then((res) => {
       if (res.data.insertedId) {
-        toast.success("Post Added To Bookmark SuccessFully");
+        toast.success("Post Bookmarked SuccessFully");
       }
     });
   };
@@ -36,41 +39,63 @@ const Dm = () => {
   ) : (
     <div className="grid lg:grid-cols-1 xl:grid-cols-2  gap-10 justify-items-center container mx-auto my-12">
       {data?.data?.map((dm) => (
-        <div
-        key={dm._id}
-        className=" lg:w-[600px] w-[90vw]  duration-300 border tracking-wide font-medium relative shadow-[0_0_40px_#D1D1D1] pb-6"
-      >
-        <div className="card-body  ">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl text-black font-semibold ">
-              {dm?.jobtitle}
-            </h2>
+      <div key={dm._id}>
+      <div className="min-w-5xl lg:w-[600px] w-[98vw] shadow-[0_0_70px_#E0E0E0] px-8 py-4 bg-white rounded-lg  dark:bg-gray-800">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-light text-gray-600 dark:text-gray-400">
+            Deadline : {dm.deadline}
+          </span>
+          <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-duration-300 transform bg-gray-600 rounded cursor-pointer ">
+            {dm.category}
+          </p>
+
+        </div>
+        <div className="my-2">
+          <p className="text-xl py-2 font-bold text-gray-700 dark:text-white dark:hover:text-gray-200 ">
+            {dm?.jobtitle}
+          </p>
+          <p className="text-black py-1">
+            <span className="font-semibold">Price :</span> ${dm.minPrice} - ${dm.maxPrice}
+          </p>
+          <p className="text-black py-2"> <span className="font-semibold">Seller :</span> {dm.sellerEmail}</p>
+        </div>
+
+        <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center">
+            <p
+              className="font-bold text-gray-700 cursor-pointer dark:text-gray-200"
+            >
+              {dm.sellerName}
+            </p>
+            <img
+              className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
+              src={dm.sellerPhoto}
+              alt="Seller Image"
+            />
+
+          </div>
+          {/* Review Job Button */}
+          <div className="flex justify-center items-center gap-2">
             <button
               onClick={() => handleaddtoBookmark(dm)}
-              className="p-2  font-bold text-xl"
+              className="p-2 font-bold text-xl"
             >
               <IoBookmarkOutline />
             </button>
-          </div>
-          <p className="text-black">
-            Price : ${dm.minPrice} - ${dm.maxPrice}
-          </p>
-          <p className="text-black">Deadline : {dm.deadline}</p>
-          <p className="text-black">Seller : {dm.sellerEmail}</p>
-          <p className="text-black">{dm.description}</p>
-          <div className="card-actions justify-end absolute bottom-6 right-4">
             <Link to={`/bidJob/${dm._id}`}>
-              <button className="cursor-pointer rounded-full font-semibold overflow-hidden relative z-100 border border-main group px-4">
-                <span className="relative z-10 text-black group-hover:text-white text-lg duration-500">
-                  Bid Now
-                </span>
-                <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-                <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+              <button
+                className="text-black border p-1 border-gray-500 hover:border-main hover:scale-95 transition duration-300 font-semibold w-[100px] "
+              >
+                Bid Job
               </button>
             </Link>
           </div>
+
+          {/* Seller Information */}
+
         </div>
       </div>
+    </div>
       ))}
     </div>
   );
