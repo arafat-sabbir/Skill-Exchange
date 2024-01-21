@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const AddJob = () => {
   const axios = useAxios();
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [category, setCategory] = useState("");
   const handleCategory = (e) => {
     const category = e.target.value;
@@ -31,9 +31,8 @@ const AddJob = () => {
     axios.post("/add-jobs", jobData)
     .then(data=>{
       if (data.data.acknowledged) {
-        navigate('/dashboard/myPostedJob')
+        navigate('/myPostedJob')
         return toast.success("Job added successfully");
-
       }
     })
     .catch((error)=>{
@@ -42,43 +41,40 @@ const AddJob = () => {
 
   };
   return (
-    <div className="h-screen flex flex-col justify-center">
+    <div className=" flex flex-col justify-center">
       <Helmet>
         <title>Skill Exchange || Add Jobs</title>
       </Helmet>
       <form
         onSubmit={handleAddJob}
-        className="flex w-1/2 mx-auto p-16  flex-col justify-center shadow-2xl"
+        className="flex lg:w-1/2 w-[90vw] mt-16 space-y-6 mx-auto p-16  flex-col justify-center shadow-2xl"
       >
-        <h3 className=" font-semibold text-3xl text-center">
-          Add Job
-        </h3>
-        <div className="flex gap-3 my-6">
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text text-main">Email</span>
-            </label>
-            <input
-              disabled
-              type="email"
-              placeholder="email"
-              className="input input-bordered border-main"
-              defaultValue={user?.email}
-              required
-            />
-          </div>
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text text-main">DeadLine</span>
-            </label>
-            <input
-              name="deadline"
-              type="date"
-              placeholder="Deadline"
-              className="input input-bordered border-main"
-              required
-            />
-          </div>
+        <h3 className=" font-semibold text-3xl text-center">Add Job</h3>
+
+        <div className="form-control w-full">
+          <label className="label">
+            <span className="label-text text-main">Email</span>
+          </label>
+          <input
+            disabled
+            type="email"
+            placeholder="email"
+            className="input  input-bordered border rounded-sm border-gray-500 focus:border-main focus:outline-none"
+            defaultValue={user?.email}
+            required
+          />
+        </div>
+        <div className="form-control w-full">
+          <label className="label">
+            <span className="label-text text-main">DeadLine</span>
+          </label>
+          <input
+            name="deadline"
+            type="date"
+            placeholder="Deadline"
+            className="input  input-bordered border rounded-sm border-gray-500 focus:border-main focus:outline-none"
+            required
+          />
         </div>
         <div className="flex  gap-3 ">
           <input
@@ -105,37 +101,34 @@ const AddJob = () => {
         <div className="flex  gap-3 ">
           <input
             className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
-            type="number"
+            type="text"
             name="minPrice"
+            id=""
             placeholder="Min Price"
             required
           />
           <input
             className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
-            type="number"
+            type="text"
             name="maxPrice"
+            id=""
             placeholder="Max Price"
             required
           />
         </div>
         <textarea
-          className="border rounded-xl p-4"
+          className="border border-gray-500 focus:border-main focus:outline-none rounded-sm p-2"
           name="description"
-          id=""
           cols="10"
-          rows="6"
+          rows="4"
           placeholder="Job Description"
           required
         ></textarea>
         <button
           type="submit"
-          className="cursor-pointer my-8 lg:mb-auto lg:w-9/12 w-[90%] mx-auto rounded-2xl font-semibold overflow-hidden relative z-100 border border-main group px-8 py-2"
+          className="cursor-pointer mx-auto font-semibold   border  px-12 border-gray-500 focus:border-main focus:outline-none py-2"
         >
-          <span className="relative z-10 text-main group-hover:text-white text-xl duration-500">
-            Add Job
-          </span>
-          <span className="absolute w-full h-full bg-main -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-          <span className="absolute w-full h-full bg-main -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+          Add Job
         </button>
       </form>
     </div>
