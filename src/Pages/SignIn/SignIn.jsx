@@ -89,7 +89,7 @@ const SignIn = () => {
                           type="emil"
                           name="email"
                           placeholder="email"
-                          className="input border border-main bg-transparent focus:border-dashed"
+                          className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                           required
                         />
                       </div>
@@ -102,7 +102,7 @@ const SignIn = () => {
                             type={showP ? "text" : "password"}
                             name="password"
                             placeholder="password"
-                            className="input border border-main bg-transparent focus:border-dashed"
+                            className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                             required
                           />
                           <span

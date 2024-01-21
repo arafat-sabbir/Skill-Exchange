@@ -98,7 +98,7 @@ const SignUp = () => {
       });
   };
   return (
-    <div className="">
+    <>
       <Helmet>
         <title>Skill Exchange || Sign Up</title>
       </Helmet>
@@ -113,7 +113,7 @@ const SignUp = () => {
             data-aos-anchor-placement="top"
             className="hero min-h-[80vh]"
           >
-            <div className="hero-content flex-col gap-8 bg-white bg-opacity-70 shadow-[0_0_10px_1px_#D1D1D1] px-8 rounded-2xl ">
+            <div className="hero-content flex-col gap-8 bg-white bg-opacity-70 shadow-[0_0_70px_#F0F0F0] px-8 rounded-2xl ">
               <h1 className="text-5xl font-bold pt-10  text-main">
                 Sign Up now!
               </h1>
@@ -121,7 +121,6 @@ const SignUp = () => {
                 <div className="card-body">
                   <form onSubmit={handleSubmit}>
                     {/* user Name */}
-
                     <div className="form-control lg:w-full">
                       <label className="label">
                         <span className="label-text">Name</span>
@@ -130,7 +129,7 @@ const SignUp = () => {
                         type="text"
                         name="name"
                         placeholder="your name"
-                        className="input bg-transparent border  border-black hover:border-dashed focus:border-main focus:ring-0"
+                        className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                         required
                       />
                     </div>
@@ -141,7 +140,7 @@ const SignUp = () => {
                       </label>
 
                       <div className="relative w-full">
-                        <label className="label absolute -z-50 input pt-2  input-bordered  border-black hover:border-dashed focus:border-main focus:ring-0 w-full ">
+                        <label className="label absolute -z-50 input pt-2  input-bordered  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0 w-full ">
                           <span className="label-text ">
                             {photoName || "Choose Profile Picture"}
                           </span>
@@ -151,7 +150,7 @@ const SignUp = () => {
                           accept="images/*"
                           type="file"
                           placeholder="upload your Photo"
-                          className="input pt-2 opacity-0 input-bordered bg-gray-100 hover:bg-gray-100 border-dashed  border-black hover:border-dashed focus:border-main focus:ring-0"
+                          className="input pt-2 opacity-0 input-bordered bg-gray-100 hover:bg-gray-100 border-dashed  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                         />
                       </div>
                     </div>
@@ -164,7 +163,7 @@ const SignUp = () => {
                         type="email"
                         name="email"
                         placeholder="email"
-                        className="input bg-transparent border  border-black hover:border-dashed focus:border-main focus:ring-0"
+                        className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                         required
                       />
                     </div>
@@ -175,7 +174,7 @@ const SignUp = () => {
                           Your Role
                         </span>
                       </div>
-                      <select onChange={handleRole} className="select select-bordered">
+                      <select onChange={handleRole} className="select select-bordered border border-black focus:border-main focus:outline-none">
                         <option disabled selected>
                          Select Your Role
                         </option>
@@ -193,7 +192,7 @@ const SignUp = () => {
                           type={showP ? "text" : "password"}
                           name="password"
                           placeholder="password"
-                          className="input bg-transparent border  border-black hover:border-dashed focus:border-main focus:ring-0"
+                          className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                           required
                         />
                         <div className="my-1 text-red-400 font-medium">
@@ -210,7 +209,7 @@ const SignUp = () => {
                     <div className="form-control mt-6">
                       <button
                         type="submit"
-                        className="btn border border-black hover:border-black hover:border-dashed focus:border-main focus:ring-0 z-50 hover:bg-transparent w-full mx-auto bg-transparent  font-semibold mb-3"
+                        className="btn border border-black hover:border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0 z-50 hover:bg-transparent w-full mx-auto bg-transparent  font-semibold mb-3"
                       >
                         Sign In
                       </button>
@@ -230,7 +229,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

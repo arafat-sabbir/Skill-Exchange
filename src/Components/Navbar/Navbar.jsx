@@ -99,7 +99,7 @@ const Navbar = () => {
                   <NavLink to={"/dashboard/profile"}>View Profile</NavLink>
                 </li>
 
-                <li className="mt-4">
+                <li className=" mx-auto my-2">
                   <NavLink to={"/dashBoard/profile"}>DashBoard</NavLink>
                 </li>
                 <button onClick={handleSignOut}>

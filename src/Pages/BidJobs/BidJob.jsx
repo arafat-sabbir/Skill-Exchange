@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
@@ -77,7 +77,7 @@ const BidJob = () => {
       setisButtonDisabled(true);
     }
   }, [JobDetail.sellerEmail, user?.email, daydifferent]);
-  const { data: review,refetch } = useQuery({
+  const { data: review, refetch } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
       const res = await axios.get(`/review/${JobDetail._id}`);
@@ -88,24 +88,23 @@ const BidJob = () => {
   const reviewref = useRef();
   const handleSubmitReview = (id) => {
     const review = reviewref.current.value;
-    if(!review){
-     return toast.error("Review Can't Be Empty")
+    if (!review) {
+      return toast.error("Review Can't Be Empty");
     }
-    reviewref.current.value=""
-    const tid = toast.loading("Submitting Review")
+    reviewref.current.value = "";
+    const tid = toast.loading("Submitting Review");
     const reviewDetail = {
       ReviewerName: user.displayName,
       ReviewerEmail: user.email,
       Review: review,
-      postid:id
+      postid: id,
     };
-    axios.post('/addReview',reviewDetail)
-    .then(res=> {
-      if(res.data.insertedId){
-        toast.success("Review Submitted Successfully",{id:tid})
-        refetch()
+    axios.post("/addReview", reviewDetail).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Review Submitted Successfully", { id: tid });
+        refetch();
       }
-    })
+    });
   };
   return (
     <div className="container mx-auto">
@@ -117,60 +116,74 @@ const BidJob = () => {
       </h3>
       <div className="flex justify-center items-center">
         <div className="grid  justify-items-center container mx-auto my-2">
-          <div>
-            <div className="card w-[90vw] lg:w-[600px] card-side bg-base-100 duration-300 border-2 shadow-[0_0_10px_] border-main ">
-              <div className="card-body">
-                <p className="my-4 font-semibold text-3xl text-center">
-                  {" "}
-                  {JobDetail?.jobtitle}
-                </p>
-                <p className="text-black">
-                  <span className="text-lg font-semibold">Price :</span> $
-                  {JobDetail.minPrice} - ${JobDetail.maxPrice}
-                </p>
-                <p className="text-black">
-                  {" "}
-                  <span className="text-lg font-semibold">Deadline :</span>{" "}
-                  {JobDetail.deadline}
-                </p>
-                <p className="text-black">{JobDetail.description}</p>
-                {/* Open the modal using document.getElementById('ID').showModal() method */}
-                <button
-                  className="text-black text-center border-2 p-1 rounded-full border-main font-semibold w-[100px] ml-auto "
-                  onClick={() =>
-                    document.getElementById("my_modal_1").showModal()
-                  }
-                >
-                  Review job
-                </button>
-                <dialog id="my_modal_1" className="modal">
-                  <div className="modal-box pt-14">
-                    <textarea
-                      ref={reviewref}
-                      className="border-2 border-main flex p-4  justify-center ml-8 rounded-xl"
-                      name="text-area"
-                      id=""
-                      cols="40"
-                      rows="6"
-                      placeholder="Your Review"
-                    ></textarea>
-                    <div className="modal-action">
-                      <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button>Cancel</button>
-                        <button
-                          onClick={() => handleSubmitReview(JobDetail._id)}
-                          className="ml-4"
-                        >
-                          Submit
-                        </button>
-                      </form>
-                    </div>
+          {/* Previous Job Detail */}
+          <div className="min-w-5xl w-[600px] shadow-[0_0_70px_#E0E0E0] px-8 py-4 bg-white rounded-lg  dark:bg-gray-800">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-light text-gray-600 dark:text-gray-400">
+               Deadline : {JobDetail.deadline}
+              </span>
+              <button className="px-3 py-1 text-sm font-bold text-gray-100 transition-duration-300 transform bg-gray-600 rounded cursor-pointer ">
+               {JobDetail.category}
+              </button>
+            </div>
+            <div className="mt-2">
+              <p className="text-xl font-bold text-gray-700 dark:text-white dark:hover:text-gray-200 ">
+              {JobDetail?.jobtitle}
+              </p>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">adfa</p>
+            </div>
+
+            <div className="flex items-center justify-between mt-4">
+            <button
+                className="text-black border p-1 hover:border-gray-700 hover:scale-95 transition duration-300 font-semibold w-[100px] "
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+              >
+                Review job
+              </button>
+              <dialog id="my_modal_1" className="modal">
+                <div className="modal-box pt-14">
+                  <textarea
+                    ref={reviewref}
+                    className="border-2 border-main flex p-4  justify-center ml-8 rounded-xl"
+                    name="text-area"
+                    id=""
+                    cols="40"
+                    rows="6"
+                    placeholder="Your Review"
+                  ></textarea>
+                  <div className="modal-action">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button>Cancel</button>
+                      <button
+                        onClick={() => handleSubmitReview(JobDetail._id)}
+                        className="ml-4"
+                      >
+                        Submit
+                      </button>
+                    </form>
                   </div>
-                </dialog>
+                </div>
+              </dialog>
+
+              <div className="flex items-center">
+                <img
+                  className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
+                  src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80"
+                  alt="avatar"
+                />
+                <a
+                  className="font-bold text-gray-700 cursor-pointer dark:text-gray-200"
+                  tabIndex="0"
+                >
+                  Khatab wedaa
+                </a>
               </div>
             </div>
           </div>
+          {/* Previous job detail end */}
         </div>
       </div>
       {/* Bidding Form Start */}
@@ -278,35 +291,40 @@ const BidJob = () => {
           </form>
         </div>
       </div>
-       <div>
-        <h3 className="text-3xl font-semibold text-center  my-10">Client Review On This Post</h3>
-     {
-      review? <div className="grid grid-cols-1 md:grid-cols-2 mb-10 lg:grid-cols-3 gap-10 justify-items-center">
-      {review?.map((item) => (
-          <div
-            key={item._id}
-            className="card shadow-[0_0_10px] lg:w-96 w-[90vw] font-medium tracking-wide card-side bg-base-100 duration-300 border-2 border-main hover:shadow-[0_0_40px_#D1D1D1]"
-          >
-            <div className="card-body">
-              
-              <p className="text-black">
-                Reviewer : {item.ReviewerName}
-              </p>
-              <p className="text-black text-sm">Reviewer Email : {item.ReviewerEmail}</p>
-              <p>{item.Review}</p>
-            </div>
+      <div>
+        <h3 className="text-3xl font-semibold text-center  my-10">
+          Client Review On This Post
+        </h3>
+        {review ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 mb-10 lg:grid-cols-3 gap-10 justify-items-center">
+            {review?.map((item) => (
+              <div
+                key={item._id}
+                className="card shadow-[0_0_10px] lg:w-96 w-[90vw] font-medium tracking-wide card-side bg-base-100 duration-300 border-2 border-main hover:shadow-[0_0_40px_#D1D1D1]"
+              >
+                <div className="card-body">
+                  <p className="text-black">Reviewer : {item.ReviewerName}</p>
+                  <p className="text-black text-sm">
+                    Reviewer Email : {item.ReviewerEmail}
+                  </p>
+                  <p>{item.Review}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>: <div className="flex flex-col justify-items-center  h-[20vh] my-10 justify-center items-center w-[80vw]">
-          <img
-            className="mx-auto"
-            src="https://i.ibb.co/PFzsmpn/icons8-404-restricted-web-page-on-internet-browser-layout-100.png"
-            alt=""
-          />
-          <h3 className="text-3xl font-semibold text-center text-red-500">NoOne Reviewed This Job</h3>
-        </div> 
-     }
-       </div>
+        ) : (
+          <div className="flex flex-col justify-items-center  h-[20vh] my-10 justify-center items-center w-[80vw]">
+            <img
+              className="mx-auto"
+              src="https://i.ibb.co/PFzsmpn/icons8-404-restricted-web-page-on-internet-browser-layout-100.png"
+              alt=""
+            />
+            <h3 className="text-3xl font-semibold text-center text-red-500">
+              NoOne Reviewed This Job
+            </h3>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet";
 import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
 import useAxios from "../../Hook/useAxios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -18,40 +17,30 @@ const AddJob = () => {
   const handleAddJob = (e) => {
     e.preventDefault();
     const form = e.target;
-    const sellerEmail = user?.email || "";
-    const jobtitle = form.title.value;
-    const minPrice = form.minPrice.value;
-    const maxPrice = form.maxPrice.value;
-    const description = form.description.value;
-    const deadline = form.deadline.value;
-    mutate({
-      sellerEmail,
-      jobtitle,
-      minPrice,
-      maxPrice,
-      description,
-      category,
-      deadline,
-    });
-  };
-  const { mutate } = useMutation({
-    mutationKey: ["addJobs"],
-    mutationFn: (newjob) => {
-      const post = axios.post("/add-jobs", newjob);
-      return post;
-    },
-    onSuccess: (data) => {
+    const jobData ={
+      sellerEmail : user?.email || "",
+      sellerName:user.displayName,
+      sellerPhoto:user.photoURL,
+      jobtitle :form.title.value,
+       minPrice : form.minPrice.value,
+       maxPrice : form.maxPrice.value,
+       description : form.description.value,
+       deadline : form.deadline.value,
+       category,
+    }
+    axios.post("/add-jobs", jobData)
+    .then(data=>{
       if (data.data.acknowledged) {
-        navigate('/myPostedJob')
+        navigate('/dashboard/myPostedJob')
         return toast.success("Job added successfully");
 
       }
-    },
-    onError: (error) => {
-      toast.error("An error occurred while adding the job", error);
-      // Handle the error or display an error message to the user
-    },
-  });
+    })
+    .catch((error)=>{
+      toast.error(error)
+    })
+
+  };
   return (
     <div className="h-screen flex flex-col justify-center">
       <Helmet>
@@ -116,17 +105,15 @@ const AddJob = () => {
         <div className="flex  gap-3 ">
           <input
             className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
-            type="text"
+            type="number"
             name="minPrice"
-            id=""
             placeholder="Min Price"
             required
           />
           <input
             className=" input  input-bordered border-main bg-white lg:w-[50%] mb-4"
-            type="text"
+            type="number"
             name="maxPrice"
-            id=""
             placeholder="Max Price"
             required
           />
