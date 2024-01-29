@@ -23,17 +23,17 @@ const UserReview = () => {
               <blockquote>
                <img src="https://i.ibb.co/0h8nt3p/icons8-logo-240.png" className='w-16 mb-1' alt="" />
 
-                <p className="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal">
+                <p className="text-xl font-medium text-gray-800 dark:text-slate-300 lg:text-2xl lg:leading-normal dark:text-slate-300">
                  Using Skill-Exchange For About A user Now I usually Hire People for My Company Job It Was A Great Experience Using Skill-Exchange..
                 </p>
 
                 <footer className="mt-6">
                   <div className="flex items-center">
                     <div className="ms-4 lg:ms-0">
-                      <p className="font-semibold text-gray-800">
+                      <p className="font-semibold text-gray-800 dark:text-slate-300">
                         Jon Abraham
                       </p>
-                      <p className="text-sm text-gray-600 ">
+                      <p className="text-sm text-gray-600 dark:text-slate-300 ">
                         Head of Type-Chart.io
                       </p>
                     </div>
@@ -60,17 +60,17 @@ const UserReview = () => {
               <blockquote>
                <img src="https://i.ibb.co/mC31N2Y/icons8-logo-240-1.png" className='w-16 mb-2' alt="" />
 
-                <p className="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal">
+                <p className="text-xl font-medium text-gray-800 dark:text-slate-300 lg:text-2xl lg:leading-normal">
                 The Working Experience In Skill-Exchange is Excellent. It Makes The Job Finding Process As Relevant As Possible For Me.....
                 </p>
 
                 <footer className="mt-6">
                   <div className="flex items-center">
                     <div className="ms-4 lg:ms-0">
-                      <p className="font-semibold text-gray-800">
+                      <p className="font-semibold text-gray-800 dark:text-slate-300">
                         Jon Abraham
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 dark:text-slate-300">
                         Head of Type-Chart.io
                       </p>
                     </div>

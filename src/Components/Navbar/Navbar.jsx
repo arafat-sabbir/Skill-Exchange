@@ -1,9 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
 import "../Navbar/Navbar.css";
 import useAuth from "../../Hook/useAuth";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
+  const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
+  const [theme2, setTheme2] = useState(localStorage.getItem("theme2") ? localStorage.getItem("theme2") : "light")
+  useEffect(() => {
+    localStorage.setItem("theme", theme)
+    localStorage.setItem("theme2",theme2)
+    const htmlElement = document.querySelector("html");
+    htmlElement.setAttribute("data-theme", theme)
+    // Remove all existing classes from the element
+    htmlElement.classList.remove(...htmlElement.classList);
+
+    // Add the new class
+    htmlElement.classList.add(theme2);
+  }, [theme, theme2])
+
+  console.log(theme);
 
   const handleSignOut = () => {
     signOutUser()
@@ -14,6 +30,15 @@ const Navbar = () => {
         console.log(error);
       });
   };
+  const handleThemeChange = (e) => {
+    if (e.target.checked) {
+      setTheme("night")
+      setTheme2("dark")
+    } else {
+      setTheme("light")
+      setTheme2("light")
+    }
+  }
 
   const links = (
     <>
@@ -48,7 +73,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content font-semibold mx-2 mt-3 z-[50] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content dark:text-white font-semibold mx-2 mt-3 z-[50] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {links}
             </ul>
@@ -60,18 +85,23 @@ const Navbar = () => {
                 src="https://i.ibb.co/8m1d6zD/Untitled-design.png"
                 alt=""
               />
-              <p className="text-2xl text-black  font-semibold">
+              <p className="text-2xl text-black dark:text-slate-300  font-semibold">
                 Skill Exchange
               </p>
             </NavLink>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal  font-semibold gap-4 px-1">
+          <ul className="menu menu-horizontal dark:text-white  font-semibold gap-4 px-1">
             {links}
           </ul>
         </div>
         <div className="navbar-end">
+          <label className="cursor-pointer grid place-items-center mr-4">
+            <input checked={theme === "night"} onChange={handleThemeChange} type="checkbox" value="synthwave" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />
+            <svg className="col-start-1 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>
+            <svg className="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </label>
           <div className="dropdown dropdown-bottom dropdown-end">
             <label tabIndex={0} className="">
               {user && (

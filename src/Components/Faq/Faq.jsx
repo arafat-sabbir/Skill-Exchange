@@ -36,9 +36,9 @@ const Faq = () => {
   ];
 
   return (
-    <div className=" my-20 text-black">
+    <div className=" my-20 text-black dark:text-slate-300  ">
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-3xl">
-          <h3 className="mt-3  mb-16 font-semibold text-3xl text-center ">
+          <h3 className="mt-3 dark:text-slate-300 mb-16 font-semibold text-3xl text-center ">
             Frequently Asked Question
           </h3>
         <div className="max-w-2xl mx-auto">
@@ -53,7 +53,7 @@ const Faq = () => {
                 key={index}
               >
                 <button
-                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-black rounded-lg transition hover:text-main"
+                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-black dark:text-slate-300  rounded-lg transition hover:text-main"
                   onClick={() => handleAccordionClick(index)}
                   aria-controls={`hs-basic-with-title-and-arrow-stretched-collapse-${index}`}
                 >
@@ -61,7 +61,7 @@ const Faq = () => {
                   <svg
                     className={`hs-accordion-active:${
                       index === activeAccordion ? "block" : "hidden"
-                    } flex-shrink-0 w-5 h-5 text-black group-hover:text-main `}
+                    } flex-shrink-0 w-5 h-5 text-black dark:text-slate-300  group-hover:text-main `}
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -82,7 +82,7 @@ const Faq = () => {
                   } overflow-hidden transition-[height] duration-300`}
                   aria-labelledby={`hs-basic-with-title-and-arrow-stretched-heading-${index}`}
                 >
-                  <p className="text-black font-medium">
+                  <p className="text-black dark:text-slate-300  font-medium">
                     {item.answer}
                   </p>
                 </div>

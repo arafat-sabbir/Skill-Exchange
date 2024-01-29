@@ -7,16 +7,16 @@ const Banner = () => {
       <div className="flex  container flex-col-reverse lg:flex-row p-4 md:p-auto mx-auto place-items-center lg:h-[65vh]">
         <div className="flex-1 text-3xl text-black font-semibold leading-[50px]">
           <div className="mb-4 md:text-4xl text-center md:text-start leading-10 text-2xl md:border-l-4 md:border-[#007456]">
-            <h1 className=" ml-4">
+            <h1 className=" ml-4 dark:text-slate-300">
               <span className="">Worried About Jobs?</span>
               <br /> Can't Find The Job You're Looking For!
             </h1>
           </div>
           <div className="mb-4 md:text-4xl text-center md:text-start leading-10 text-2xl md:border-l-4 md:border-[#007456] mt-6">
-            <h1 className=" ml-4">
-              {" "}
-              On <span className=" text-[#007456]"> Skill-Exchange</span>
-              <br />{" "}
+            <h1 className=" ml-4 dark:text-slate-300">
+              
+              On <span className=" text-[#007456] dark:text-[#29c098]"> Skill-Exchange</span>
+              <br />
               <Typewriter
                 words={[
                   "Find World’s best Jobs From Home..",
@@ -38,38 +38,38 @@ const Banner = () => {
             <div className="flex flex-col md:flex-row">
               <div className="flex items-start h-28 md:w-40 w-60 justify-center px-4 mx-0.5 my-0.5 border-r-4 border-[#007456]">
                 <div className="flex-col">
-                  <div className="text-xl text-[#007456]  font-bold  my-2">
+                  <div className="text-xl text-[#007456] dark:text-[#29c098] font-bold  my-2">
                     Job Submit
                   </div>
                   <div className="className flex items-center">
-                    <div className="text-3xl font-bold ">
+                    <div className="text-3xl dark:text-slate-300 font-bold ">
                       <span className="flex"><CountUp enableScrollSpy={true} start={15} end={30} duration={6} />K</span>
                     </div>
                     <div className="flex items-center justify-between mx-2 px-0.5 py-0.5 rounded-xl text-violet-500 font-medium ">
                       <div>
                         <ion-icon name="arrow-down-outline"></ion-icon>
                       </div>
-                      <div>25%</div>
+                      <div className="dark:text-slate-300">25%</div>
                     </div>
                   </div>
-                  <div className="text-sm font-medium  ">Last week 18.7k</div>
+                  <div className="text-sm font-medium dark:text-slate-300  ">Last week 18.7k</div>
                 </div>
               </div>
               <div className="text-black flex items-start h-28 md:w-40 w-60 justify-center px-4 mx-0.5 my-0.5">
                 <div className="flex-col">
-                  <div className="text-xl text-[#007456]  font-bold  my-2">
+                  <div className="text-xl text-[#007456] dark:text-[#29c098] font-bold  my-2">
                     Active User
                   </div>
                   <div className="className flex items-center">
-                    <div className="text-3xl font-bold "> <span className="flex"><CountUp enableScrollSpy={true} start={25} end={40} duration={6} />K</span></div>
+                    <div className="text-3xl font-bold dark:text-slate-300"> <span className="flex"><CountUp enableScrollSpy={true} start={25} end={40} duration={6} />K</span></div>
                     <div className="flex items-center justify-between mx-2 px-0.5 py-0.5 rounded-xl text-violet-500 font-medium ">
                       <div>
                         <ion-icon name="arrow-down-outline"></ion-icon>
                       </div>
-                      <div>2%</div>
+                      <div className="">2%</div>
                     </div>
                   </div>
-                  <div className="text-sm font-medium  ">Last week 8k</div>
+                  <div className="text-sm font-medium dark:text-slate-300 ">Last week 8k</div>
                 </div>
               </div>
             </div>
