@@ -40,9 +40,9 @@ const Dm = () => {
     <div className="grid lg:grid-cols-1 xl:grid-cols-2  gap-10 justify-items-center container mx-auto my-12">
       {data?.data?.map((dm) => (
       <div key={dm._id}>
-      <div className="min-w-5xl lg:w-[600px] w-[98vw] shadow-[0_0_70px_#E0E0E0] px-8 py-4 bg-white rounded-lg  dark:bg-gray-800">
+      <div className="min-w-5xl lg:w-[600px] w-[98vw] shadow-[0_0_70px_#E0E0E0] dark:shadow-sm px-8 py-4 bg-white rounded-lg  dark:bg-gray-800">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-light text-gray-600 dark:text-gray-400">
+          <span className="text-sm font-light text-gray-600 dark:text-slate-300">
             Deadline : {dm.deadline}
           </span>
           <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-duration-300 transform bg-gray-600 rounded cursor-pointer ">
@@ -54,10 +54,10 @@ const Dm = () => {
           <p className="text-xl py-2 font-bold text-gray-700 dark:text-white dark:hover:text-gray-200 ">
             {dm?.jobtitle}
           </p>
-          <p className="text-black py-1">
+          <p className="text-black dark:text-slate-300 py-1">
             <span className="font-semibold">Price :</span> ${dm.minPrice} - ${dm.maxPrice}
           </p>
-          <p className="text-black py-2"> <span className="font-semibold">Seller :</span> {dm.sellerEmail}</p>
+          <p className="text-black dark:text-slate-300 py-2"> <span className="font-semibold">Seller :</span> {dm.sellerEmail}</p>
         </div>
 
         <div className="flex items-center justify-between mt-4">
@@ -84,7 +84,7 @@ const Dm = () => {
             </button>
             <Link to={`/bidJob/${dm._id}`}>
               <button
-                className="text-black border p-1 border-gray-500 hover:border-main hover:scale-95 transition duration-300 font-semibold w-[100px] "
+                className="text-black dark:text-slate-300 border p-1 border-gray-500 hover:border-main hover:scale-95 transition duration-300 font-semibold w-[100px] "
               >
                 Bid Job
               </button>

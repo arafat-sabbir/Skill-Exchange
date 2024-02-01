@@ -113,11 +113,11 @@ const SignUp = () => {
             data-aos-anchor-placement="top"
             className="hero min-h-[80vh]"
           >
-            <div className="hero-content flex-col gap-8 bg-white bg-opacity-70 shadow-[0_0_70px_#F0F0F0] px-8 rounded-2xl ">
-              <h1 className="text-5xl font-bold pt-10  text-main">
+            <div className="hero-content flex-col gap-8  bg-white dark:bg-gray-900 bg-opacity-70 shadow-[0_0_70px_#F0F0F0] dark:shadow-[0_0_50px_#122827] px-8 rounded-2xl ">
+              <h1 className="text-5xl font-bold pt-10  text-main dark:text-slate-400">
                 Sign Up now!
               </h1>
-              <div className="card backdrop-blur-3xl bg-transparent pt-3">
+              <div className="card backdrop-blur-3xl bg-transparent dark:text-slate-300 pt-3">
                 <div className="card-body">
                   <form onSubmit={handleSubmit}>
                     {/* user Name */}
@@ -129,7 +129,7 @@ const SignUp = () => {
                         type="text"
                         name="name"
                         placeholder="your name"
-                        className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
+                        className="input bg-transparent dark:text-slate-300 border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                         required
                       />
                     </div>
@@ -163,7 +163,7 @@ const SignUp = () => {
                         type="email"
                         name="email"
                         placeholder="email"
-                        className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
+                        className="input bg-transparent dark:text-slate-300 border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                         required
                       />
                     </div>
@@ -192,7 +192,7 @@ const SignUp = () => {
                           type={showP ? "text" : "password"}
                           name="password"
                           placeholder="password"
-                          className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
+                          className="input bg-transparent dark:text-slate-300 border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                           required
                         />
                         <div className="my-1 text-red-400 font-medium">
@@ -209,16 +209,16 @@ const SignUp = () => {
                     <div className="form-control mt-6">
                       <button
                         type="submit"
-                        className="btn border border-black hover:border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0 z-50 hover:bg-transparent w-full mx-auto bg-transparent  font-semibold mb-3"
+                        className="btn border border-black hover:border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0 z-50 hover:bg-transparent dark:text-slate-300 w-full mx-auto bg-transparent dark:text-slate-300  font-semibold mb-3"
                       >
                         Sign In
                       </button>
                     </div>
                   </form>
                   <div>
-                    <p className="my-4 text-main ">
+                    <p className="my-4 text-main  dark:text-slate-400">
                       Do not have a account ? please :{" "}
-                      <Link to={"/signIn"} className=" font-bold text-main">
+                      <Link to={"/signIn"} className=" font-bold text-main dark:text-slate-300">
                         Sign In
                       </Link>
                     </p>

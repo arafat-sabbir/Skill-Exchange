@@ -2,9 +2,9 @@ const BidJobForm = ({ handleBid, isButtonDisabled, user, JobDetail }) => {
     return (
         <form
             onSubmit={handleBid}
-            className="lg:w-1/2 px-20 rounded-md py-20 mt-10 w-[90%] mx-auto mb-20 shadow-[0_0_70px_#E0E0E0]"
+            className="lg:w-1/2 px-20 rounded-md py-20 mt-10 w-[90%] mx-auto mb-20 dark:shadow-[0_0_50px_#132827] shadow-[0_0_70px_#E0E0E0]"
         >
-            <h3 className="font-semibold  text-2xl mb-6 text-center text-main">
+            <h3 className="font-semibold  text-2xl mb-6 text-center text-main dark:text-slate-300">
                 Bidding Info
             </h3>
             <div className="md:flex gap-4">
@@ -16,7 +16,7 @@ const BidJobForm = ({ handleBid, isButtonDisabled, user, JobDetail }) => {
                         type="text"
                         name="email"
                         placeholder="your email"
-                        className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
+                        className="input rounded-sm bg-transparent text-black dark:text-slate-300 border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
                         required
                         defaultValue={user?.email}
                         disabled
@@ -29,7 +29,7 @@ const BidJobForm = ({ handleBid, isButtonDisabled, user, JobDetail }) => {
                     <input
                         type="text"
                         name="sellerEmail"
-                        className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
+                        className="input rounded-sm bg-transparent text-black dark:text-slate-300 border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
                         required
                         defaultValue={JobDetail.sellerEmail}
                         disabled
@@ -45,7 +45,7 @@ const BidJobForm = ({ handleBid, isButtonDisabled, user, JobDetail }) => {
                         type="text"
                         name="biddingAmount"
                         placeholder="bidding amount"
-                        className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
+                        className="input rounded-sm bg-transparent text-black dark:text-slate-300 border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
                         required
                     />
                 </div>
@@ -57,7 +57,7 @@ const BidJobForm = ({ handleBid, isButtonDisabled, user, JobDetail }) => {
                         <input
                             type="date"
                             name="deadline"
-                            className="input rounded-sm bg-transparent text-black border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
+                            className="input rounded-sm bg-transparent text-black dark:text-slate-300 border border-gray-500 focus:ring-0 focus:outline-none focus:border-main"
                             required
                         />
 

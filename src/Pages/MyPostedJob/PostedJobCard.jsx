@@ -7,14 +7,14 @@ const PostedJobCard = ({ job, handleDelete }) => {
     job;
   return (
     <div>
-      <div className="group before:hover:scale-95 before:hover:h-[500px] before:hover:w-[400px] before:hover:h-[500px] before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-[400px] before:h-44 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-orange-200 to-orange-700 before:absolute before:top-0 w-[400px] h-[500px] relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+      <div className="group before:hover:scale-95 group before:hover:h-[500px] before:hover:w-[400px] before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-[400px] before:h-44 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-orange-200 to-orange-700 before:absolute before:top-0 w-[400px] h-[500px] relative bg-slate-50 dark:bg-gray-800 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
         <div className="w-28 h-28 bg-main mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24  group-hover:-translate-y-20 transition-all duration-500"></div>
         <div className="z-10  group-hover:-translate-y-10 transition-all duration-500"></div>
         <div className="space-y-4 z-50">
-          <span className="text-2xl font-semibold">{jobtitle}</span>
-          <p className="text-xl font-semibold">{category}</p>
-          <p className="text-xl font-semibold">Deadline: {deadline}</p>
-          <p className="text-md font-semibold">
+          <span className="text-2xl dark:text-slate-300 group-hover:text-gray-900 font-semibold">{jobtitle}</span>
+          <p className=" dark:text-slate-300 group-hover:text-gray-900 text-xl font-semibold">{category}</p>
+          <p className=" dark:text-slate-300 group-hover:text-gray-900 text-xl font-semibold">Deadline: {deadline}</p>
+          <p className=" dark:text-slate-300 group-hover:text-gray-900 text-md font-semibold">
             Price : ${minPrice}-${maxPrice}
           </p>
           <div className="flex gap-20 ">

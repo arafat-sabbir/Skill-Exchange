@@ -38,54 +38,54 @@ const MyBids = () => {
       {isLoading ? (
         <UseLoading></UseLoading>
       ) : (
-        <div className="border overflow-x-scroll lg:overflow-x-hidden rounded-xl">
-          <table className="min-w-full divide-y divide-gray-200 ">
+        <div className="border dark:border-gray-500 overflow-x-scroll lg:overflow-x-hidden rounded-xl">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600 ">
             <thead>
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-slate-300 uppercase">
                   Job Title
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-slate-300 uppercase"
                 >
                   Seller Email
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-slate-300 uppercase"
                 >
                   DeadLine
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-slate-300 uppercase"
                 >
                   Status
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-slate-300 uppercase"
                 >
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 ">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-500 ">
               {!isLoading &&
                 data?.data?.map((MyBids) => (
                   <tr key={MyBids?._id}>
                     <td className="p-4">{MyBids.jobtitle}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-slate-300 ">
                       {MyBids?.sellerEmail}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-slate-300 ">
                       {MyBids?.biddingdeadline}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-slate-300 ">
                       {MyBids?.biddingStatus}
                     </td>
-                    <td className=" whitespace-nowrap text-sm text-gray-800 ">
+                    <td className=" whitespace-nowrap text-sm text-gray-800 dark:text-slate-300 ">
                       {MyBids.biddingStatus === "In Progress" ? (
                         <button
                           onClick={() => handleComplete(MyBids?._id)}

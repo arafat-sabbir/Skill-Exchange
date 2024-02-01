@@ -16,13 +16,13 @@ const Profile = () => {
             {userInfo.role}
           </span>
         </div>
-        <div className="space-y-12 max-w-[350px] my-auto rounded-tr-lg rounded-br-lg md:w-[350px] text-center p-10 shadow-[0px_7px_30px_2px_rgba(100,100,111,0.2)]">
+        <div className="space-y-12 max-w-[350px] my-auto rounded-tr-lg rounded-br-lg md:w-[350px] dark:bg-gray-900 text-center p-10 shadow-[0px_7px_30px_2px_rgba(100,100,111,0.2)]">
           <div className="space-y-4">
-            <h2 className="text-3xl font-medium text-gray-700 text-center font-sans">
+            <h2 className="text-3xl font-medium dark:text-slate-300 text-gray-700 text-center font-sans">
                {userInfo.userName}
             </h2>
-            <p className="font-sans  text-gray-500"> Email:{userInfo.userEmail}</p>
-          <h3>User Since : {userInfo.creationDate}</h3>
+            <p className="font-sans dark:text-slate-300  text-gray-500"> Email:{userInfo.userEmail}</p>
+          <h3 className="dark:text-slate-300">User Since : {userInfo.creationDate}</h3>
           </div>
           <div></div>
         </div>

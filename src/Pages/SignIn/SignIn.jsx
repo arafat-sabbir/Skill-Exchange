@@ -74,7 +74,7 @@ const SignIn = () => {
               data-aos-anchor-placement="top"
               className="hero min-h-[80vh] "
             >
-              <div className="hero-content flex-col md:w-auto w-[99vw] md:my-auto my-10 md:shadow-[0_0_10px_1px_#D1D1D1] md:px-10 bg-white bg-opacity-70 rounded-xl">
+              <div className="hero-content flex-col md:w-auto w-[99vw] md:my-auto my-10 md:shadow-[0_0_10px_1px_#D1D1D1] dark:shadow-[0_0_50px_#122827] md:px-10 bg-white dark:bg-gray-900 dark:bg-gray-900 bg-opacity-70 rounded-xl">
                 <h1 className="text-5xl font-bold text-main pt-8">
                   Sign In now!
                 </h1>
@@ -89,7 +89,7 @@ const SignIn = () => {
                           type="emil"
                           name="email"
                           placeholder="email"
-                          className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
+                          className="input bg-transparent dark:text-slate-300 border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                           required
                         />
                       </div>
@@ -102,7 +102,7 @@ const SignIn = () => {
                             type={showP ? "text" : "password"}
                             name="password"
                             placeholder="password"
-                            className="input bg-transparent border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
+                            className="input bg-transparent dark:text-slate-300 border  border-black focus:border-dashed focus:outline-none focus:border-main focus:ring-0"
                             required
                           />
                           <span
@@ -122,7 +122,7 @@ const SignIn = () => {
                         </label>
                       </div>
                       <div className="form-control mt-6">
-                        <button type="submit" className="btn bg-white hover:bg-white border-1 border-main hover:border-main">
+                        <button type="submit" className="btn bg-white dark:bg-gray-900 hover:bg-white  border-1 border-main hover:border-main">
                           Sign In
                         </button>
                       </div>

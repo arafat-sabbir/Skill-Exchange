@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const JobDetailPage = ({ JobDetail, handleSubmitReview, reviewRef }) => {
     return (
         <>
-            <div className="min-w-5xl w-[600px] shadow-[0_0_70px_#E0E0E0] px-8 py-4 bg-white rounded-lg  dark:bg-gray-800">
+            <div className="min-w-5xl w-[600px] shadow-[0_0_70px_#E0E0E0] dark:shadow-[0_0_50px_#122827] px-8 py-4 bg-white rounded-lg  dark:bg-gray-900">
                 <div className="flex items-center justify-between">
-                    <span className="text-sm font-light text-gray-600 dark:text-gray-400">
+                    <span className="text-sm font-light text-gray-600 dark:text-slate-300">
                         Deadline : {JobDetail.deadline}
                     </span>
                     <button className="px-3 py-1 text-sm font-bold text-gray-100 transition-duration-300 transform bg-gray-600 rounded cursor-pointer ">
@@ -14,7 +14,7 @@ const JobDetailPage = ({ JobDetail, handleSubmitReview, reviewRef }) => {
                     </button>
                 </div>
                 <div className="mt-2">
-                    <p className="text-xl font-bold text-gray-700 dark:text-white dark:hover:text-gray-200 ">
+                    <p className="text-xl font-bold text-gray-700 dark:text-slate-300 dark:hover:text-gray-200 ">
                         {JobDetail?.jobtitle}
                     </p>
                     <p className="mt-2 text-gray-600 dark:text-gray-300">{JobDetail.description}</p>
@@ -23,7 +23,7 @@ const JobDetailPage = ({ JobDetail, handleSubmitReview, reviewRef }) => {
                 <div className="flex items-center justify-between mt-4">
                     {/* Review Job Button */}
                     <button
-                        className="text-black border p-1 hover:border-gray-700 hover:scale-95 transition duration-300 font-semibold w-[100px] "
+                        className="text-black dark:text-slate-300 border p-1 hover:border-gray-700 hover:scale-95 transition duration-300 font-semibold w-[100px] "
                         onClick={() =>
                             document.getElementById("my_modal_1").showModal()
                         }

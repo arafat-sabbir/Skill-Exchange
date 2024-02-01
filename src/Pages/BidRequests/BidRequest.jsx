@@ -46,61 +46,61 @@ const BidRequest = () => {
         <UseLoading></UseLoading>
       ) : (
         
-        <div className="border-2 rounded-xl  overflow-x-scroll lg:overflow-hidden">
+        <div className="dark:border border-2 border-gray-300 rounded-xl dark:border-gray-600  overflow-x-scroll lg:overflow-hidden">
             <table className="lg:w-full">
             <thead>
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-300 uppercase">
                   Job Title
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-300 uppercase"
                 >
                   Bidder Email
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-300 uppercase"
                 >
                   DeadLine
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-300 uppercase"
                 >
                   Bidded Price
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-300 uppercase"
                 >
                   Status
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase"
+                  className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-300 uppercase"
                 >
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 ">
+            <tbody className="divide-y lg:divide-gray-600 divider-gray-200 ">
               {data?.data.map((MyBids) => (
                 <tr key={MyBids?._id}>
-                  <td className="px-6 py-4 whitespace-nowrap font-semibold text-sm text-gray-800 ">
+                  <td className="px-6 py-4 whitespace-nowrap font-semibold text-sm text-gray-800 dark:text-slate-300 ">
                     {MyBids.jobtitle}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap font-semibold text-sm text-gray-800 ">
+                  <td className="px-6 py-4 whitespace-nowrap font-semibold text-sm text-gray-800 dark:text-slate-300 ">
                     {MyBids?.bidderEmail}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 font-semibold ">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-slate-300 font-semibold ">
                     {MyBids?.biddingdeadline}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-main font-semibold ">
                     ${MyBids?.biddingPrice}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 ">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-slate-300 ">
                     {MyBids?.biddingStatus}
                   </td>
                   {MyBids.biddingStatus === "Canceled" ? (

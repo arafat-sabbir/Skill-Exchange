@@ -9,7 +9,7 @@ const Navbar = () => {
   const [theme2, setTheme2] = useState(localStorage.getItem("theme2") ? localStorage.getItem("theme2") : "light")
   useEffect(() => {
     localStorage.setItem("theme", theme)
-    localStorage.setItem("theme2",theme2)
+    localStorage.setItem("theme2", theme2)
     const htmlElement = document.querySelector("html");
     htmlElement.setAttribute("data-theme", theme)
     // Remove all existing classes from the element
